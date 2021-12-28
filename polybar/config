@@ -250,7 +250,7 @@ interval = 3.0
 format-connected-underline = #55aa55
 format-connected-prefix = "net "
 format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
+label-connected = ⇣%downspeed% | ⇡%upspeed%
 
 format-disconnected =
 ;format-disconnected = <label-disconnected>
