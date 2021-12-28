@@ -26,6 +26,7 @@ foreground-alt = #888888
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
+underline = #bbbbbb
 
 [bar/main]
 monitor = ${env:MONITOR:}
@@ -210,7 +211,7 @@ type = internal/cpu
 interval = 2
 format-prefix = "cpu "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #f90000
+format-underline = ${colors.underline}
 label = %percentage:2%%
 
 [module/memory]
@@ -218,7 +219,7 @@ type = internal/memory
 interval = 2
 format-prefix = "mem "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #4bffdc
+format-underline = ${colors.underline}
 label = %percentage_used%%
 
 [module/wlan]
@@ -248,7 +249,7 @@ type = internal/network
 interface = enp4s0
 interval = 3.0
 
-format-connected-underline = #55aa55
+format-connected-underline = ${colors.underline}
 format-connected-prefix = "net "
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = ⇣%downspeed% ⇡%upspeed%
@@ -271,7 +272,7 @@ time-alt = %H:%M:%S
 
 format-prefix = ""
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
+format-underline = ${colors.underline}
 
 label = %date% %time%
 
@@ -371,7 +372,7 @@ warn-temperature = 60
 format-prefix = "temp "
 format-prefix-foreground = ${colors.foreground-alt}
 #format = <ramp> <label>
-format-underline = #f50a4d
+format-underline = ${colors.underline}
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
 
@@ -428,7 +429,7 @@ interval = 300
 # preceding label
 format-prefix = "out "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #00ac14
+format-underline = ${colors.underline}
 
 label = %output%
 
