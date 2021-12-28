@@ -27,6 +27,8 @@ primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
 underline = #bbbbbb
+battery-critical = #d40000
+battery-low = #eed202
 
 [bar/main]
 monitor = ${env:MONITOR:}
@@ -46,7 +48,7 @@ line-size = 3
 line-color = #f00
 
 border-size = 0
-border-color = #ffffff
+border-color = #000000
 
 padding-left = 0
 padding-right = 2
@@ -61,6 +63,7 @@ font-2 = MesloLGS NF:pixelsize=10;1
 modules-left = bspwm
 modules-center = 
 modules-right = filesystem pulseaudio memory cpu eth temperature weather date
+;modules-right = filesystem pulseaudio memory cpu wlan battery date
 
 tray-position = right
 tray-padding = 2
@@ -224,18 +227,24 @@ label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
-interface = net1
+interface = wlan0
 interval = 3.0
 
-format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #9f78e1
+format-connected = <label-connected>
+format-connected-underline = ${colors.underline}
 label-connected = %essid%
 
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.foreground-alt}
+
+;format-disconnected =
+format-disconnected = <label-disconnected>
+format-disconnected-underline = ${self.format-connected-underline}
+label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
+
+format-disconnected-prefix = "✖ "
+format-diconnected-prefix-foreground = ${colors.foreground-alt}
 
 ramp-signal-0 = 
 ramp-signal-1 = 
@@ -333,30 +342,40 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/battery]
 type = internal/battery
-battery = BAT0
-adapter = ADP1
+battery = BAT1
+adapter = ACAD
 full-at = 98
 
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
+format-charging-underline = ${colors.underline}
 
-format-discharging = <animation-discharging> <label-discharging>
+format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
-format-full-prefix = " "
+format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-5 = 
+ramp-capacity-6 = 
+ramp-capacity-7 = 
+ramp-capacity-8 = 
+ramp-capacity-9 = 
 ramp-capacity-foreground = ${colors.foreground-alt}
+ramp-capacity-0-foreground = ${colors.battery-critical}
+ramp-capacity-1-foreground = ${colors.battery-low}
+ramp-capacity-2-foreground = ${colors.battery-low}
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
 animation-charging-foreground = ${colors.foreground-alt}
-animation-charging-framerate = 750
+animation-charging-framerate = 1500
 
 animation-discharging-0 = 
 animation-discharging-1 = 
