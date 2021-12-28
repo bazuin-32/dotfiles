@@ -136,6 +136,10 @@ XF86AudioLowerVolume
 XF86AudioMute
 	pactl set-sink-mute alsa_output.pci-0000_01_00.1.hdmi-stereo toggle
 
+# brightness control
+XF86MonBrightness{Up,Down}
+	brightnessctl set 5%{+,-}
+
 # shutdown/logout dialog
 super + ctrl + s
 	~/.config/rofi/bin/powermenu
