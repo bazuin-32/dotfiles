@@ -62,7 +62,7 @@ font-2 = MesloLGS NF:pixelsize=10;1
 
 modules-left = bspwm
 modules-center = 
-modules-right = filesystem pulseaudio memory cpu eth temperature weather date
+;modules-right = filesystem pulseaudio memory cpu eth temperature weather date
 ;modules-right = filesystem pulseaudio memory cpu wlan battery date
 
 tray-position = right
@@ -82,6 +82,14 @@ wm-restack = bspwm
 
 cursor-click = pointer
 cursor-scroll = ns-resize
+
+[bar/desktop]
+inherit = bar/main
+modules-right = filesystem pulseaudio memory cpu eth temperature weather date
+
+[bar/laptop]
+inherit = bar/main
+modules-right = filesystem pusleaudio memory cpu wlan battery date
 
 [module/xwindow]
 type = internal/xwindow
