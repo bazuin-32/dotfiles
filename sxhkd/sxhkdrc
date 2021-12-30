@@ -55,8 +55,8 @@ super + ctrl + {m,x,y,z}
 #
 
 # focus the node in the given direction
-super + {_,shift + }{h,j,k,l}
-	bspc node -{f,s} {west,south,north,east}
+#super + {_,shift + }{h,j,k,l}
+#	bspc node -{f,s} {west,south,north,east}
 
 # focus the node for the given path jump
 super + {p,b,comma,period}
@@ -143,3 +143,7 @@ XF86MonBrightness{Up,Down}
 # shutdown/logout dialog
 super + ctrl + s
 	~/.config/rofi/bin/powermenu
+
+# lock computer
+super + l
+	/usr/bin/dm-tool switch-to-greeter
