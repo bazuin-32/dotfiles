@@ -451,7 +451,7 @@ exec = /bin/python3 ~/.local/share/get-temperature.py
 tail = true
 
 # update interval (sec)
-interval = 300
+interval = 600
 
 # preceding label
 format-prefix = "out "
