@@ -147,3 +147,7 @@ super + ctrl + s
 # lock computer
 super + l
 	/usr/bin/dm-tool switch-to-greeter
+
+# screenshot
+Print
+	flameshot gui
