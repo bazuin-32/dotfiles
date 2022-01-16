@@ -1,0 +1,21 @@
+{
+	"window.zoomLevel": -0.4,
+	"editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "terminal.external.linuxExec": "konsole",
+    "workbench.iconTheme": "vscode-icons",
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": true,
+    "workbench.colorCustomizations": {
+        "editorBracketHighlight.foreground4": "#01cc12",
+        "editorBracketHighlight.foreground5": "#ff6600"
+	},
+    "editor.insertSpaces": false,
+	"terminal.integrated.fontFamily": "MesloLGS NF",
+	"tabnine.experimentalAutoImports": true,
+	"sonarlint.ls.javaHome": "/home/ameen/.vscode/extensions/sonarsource.sonarlint_managed-jre/jre/jdk-11.0.13+8-jre",
+	"vsicons.dontShowNewVersionMessage": true,
+	"editor.unicodeHighlight.invisibleCharacters": false,
+	"git.confirmSync": false,
+	"sonarlint.rules": {},
+}
