@@ -18,4 +18,5 @@
 	"editor.unicodeHighlight.invisibleCharacters": false,
 	"git.confirmSync": false,
 	"sonarlint.rules": {},
+	"C_Cpp.updateChannel": "Insiders",
 }
