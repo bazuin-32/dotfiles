@@ -105,6 +105,8 @@ alias gcps='/usr/local/bin/git-commit.sh && git push'
 alias gc='/usr/local/bin/git-commit.sh'
 alias gps='git push'
 alias gpl='git pull && echo "\n\nLatest commit:\n"; git log --name-status HEAD^..HEAD --stat | cat'
+# pull all repos
+alias gupd='find . -type d -name ".git" -prune | egrep -v "(\.cache|\.oh-my-zsh|\.cargo|\.rofi)" | xargs -i zsh -c "cd {}/.. && echo {} && git pull"'
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
