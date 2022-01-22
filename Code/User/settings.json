@@ -2,7 +2,7 @@
 	"window.zoomLevel": -0.4,
 	"editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "terminal.external.linuxExec": "konsole",
+    "terminal.external.linuxExec": "alacritty",
     "workbench.iconTheme": "vscode-icons",
     "editor.bracketPairColorization.enabled": true,
     "editor.guides.bracketPairs": true,
@@ -15,9 +15,8 @@
 	"tabnine.experimentalAutoImports": true,
 	"sonarlint.ls.javaHome": "/home/ameen/.vscode/extensions/sonarsource.sonarlint_managed-jre/jre/jdk-11.0.13+8-jre",
 	"vsicons.dontShowNewVersionMessage": true,
-	"editor.unicodeHighlight.invisibleCharacters": false,
+	"editor.unicodeHighlight.invisibleCharacters": true,
 	"git.confirmSync": false,
 	"sonarlint.rules": {},
-	"C_Cpp.updateChannel": "Insiders",
-	"git.autofetch": true,
+	"C_Cpp.updateChannel": "Insiders"
 }
