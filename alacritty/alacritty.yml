@@ -180,8 +180,8 @@ draw_bold_text_with_bright_colors: true
 # Colors (Tomorrow Night)
 colors:
   # Default colors
-  #primary:
-  #  background: '#1d1f21'
+  primary:
+    background: '#2a2d30'
   #  foreground: '#c5c8c6'
 
     # Bright and dim foreground colors
