@@ -31,7 +31,3 @@ feh --bg-center ~/.local/share/wallpapers/archlinux.jpg
 
 # start picom
 picom -b
-
-# Start ssh-agent and add keys
-eval $(ssh-agent -s)
-ssh-add < /usr/lib/ssh/ssh-askpass
