@@ -130,11 +130,11 @@ super + alt + Return
 
 # volume control
 XF86AudioRaiseVolume
-	pactl set-sink-volume alsa_output.pci-0000_01_00.1.hdmi-stereo +2%
+	pactl set-sink-volume $(cat ~/.sounddev) +2%
 XF86AudioLowerVolume
-	pactl set-sink-volume alsa_output.pci-0000_01_00.1.hdmi-stereo -2%
+	pactl set-sink-volume $(cat ~/.sounddev) -2%
 XF86AudioMute
-	pactl set-sink-mute alsa_output.pci-0000_01_00.1.hdmi-stereo toggle
+	pactl set-sink-mute $(cat ~/.sounddev) toggle
 
 # brightness control
 XF86MonBrightness{Up,Down}
