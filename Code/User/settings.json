@@ -1,9 +1,9 @@
 {
-	"window.zoomLevel": -0.4,
+	//"window.zoomLevel": -0.4,
 	"editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "terminal.external.linuxExec": "alacritty",
-    "workbench.iconTheme": "vscode-icons",
+	"terminal.external.linuxExec": "alacritty",
+	"workbench.iconTheme": "vscode-icons",
     "editor.bracketPairColorization.enabled": true,
     "editor.guides.bracketPairs": true,
     "workbench.colorCustomizations": {
@@ -13,10 +13,10 @@
     "editor.insertSpaces": false,
 	"terminal.integrated.fontFamily": "MesloLGS NF",
 	"tabnine.experimentalAutoImports": true,
-	"sonarlint.ls.javaHome": "/home/ameen/.vscode/extensions/sonarsource.sonarlint_managed-jre/jre/jdk-11.0.13+8-jre",
+	"sonarlint.ls.javaHome": "/usr/lib/jvm/default/",
 	"vsicons.dontShowNewVersionMessage": true,
 	"editor.unicodeHighlight.invisibleCharacters": true,
 	"git.confirmSync": false,
 	"sonarlint.rules": {},
-	"C_Cpp.updateChannel": "Insiders"
+	"C_Cpp.updateChannel": "Insiders",
 }
