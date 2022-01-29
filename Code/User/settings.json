@@ -19,4 +19,6 @@
 	"git.confirmSync": false,
 	"sonarlint.rules": {},
 	"C_Cpp.updateChannel": "Insiders",
+	"window.zoomLevel": -0.75,
+	"editor.fontSize": 15,
 }
