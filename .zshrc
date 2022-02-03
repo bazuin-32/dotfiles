@@ -93,8 +93,8 @@ export SUDO_EDITOR=vim
 unalias gp
 
 # general aliases
-alias ls='ls -lh'
-alias l='ls -alhv'
+alias ls='ls -lsh'
+alias l='ls -alshv'
 alias restart-audio='systemctl restart pulseaudio.service --user'
 alias ytdl='youtube-dl'
 alias upgrade='yay -Syyu'
