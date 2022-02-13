@@ -136,6 +136,10 @@ XF86AudioLowerVolume
 XF86AudioMute
 	pactl set-sink-mute $(cat ~/.sounddev) toggle
 
+# media controls
+XF86Audio{Prev,Play,Next}
+	playerctl -a {previous,play-pause,next}
+
 # brightness control
 XF86MonBrightness{Up,Down}
 	brightnessctl set 5%{+,-}
