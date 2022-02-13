@@ -85,6 +85,10 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+# globbing options
+setopt extendedglob
+setopt nullglob
+
 # set vim for editors
 export EDITOR=vim
 export SUDO_EDITOR=vim
