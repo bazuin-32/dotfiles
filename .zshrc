@@ -89,9 +89,9 @@ source $ZSH/oh-my-zsh.sh
 setopt extendedglob
 setopt nullglob
 
-# set vim for editors
-export EDITOR=vim
-export SUDO_EDITOR=vim
+# set nvim for editors
+export EDITOR=nvim
+export SUDO_EDITOR=nvim
 
 # clear unwanted aliases
 unalias gp
