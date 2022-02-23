@@ -33,6 +33,6 @@ feh --bg-center ~/.local/share/wallpapers/archlinux.jpg
 picom -b
 
 # set trackpad sensitivity on laptop
-if [ "$(cat /etc/hostname)" = "ameen-arch-laptop ]; then
+if [ "$(cat /etc/hostname)" = "ameen-arch-laptop" ]; then
 	synclient AccelFactor=0.03545
 fi
