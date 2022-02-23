@@ -34,5 +34,5 @@ picom -b
 
 # set trackpad sensitivity on laptop
 if [ "$(cat /etc/hostname)" = "ameen-arch-laptop" ]; then
-	synclient AccelFactor=0.03545
+	synclient AccelFactor=0.0355
 fi
