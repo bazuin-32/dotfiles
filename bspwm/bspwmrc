@@ -32,6 +32,9 @@ feh --bg-center ~/.local/share/wallpapers/archlinux.jpg
 # start picom
 picom -b
 
+# fix for java programs
+export _JAVA_AWT_WM_NONREPARENTING=1
+
 # set trackpad sensitivity on laptop
 if [ "$(cat /etc/hostname)" = "ameen-arch-laptop" ]; then
 	synclient AccelFactor=0.03545
