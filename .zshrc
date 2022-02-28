@@ -112,7 +112,7 @@ alias lsblk='lsblk -a --output NAME,LABEL,FSTYPE,SIZE,FSUSE%,RO,TYPE,MOUNTPOINT'
 alias gcps='/usr/local/bin/git-commit.sh && git push'
 alias gc='/usr/local/bin/git-commit.sh'
 alias gps='git push'
-alias gpl='git pull && echo "\n\nLatest commit:\n"; git log --name-status HEAD^..HEAD --stat | cat'
+alias gpl='git pull && echo "\n\nLatest commit:\n"; git log -1 --stat --color | cat'
 alias gft='git fetch'
 alias grst='git restore'
 # pull all repos
