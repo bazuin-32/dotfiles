@@ -22,6 +22,8 @@ bspc rule -a openssh-askpass state=floating
 #bspc rule -a Kupfer.py focus=on
 #bspc rule -a Screenkey manage=off
 
+# turn on numlock
+numlockx on
 
 # start polybar
 bash /usr/local/bin/start-polybar.sh &
