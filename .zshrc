@@ -107,6 +107,7 @@ alias sctl='sudo systemctl'
 alias sctlu='systemctl --user'
 alias svim='sudo -e'
 alias lsblk='lsblk -a --output NAME,LABEL,FSTYPE,SIZE,FSUSE%,RO,TYPE,MOUNTPOINT'
+alias wrsync='rsync -Wr --no-compress --info=progress2'
 
 # git aliases
 alias gcps='/usr/local/bin/git-commit.sh && git push'
