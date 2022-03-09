@@ -110,6 +110,7 @@ alias svim='sudo -e'
 alias lsblk='lsblk -a --output NAME,LABEL,FSTYPE,SIZE,FSUSE%,RO,TYPE,MOUNTPOINT'
 alias wrsync='rsync -Wr --no-compress --info=progress2'
 alias ttq='tt -bold -quotes en -csv -theme gruvbox-dark >> ~/ttstats.csv'
+alias ttp='tt -bold $(find /usr/local/share/texts -type f | shuf -n 1) -csv -theme gruvbox-dark >> ~/ttstats.csv'
 
 # git aliases
 alias gcps='/usr/local/bin/git-commit.sh && git push'
