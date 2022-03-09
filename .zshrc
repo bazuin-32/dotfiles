@@ -87,7 +87,8 @@ source $ZSH/oh-my-zsh.sh
 
 # globbing options
 setopt extendedglob
-setopt nullglob
+#setopt nullglob
+setopt GLOBSTARSHORT
 
 # set nvim for editors
 export EDITOR=nvim
