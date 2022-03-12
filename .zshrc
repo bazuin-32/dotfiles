@@ -97,6 +97,10 @@ export SUDO_EDITOR=nvim
 # clear unwanted aliases
 unalias gp
 
+# this makes aliases expand when using sudo, even though they are not
+# in root's shell rc files
+alias sudo='sudo '
+
 # general aliases
 alias ls='ls -lsh'
 alias l='ls -alshv'
