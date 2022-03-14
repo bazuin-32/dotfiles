@@ -155,3 +155,7 @@ super + l
 # screenshot
 Print
 	flameshot gui
+
+# keyboard lighting profiles
+alt + shift + {1-3}
+	rgb_keyboard --active {1-3}
