@@ -87,7 +87,6 @@ source $ZSH/oh-my-zsh.sh
 
 # globbing options
 setopt extendedglob
-#setopt nullglob
 setopt GLOBSTARSHORT
 
 # set nvim for editors
@@ -125,6 +124,37 @@ alias gft='git fetch'
 alias grst='git restore'
 # pull all repos
 alias gupd='find ~ -type d -name ".git" -prune | egrep -v "(\.cache|\.oh-my-zsh|\.cargo|\.rofi)" | xargs -i zsh -c "cd {}/.. && echo \"\n\" && echo {} | rev | cut -d \"/\" -f 2- | rev && git pull"'
+
+# fzf searcher
+function srch() {
+    local result
+    if [ "$1" != "" ]
+    then
+	    result="$(find "$1" | fzf)"
+    else
+	    result="$(find . | fzf)"
+    fi
+
+    echo "$result"
+}
+
+# fuzzy utils
+function srcho() {
+	local result=$(srch "$1")
+	xdg-open "$result"
+}
+
+function fcd() {
+	local result
+	if [ "$1" != "" ]
+	then
+		result="$(find "$1" -type d | fzf)"
+	else
+		result="$(find . -type d | fzf)"
+	fi
+
+	cd "$result"
+}
 
 # command not found
 function command_not_found_handler {
