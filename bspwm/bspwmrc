@@ -29,7 +29,7 @@ numlockx on
 bash /usr/local/bin/start-polybar.sh &
 
 # set background
-feh --bg-center ~/.local/share/wallpapers/archlinux.jpg
+feh --bg-fill ~/.local/share/wallpapers/penguins.png
 
 # start picom
 picom -b
