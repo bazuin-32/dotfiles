@@ -25,7 +25,7 @@ function xkcd () {
     title=$(jq -r .title <<< $json)
     alt=$(jq -r .alt <<< $json)
     transcript=$(jq -r .transcript <<< $json)
-    date="$(jq -r .day <<< $json).$(jq -r .month <<< $json).$(jq -r .year <<< $json)"
+    date="$(jq -r .year <<< $json)-$(jq -r .month <<< $json)-$(jq -r .day <<< $json)"
     
     echo $url
     echo "\n\"$title\"\n"
