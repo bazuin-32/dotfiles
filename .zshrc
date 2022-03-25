@@ -80,7 +80,7 @@ DISABLE_LS_COLORS="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git archlinux zsh-syntax-highlighting zsh-autosuggestions vscode sudo)
+plugins=(git archlinux zsh-syntax-highlighting zsh-autosuggestions zsh-completions vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
