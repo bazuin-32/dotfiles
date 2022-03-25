@@ -1,4 +1,5 @@
 source ~/.config/xkcd.zsh
+source ~/.config/paclog.zsh
 neofetch
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
