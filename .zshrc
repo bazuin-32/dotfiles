@@ -119,6 +119,7 @@ alias ttp='tt -bold -csv -theme gruvbox-dark $(find /usr/local/share/texts -type
 alias netmnt='for dir in {ameen,public}; do sudo mount -t cifs -o user=ajohnson,uid=1000,gid=1001,vers=3.0,rw //10.0.0.5/$(echo ${dir} | sed "s/.*/\u&/") /net/${dir}; done'
 alias dmesg='sudo dmesg --color=always'
 alias ping='ping -O'
+alias grep='grep --color=always'
 
 # git aliases
 alias gcps='/usr/local/bin/git-commit.sh && git push'
