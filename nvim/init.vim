@@ -15,3 +15,6 @@ endif
 
 " apply gruvbox theme
 colorscheme gruvbox
+
+" clear background color so terminal stays transparent
+au ColorScheme gruvbox hi Normal guibg=NONE ctermbg=NONE
