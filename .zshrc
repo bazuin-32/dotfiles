@@ -95,6 +95,8 @@ setopt GLOBSTARSHORT
 export EDITOR=nvim
 export SUDO_EDITOR=nvim
 
+export HISTFILE
+
 # clear unwanted aliases
 unalias gp
 
