@@ -129,7 +129,7 @@ alias gpl='git pull && echo "\n\nLatest commit:\n"; git log -1 --stat --color | 
 alias gft='git fetch'
 alias grst='git restore'
 # pull all repos
-alias gupd='find ~ -type d -name ".git" -prune | egrep -v "(\.cache|\.oh-my-zsh|\.cargo|\.rofi)" | xargs -i zsh -c "cd {}/.. && echo \"\n\" && echo {} | rev | cut -d \"/\" -f 2- | rev && git pull"'
+alias gupd='find ~ -type d -name ".git" -prune | egrep -v "(\.cache|\.oh-my-zsh|\.cargo|\.rofi)" | xargs -i zsh -c "cd {}/.. && echo \"\n\" && echo {} | rev | cut -d \"/\" -f 2- | rev | sed \"s#/home/ameen#~#\" && git pull"'
 
 # fzf searcher
 function srch() {
