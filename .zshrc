@@ -98,6 +98,9 @@ export SUDO_EDITOR=nvim
 # clear unwanted aliases
 unalias gp
 
+# load redo-generated functions
+source $(redo alias-file)
+
 # this makes aliases expand when using sudo, even though they are not
 # in root's shell rc files
 alias sudo='sudo '
