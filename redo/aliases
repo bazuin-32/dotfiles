@@ -9,5 +9,5 @@ vpn-stats() {
 
 # Generated on 2022-04-13T14:07:09-06:00.
 dirhash() { 
-    ls -R --full-time $1 | sha512sum
+    ls -alshvR --full-time $1 | sha512sum
 }
