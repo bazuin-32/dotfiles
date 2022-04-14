@@ -101,6 +101,9 @@ export SAVEHIST=50000
 setopt hist_find_no_dups	# do not show duplicates when stepping through history
 setopt hist_ignore_all_dups	# do not save duplicates to HISTFILE
 
+# set colors for exa, see https://github.com/ogham/exa/blob/master/man/exa_colors.5.md
+export EXA_COLORS="di=33;1:su=1;4:sf=1:4"
+
 # clear unwanted aliases
 unalias gp
 
@@ -114,8 +117,8 @@ alias sudo='sudo '
 # general aliases
 #alias ls='ls -lsh'
 #alias l='ls -alshv'
-alias ls='exa -lbghm@ --icons --git'
-alias l='exa -labghm@ --icons --git'
+alias ls='exa -lbghm@ --icons --git --color=always'
+alias l='exa -labghm@ --icons --git --color=always'
 alias restart-audio='systemctl restart pulseaudio.service --user'
 alias ytdl='youtube-dl'
 alias upgrade='yay -Syu && echo "Updating -F (file) database..." && yay -Fy'
