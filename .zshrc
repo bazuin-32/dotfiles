@@ -95,7 +95,11 @@ setopt GLOBSTARSHORT
 export EDITOR=nvim
 export SUDO_EDITOR=nvim
 
+# history optionss
 export HISTFILE
+export SAVEHIST=50000
+setopt hist_find_no_dups	# do not show duplicates when stepping through history
+setopt hist_ignore_all_dups	# do not save duplicates to HISTFILE
 
 # clear unwanted aliases
 unalias gp
