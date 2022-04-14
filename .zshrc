@@ -112,8 +112,10 @@ source $(redo alias-file)
 alias sudo='sudo '
 
 # general aliases
-alias ls='ls -lsh'
-alias l='ls -alshv'
+#alias ls='ls -lsh'
+#alias l='ls -alshv'
+alias ls='exa -lbghm@ --icons --git'
+alias l='exa -labghm@ --icons --git'
 alias restart-audio='systemctl restart pulseaudio.service --user'
 alias ytdl='youtube-dl'
 alias upgrade='yay -Syu && echo "Updating -F (file) database..." && yay -Fy'
