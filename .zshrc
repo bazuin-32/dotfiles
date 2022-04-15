@@ -134,6 +134,7 @@ alias netmnt='for dir in {ameen,public}; do sudo mount -t cifs -o cred=/home/ame
 alias dmesg='sudo dmesg --color=always'
 alias ping='ping -O'
 alias grep='grep --color=always'
+alias cat='bat'
 
 # git aliases
 alias gcps='/usr/local/bin/git-commit.sh && git push'
