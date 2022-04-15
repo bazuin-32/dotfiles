@@ -54,6 +54,11 @@ msg() {
 	rofi -theme "$dir/message.rasi" -e "Available Options  -  yes / y / no / n"
 }
 
+# gradually dims the screen
+dim_scr() {
+	for i in $(seq 1 -0.01 0.01); do xrandr --output HDMI-0 --brightness $i && xrandr --output HDMI-1 --brightness $i; done
+}
+
 # Variable passed to rofi
 options="$shutdown\n$reboot\n$lock\n$suspend\n$logout"
 
@@ -62,6 +67,7 @@ case $chosen in
     $shutdown)
 		ans=$(confirm_exit &)
 		if [[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
+			dim_scr
 			systemctl poweroff
 		elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
 			exit 0
@@ -72,6 +78,7 @@ case $chosen in
     $reboot)
 		ans=$(confirm_exit &)
 		if [[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
+			dim_scr
 			systemctl reboot
 		elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
 			exit 0
@@ -80,6 +87,7 @@ case $chosen in
         fi
         ;;
     $lock)
+	    	dim_scr
 	    	dm-tool switch-to-greeter
 		if [[ -f /usr/bin/i3lock ]]; then
 			i3lock
@@ -92,6 +100,7 @@ case $chosen in
 		if [[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
 			mpc -q pause
 			amixer set Master mute
+			dim_scr
 			systemctl suspend
 		elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
 			exit 0
@@ -102,6 +111,7 @@ case $chosen in
     $logout)
 		ans=$(confirm_exit &)
 		if [[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
+			dim_scr
 			if [[ "$DESKTOP_SESSION" == "Openbox" ]]; then
 				openbox --exit
 			elif [[ "$DESKTOP_SESSION" == "bspwm" ]]; then
