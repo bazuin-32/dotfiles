@@ -19,3 +19,13 @@ colorscheme gruvbox
 " clear background color so terminal stays transparent
 au ColorScheme gruvbox hi Normal guibg=NONE ctermbg=NONE
 hi Normal guibg=NONE ctermbg=NONE
+
+" lualine status line, see https://github.com/nvim-lualine/lualine.nvim
+lua << END
+require('lualine').setup {
+	options = {
+		icons_enabled = true,
+		theme = 'gruvbox',
+	},
+}
+END
