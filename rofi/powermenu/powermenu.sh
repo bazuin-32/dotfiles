@@ -54,10 +54,7 @@ msg() {
 	rofi -theme "$dir/message.rasi" -e "Available Options  -  yes / y / no / n"
 }
 
-# gradually dims the screen
-dim_scr() {
-	for i in $(seq 1 -0.01 0.01); do xrandr --output HDMI-0 --brightness $i && xrandr --output HDMI-1 --brightness $i; done
-}
+source ~/.config/dim_scr.zsh
 
 # Variable passed to rofi
 options="$shutdown\n$reboot\n$lock\n$suspend\n$logout"
