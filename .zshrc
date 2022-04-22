@@ -91,6 +91,9 @@ source $ZSH/oh-my-zsh.sh
 setopt extendedglob
 setopt GLOBSTARSHORT
 
+# make cd keep a dir stack
+setopt autopushd
+
 # set nvim for editors
 export EDITOR=nvim
 export SUDO_EDITOR=nvim
