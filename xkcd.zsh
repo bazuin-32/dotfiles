@@ -45,4 +45,8 @@ function xkcd () {
     
     # Display the image using convert. Requires alacritty-sixel-git instead of alacritty
     convert $image sixel:-
+
+    # Clean up cache; keep only the newest $cacheSize images
+    cacheSize=3
+    find ~/.cache/xkcd -maxdepth 1 -type f -printf '%Ts\t%P\n' | sort -n | head -n -$cacheSize | cut -f 2- | xargs -i rm -f ~/.cache/xkcd/{}
 }
