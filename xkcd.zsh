@@ -1,4 +1,5 @@
 function xkcd () {
+    cacheDir="$HOME/.cache/xkcd"
     comicNum=$1
     newestJson=$(curl -s https://xkcd.com/info.0.json)
     newestNum=$(jq -r .num <<< $newestJson)
@@ -18,6 +19,17 @@ function xkcd () {
         comicNum=$newestNum
         json=$newestJson
     fi
+
+    # Check if we have the requested image cached, and use it if we do
+    # so we don't have to download it again
+    if [[ -f "$cacheDir/$comicNum.png" ]] ; then
+	image="$cacheDir/$comicNum.png"
+    else
+	# Download the image
+	image=$(jq -r .img <<< $json)
+	curl -s -o "$cacheDir/$comicNum.png" "$image"
+	image="$cacheDir/$comicNum.png"
+    fi
     
 
     # Parse response using jq
@@ -32,5 +44,5 @@ function xkcd () {
     echo "#$comicNum -- $date\n"
     
     # Display the image using convert. Requires alacritty-sixel-git instead of alacritty
-    convert $url sixel:-
+    convert $image sixel:-
 }
