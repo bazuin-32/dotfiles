@@ -94,6 +94,9 @@ setopt GLOBSTARSHORT
 # make cd keep a dir stack
 setopt autopushd
 
+# disable cd-ing to a dir given on its own with out `cd`
+unsetopt auto_cd
+
 # set nvim for editors
 export EDITOR=nvim
 export SUDO_EDITOR=nvim
