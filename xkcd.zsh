@@ -43,15 +43,14 @@ function xkcd () {
     echo "\n\"$title\"\n"
     echo "#$comicNum -- $date\n"
 
-    # Scale down the image if it is too large
+    # Scale down the image if it is too large, and display it
     maxSize=$((2 * $COLUMNS))
     if [[ $(identify -format "%w" $image) -gt $maxSize ]] ; then
-	convert $image -resize $maxSize\> $image
+	convert $image -resize $maxSize sixel:-
+    else
+	convert $image sixel:-
     fi
     
-    # Display the image using convert. Requires alacritty-sixel-git instead of alacritty
-    convert $image sixel:-
-
     # Clean up cache; keep only the newest $cacheSize images
     cacheSize=3
     find ~/.cache/xkcd -maxdepth 1 -type f -printf '%Ts\t%P\n' | sort -n | head -n -$cacheSize | cut -f 2- | xargs -i rm -f ~/.cache/xkcd/{}
