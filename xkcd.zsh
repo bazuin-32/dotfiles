@@ -42,6 +42,12 @@ function xkcd () {
     echo $url
     echo "\n\"$title\"\n"
     echo "#$comicNum -- $date\n"
+
+    # Scale down the image if it is too large
+    maxSize=$((2 * $COLUMNS))
+    if [[ $(identify -format "%w" $image) -gt $maxSize ]] ; then
+	convert $image -resize $maxSize\> $image
+    fi
     
     # Display the image using convert. Requires alacritty-sixel-git instead of alacritty
     convert $image sixel:-
