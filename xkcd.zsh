@@ -44,8 +44,8 @@ function xkcd () {
     echo "#$comicNum -- $date\n"
 
     # Scale down the image if it is too large, and display it
-    maxSize=$((2 * $COLUMNS))
-    if [[ $(identify -format "%w" $image) -gt $maxSize ]] ; then
+    maxSize=$((5.5 * $(tput lines)))
+    if [[ $(identify -format "%h" $image) -gt $maxSize ]] ; then
 	convert $image -resize $maxSize sixel:-
     else
 	convert $image sixel:-
