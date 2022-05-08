@@ -150,7 +150,7 @@ alias gpl='git pull && echo "\n\nLatest commit:\n"; git log -1 --stat --color | 
 alias gft='git fetch'
 alias grst='git restore'
 # pull all repos
-alias gupd='find ~ -type d -name ".git" -prune | egrep -v "(\.cache|\.oh-my-zsh|\.cargo|\.rofi)" | xargs -i zsh -c "cd {}/.. && echo \"\n\" && echo {} | rev | cut -d \"/\" -f 2- | rev | sed \"s#/home/ameen#~#\" && git pull"'
+alias gupd='find ~ -type d -name ".git" -prune | egrep -v "(\.cache|\.oh-my-zsh|\.cargo|\.rofi|_deps)" | xargs -i zsh -c "cd {}/.. && echo \"\n\" && echo {} | rev | cut -d \"/\" -f 2- | rev | sed \"s#/home/ameen#~#\" && git pull"'
 
 # vpn aliases
 alias vpn-start='openvpn3 session-start -c ameen-arch-laptop.ovpn'
