@@ -87,6 +87,10 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+# cache completions for better speed
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path "~/.cache/zsh/.zcompcache"
+
 # globbing options
 setopt extendedglob
 setopt GLOBSTARSHORT
