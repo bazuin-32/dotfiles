@@ -60,15 +60,48 @@ function _zectl {
 function _zectl_activate {
 	local -a boot_envs=($(zectl list | awk '{ ORS=" "; if (NR != 1) print $1 }'))
 
-	_values -a boot_envs
+	compadd -a boot_envs
 }
 
 function _zectl_create {
-	
+	# TODO
 }
 
 function _zectl_destroy {
 	local -a boot_envs=($(zectl list | awk '{ ORS=" "; if (NR != 1) print $1 }'))
 	
-	_values -a boot_envs
+	compadd -a boot_envs
+}
+
+function _zectl_get {
+	local -a properties=($(zectl get | awk '{ ORS= " "; if (NR != 1) { gsub("org.zectl.", "", $1); print $1 } }'))
+
+	compadd -a properties
+}
+
+function _zectl_list {
+	# `zectl list` takes no other arguments, so
+	# we don't need to provide completions
+}
+
+function _zectl_mount {
+	local -a boot_envs=($(zectl list | awk '{ ORS=" "; if (NR != 1) print $1 }'))
+
+	compadd -a boot_envs
+}
+
+function _zectl_rename {
+	local -a boot_envs=($(zectl list | awk '{ ORS=" "; if (NR !=1) print $1 }'))
+
+	compadd -a boot_envs
+}
+
+function _zectl_set {
+	local -a properties=($(zectl get | awk '{ ORS=" "; if (NR != 1) { gsub("org.zectl.", "", $1); print $1"=" } }'))
+	
+	compadd -a properties
+}
+
+function _zectl_snapshot {
+	local -a boot_envs=($(zectl list | awk '{ ORS=" "; if (NR !=1) print $1 }'))
 }
