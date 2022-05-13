@@ -1,0 +1,74 @@
+#compdef _zectl zectl
+
+function _zectl {
+	local line state
+
+	_arguments -C '1: :->cmds' '*::arg:->args'
+
+	case "$state" in
+		cmds)
+			_values 'zectl command' \
+				'activate[Activate a boot environment]' \
+				'create[Create a boot environment]' \
+				'destroy[Destroy a boot environment]' \
+				'get[?? get property??]' \
+				'list[List boot environments]' \
+				'mount[Mount a boot environment]' \
+				'rename[Rename a boot environment]' \
+				'set[Set a property value]' \
+				'snapshot[??]' \
+				'unmount[Unmount a boot environment]' \
+				'version[Print version information]'
+			;;
+		args)
+			case $line[1] in
+				activate)
+					_zectl_activate
+					;;
+				create)
+					_zectl_create
+					;;
+				destroy)
+					_zectl_destroy
+					;;
+				get)
+					_zectl_get
+					;;
+				list)
+					_zectl_list
+					;;
+				mount)
+					_zectl_mount
+					;;
+				rename)
+					_zectl_rename
+					;;
+				set)
+					_zectl_set
+					;;
+				snapshot)
+					_zectl_snapshot
+					;;
+				unmount)
+					_zectl_unmount
+					;;
+			esac
+			;;
+	esac
+}
+
+function _zectl_activate {
+	local -a boot_envs=($(zectl list | awk '{ ORS=" "; if (NR != 1) print $1 }'))
+
+	_values -a boot_envs
+}
+
+function _zectl_create {
+	
+}
+
+function _zectl_destroy {
+	local -a boot_envs=($(zectl list | awk '{ ORS=" "; if (NR != 1) print $1 }'))
+	
+	_values -a boot_envs
+}
