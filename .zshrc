@@ -111,7 +111,9 @@ export SUDO_EDITOR=nvim
 
 # history optionss
 export HISTFILE
+export HISTSIZE=50000
 export SAVEHIST=50000
+setopt appendhistory
 setopt hist_find_no_dups	# do not show duplicates when stepping through history
 setopt hist_ignore_all_dups	# do not save duplicates to HISTFILE
 
