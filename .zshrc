@@ -87,6 +87,9 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+# enable more completion capability
+autoload -U compinit && compinit
+
 # cache completions for better speed
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path "~/.cache/zsh/.zcompcache"
