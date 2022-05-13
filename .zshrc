@@ -87,7 +87,8 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# enable more completion capability
+# enable more completion capability, including personal completions
+fpath=($fpath ~/.config/completions)
 autoload -U compinit && compinit
 
 # cache completions for better speed
