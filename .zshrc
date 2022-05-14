@@ -130,6 +130,13 @@ source $(redo alias-file)
 # in root's shell rc files
 alias sudo='sudo '
 
+# file/dir operation aliases
+alias cp='cp -v'
+alias mv='mv -v'
+alias rm='rm -v'
+alias mkdir='mkdir -pv'
+alias rmdir='rmdir -v'
+
 # general aliases
 #alias ls='ls -lsh'
 #alias l='ls -alshv'
