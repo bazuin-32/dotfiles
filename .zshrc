@@ -158,6 +158,7 @@ alias dmesg='sudo dmesg --color=always'
 alias ping='ping -O'
 alias grep='grep --color=always'
 alias cat='bat'
+alias less='bat --paging=always'
 
 # git aliases
 alias gcps='/usr/local/bin/git-commit.sh && git push'
