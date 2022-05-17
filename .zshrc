@@ -164,7 +164,7 @@ alias less='bat --paging=always'
 alias gcps='/usr/local/bin/git-commit.sh && git push'
 alias gc='/usr/local/bin/git-commit.sh'
 alias gps='git push'
-alias gpl='git pull && echo "\n\nLatest commit:\n"; git log -1 --stat --color | cat'
+alias gpl='git pull'
 alias gft='git fetch'
 alias grst='git restore'
 # pull all repos
