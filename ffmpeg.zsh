@@ -46,8 +46,7 @@ function mp42mov {
 	fi
 
 	for file in "${input_files[@]}"; do
-		file_basename=$(basename "$file")
-		file_no_ext="${file_basename%.*}"
+		file_no_ext="${file%.*}"
 
 		ffmpeg -i "$file_no_ext.mp4" -vcodec dnxhd -acodec pcm_s24le -s 1920x1080 -r 60 -b:v 36M -pix_fmt yuv422p -f mov "$file_no_ext.mov"
 	done
