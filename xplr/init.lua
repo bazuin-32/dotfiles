@@ -8,7 +8,6 @@ xplr.config.node_types.symlink.meta.icon = "🔗"
 -- colors
 xplr.config.node_types.directory.style.fg = "Yellow"
 
-
 -- custom keybindings
 xplr.config.modes.builtin.default.key_bindings.on_key.enter = {
 	help = "enter directory or open file",
@@ -30,6 +29,16 @@ xplr.config.modes.builtin.default.key_bindings.on_key.enter = {
 xplr.config.modes.builtin.default.key_bindings.on_key.z = {
 	-- reload config?
 }
+
+-- extension-based styles
+xplr.config.node_types.extension.pdf = {
+	meta = { icon = "" },
+	style = { fg = { Rgb = { 115, 115, 215 } } }
+}
+xplr.config.node_types.extension.json = {
+	meta = { icon = "" }
+}
+
 
 -- special files
 xplr.config.node_types.special[".gitignore"] = {
