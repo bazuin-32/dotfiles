@@ -1,4 +1,4 @@
-version = "0.17.6"
+version = "0.18.0"
 
 xplr.config.node_types.directory.meta.icon = ""
 xplr.config.node_types.file.meta.icon = ""
