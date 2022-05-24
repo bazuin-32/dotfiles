@@ -1,54 +1,10 @@
 version = "0.18.0"
 
--- Icons
-xplr.config.node_types.directory.meta.icon = ""
-xplr.config.node_types.file.meta.icon = ""
-xplr.config.node_types.symlink.meta.icon = "🔗"
-
--- colors
-xplr.config.node_types.directory.style.fg = "Yellow"
-
--- custom keybindings
-xplr.config.modes.builtin.default.key_bindings.on_key.enter = {
-	help = "enter directory or open file",
-	messages = {
-		{
-		BashExec = [===[
-		if [ -f "$XPLR_FOCUS_PATH" ]; then
-			if file "$XPLR_FOCUS_PATH" | grep -q text; then
-				$EDITOR "$XPLR_FOCUS_PATH"
-			else
-				xdg-open "$XPLR_FOCUS_PATH" & &>/dev/null
-			fi
-		fi
-		]===]
-		},
-		"Enter"
-	}
-}
-xplr.config.modes.builtin.default.key_bindings.on_key.z = {
-	-- reload config?
-}
-
--- extension-based styles
-xplr.config.node_types.extension.pdf = {
-	meta = { icon = "" },
-	style = { fg = { Rgb = { 115, 115, 215 } } }
-}
-xplr.config.node_types.extension.xlsx = xplr.config.node_types.extension.pdf
-xplr.config.node_types.extension.json = {
-	meta = { icon = "" }
-}
-xplr.config.node_types.extension.mp4 = {
-	meta = { icon = "" },
-	style = { fg = { Rgb = { 160, 100, 220 } } }
-}
-xplr.config.node_types.extension.mov = xplr.config.node_types.extension.mp4
-xplr.config.node_types.extension.MP4 = xplr.config.node_types.extension.mp4
-
-
--- special files
-xplr.config.node_types.special[".gitignore"] = {
-	meta = { icon = "" },
-	style = { fg = "Red" }
-}
+-- add the xplr config dir to `package.path` so that
+-- we can `require` other files from it
+package.path = package.path .. ';' .. os.getenv("HOME") .. '/.config/xplr/?.lua;'
+require("general") 	-- general settings
+require("extensions") 	-- styling based on specific file extension
+require("special") 	-- styling for special files, e.g. `.gitignore`
+require("keybindings") 	-- custom keybindings
+require("bookmarks") 	-- adds the ability to bookmark files
