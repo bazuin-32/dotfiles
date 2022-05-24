@@ -85,6 +85,7 @@ xplr.config.modes.builtin.default.key_bindings.on_key.H = {
 	pattern="s#^([0-9]*)(\s*)(.*)/(.*)#$R\1$N\2$B\3/$N$Y\4$N#g"
 
 	PTH=$(cat "${XPLR_PIPE_HISTORY_OUT:?}" | sort -u \
+	| sed 's#/*$##' \
 	| sed 's/ /!#_#!/g' \
 	| nl \
 	| column -t \
