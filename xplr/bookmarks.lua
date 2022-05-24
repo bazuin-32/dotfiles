@@ -30,11 +30,15 @@ xplr.config.modes.builtin.default.key_bindings.on_key["`"] = {
 			B="${esc}[34m"
 			pattern="s#^([0-9]*)(\s*)(.*)/(.*)#$R\1$N\2$B\3/$N$Y\4$N#g"
 
-			PTH=$(cat "${XPLR_BOOKMARKS_FILE}" | nl | column -t \
+			PTH=$(cat "${XPLR_BOOKMARKS_FILE}" \
+			| sed 's/ /!#_#!/g' \
+			| nl \
+			| column -t \
+			| sed 's/!#_#!/ /g' \
 			| sed -E "${pattern}" \
 			| fzf --ansi \
 				--height '80%' \
-				--preview="echo {} | sed 's#.*->  ##;s#[[:digit:]] ##'| xargs exa -lbghm@ --icons --git --color=always" \
+				--preview="echo \"{}\" | sed 's#.*->  ##;s#[[:digit:]]  ##'| xargs exa -lbghm@ --icons --git --color=always" \
 				--preview-window="right:50%" \
 			| sed -E 's#.*->  ##;s#([0-9]*)(\s*)/#/#g')
 
