@@ -17,18 +17,37 @@ xplr.config.modes.builtin.default.key_bindings.on_key.m = {
 
 -- look through bookmarks using fzf
 xplr.config.modes.builtin.default.key_bindings.on_key["`"] = {
-	help = "search for and go to bookmark",
+	help = "go to bookmark",
 	messages = {
-		{
-			BashExec = [===[
-				echo "LogWarning: looking for bookmarks in ${XPLR_BOOKMARKS_FILE}" >> "${XPLR_PIPE_MSG_IN:?}"
-				PTH=$(cat "${XPLR_BOOKMARKS_FILE}" | fzf --no-sort)
-				if [ "$PTH" ]; then
-					echo FocusPath: "'"${PTH:?}"'" >> "${XPLR_PIPE_MSG_IN:?}"
-				fi
-			]===],
+		"PopMode",
+		{ BashExec = [===[
+			field='\(\S\+\s*\)'
+			esc=$(printf '\033')
+			N="${esc}[0m"
+			R="${esc}[31m"
+			G="${esc}[32m"
+			Y="${esc}[33m"
+			B="${esc}[34m"
+			pattern="s#^([0-9]*)(\s*)(.*)/(.*)#$R\1$N\2$B\3/$N$Y\4$N#g"
+
+			PTH=$(cat "${XPLR_BOOKMARKS_FILE}" | nl | column -t \
+			| sed -E "${pattern}" \
+			| fzf --ansi \
+				--height '80%' \
+				--preview="echo {} | sed 's#.*->  ##;s#[[:digit:]] ##'| xargs exa -lbghm@ --icons --git --color=always" \
+				--preview-window="right:50%" \
+			| sed -E 's#.*->  ##;s#([0-9]*)(\s*)/#/#g')
+
+			if [ -f "$PTH" ]; then
+				echo FocusPath: "'"${PTH:?}"'" >> "${XPLR_PIPE_MSG_IN:?}"
+			elif [ -d "$PTH" ]; then
+				echo ChangeDirectory: "'"${PTH:?}"'" >> "${XPLR_PIPE_MSG_IN:?}"
+			else
+				echo LogError: "'"${PTH:?}"'" is not a file or directory >> "${XPLR_PIPE_MSG_IN:?}"
+			fi
+		  ]===]
 		},
-	},
+	}
 }
 
 -- delete a bookmark
