@@ -19,3 +19,33 @@ xplr.config.modes.builtin.default.key_bindings.on_key.enter = {
 xplr.config.modes.builtin.default.key_bindings.on_key.z = {
 	-- reload config?
 }
+
+
+-- re-assign keybindings for deletion, this time without the extra
+-- `[enter to contiune]` message
+xplr.config.modes.builtin.delete.key_bindings.on_key.d = {
+	help = "delete",
+	messages = {
+	{
+		BashExec = [===[
+		  (while IFS= read -r line; do
+		  if [ -d "$line" ] && [ ! -L "$line" ]; then
+			if rmdir -v -- "${line:?}"; then
+			  echo LogSuccess: $line deleted >> "${XPLR_PIPE_MSG_IN:?}"
+			else
+			  echo LogError: Failed to delete $line >> "${XPLR_PIPE_MSG_IN:?}"
+			fi
+		  else
+			if rm -v -- "${line:?}"; then
+			  echo LogSuccess: $line deleted >> "${XPLR_PIPE_MSG_IN:?}"
+			else
+			  echo LogError: Failed to delete $line >> "${XPLR_PIPE_MSG_IN:?}"
+			fi
+		  fi
+		  done < "${XPLR_PIPE_RESULT_OUT:?}")
+		  echo ExplorePwdAsync >> "${XPLR_PIPE_MSG_IN:?}"
+		]===],
+	},
+	"PopMode",
+	}
+}
