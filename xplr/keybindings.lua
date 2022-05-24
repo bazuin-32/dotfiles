@@ -68,3 +68,38 @@ xplr.config.modes.builtin.delete.key_bindings.on_key.D = {
 	"PopMode",
 	}
 }
+
+-- history search
+xplr.config.modes.builtin.default.key_bindings.on_key.H = {
+  help = "search history",
+  messages = {
+    --"PopMode",
+    { BashExec = [===[
+	field='\(\S\+\s*\)'
+	esc=$(printf '\033')
+	N="${esc}[0m"
+	R="${esc}[31m"
+	G="${esc}[32m"
+	Y="${esc}[33m"
+	B="${esc}[34m"
+	pattern="s#^([0-9]*)(\s*)(.*)/(.*)#$R\1$N\2$B\3/$N$Y\4$N#g"
+
+	PTH=$(cat "${XPLR_PIPE_HISTORY_OUT:?}" | sort -u \
+	| sed 's/ /!#_#!/g' \
+	| nl \
+	| column -t \
+	| sed 's/!#_#!/ /g' \
+	| sed -E "${pattern}" \
+	| fzf --ansi \
+		--height '80%' \
+		--preview="echo \"{}\" | sed 's#.*->  ##;s#[[:digit:]]  ##'| xargs exa -lbghm@ --icons --git --color=always" \
+		--preview-window="right:50%" \
+	| sed -E 's#.*->  ##;s#([0-9]*)(\s*)/#/#g')
+
+        if [ "$PTH" ]; then
+          echo ChangeDirectory: "'"${PTH:?}"'" >> "${XPLR_PIPE_MSG_IN:?}"
+        fi
+      ]===],
+    },
+  },
+}
