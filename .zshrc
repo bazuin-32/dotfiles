@@ -115,8 +115,8 @@ export HISTFILE="$HOME/.zsh_history"
 export HISTSIZE=50000
 export SAVEHIST=50000
 setopt appendhistory
-setopt hist_find_no_dups	# do not show duplicates when stepping through history
-setopt hist_ignore_all_dups	# do not save duplicates to HISTFILE
+#setopt hist_find_no_dups	# do not show duplicates when stepping through history
+#setopt hist_ignore_all_dups	# do not save duplicates to HISTFILE
 
 # set colors for exa, see https://github.com/ogham/exa/blob/master/man/exa_colors.5.md
 export EXA_COLORS="di=33;1:su=1;4:sf=1:4"
