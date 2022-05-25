@@ -88,6 +88,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 # enable more completion capability, including personal completions
+# for some reason this does not seem to be done by omz
 fpath=($fpath ~/.config/completions)
 autoload -U compinit && compinit
 
@@ -110,7 +111,7 @@ export EDITOR=nvim
 export SUDO_EDITOR=nvim
 
 # history optionss
-export HISTFILE
+export HISTFILE="$HOME/.zsh_history"
 export HISTSIZE=50000
 export SAVEHIST=50000
 setopt appendhistory
