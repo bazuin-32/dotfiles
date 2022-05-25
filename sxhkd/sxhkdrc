@@ -124,10 +124,6 @@ super + alt + {Left,Down,Up,Right}
 # custom
 #
 
-# drop down terminal
-super + alt + Return
-	{bspc rule -a \* -o state=floating sticky=on layer=above rectangle=800x380+550+26 && termite}
-
 # volume control
 XF86AudioRaiseVolume
 	pactl set-sink-volume $(cat ~/.sounddev) +2%
