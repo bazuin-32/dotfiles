@@ -104,3 +104,13 @@ xplr.config.modes.builtin.default.key_bindings.on_key.H = {
     },
   },
 }
+
+-- home/end for jump to beginning/end of directory
+xplr.config.modes.builtin.default.key_bindings.on_key.home = {
+	help = "Jump to beginning",
+	messages = { "FocusFirst" }
+}
+xplr.config.modes.builtin.default.key_bindings.on_key["end"] = {
+	help = "Jump to end",
+	messages = { "FocusLast" }
+}
