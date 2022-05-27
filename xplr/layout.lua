@@ -2,8 +2,8 @@ xplr.config.layouts.builtin.default.Horizontal.splits[2].Vertical = {
 	config = {
 		constraints = {
 			{ Percentage = 50 },
-			{ Percentage = 25 },
-			{ Percentage = 25 },
+			{ Percentage = 20 },
+			{ Percentage = 30 },
 		}
 	},
 	splits = {
@@ -12,8 +12,8 @@ xplr.config.layouts.builtin.default.Horizontal.splits[2].Vertical = {
 			body = {
 				DynamicTable = {
 					widths = {
-						{ Percentage = 30 },
-						{ Percentage = 70 }
+						{ Percentage = 33 },
+						{ Percentage = 67 }
 					},
 					render = "custom.render_stats"
 				}
