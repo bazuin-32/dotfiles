@@ -1,8 +1,9 @@
 xplr.config.layouts.builtin.default.Horizontal.splits[2].Vertical = {
 	config = {
 		constraints = {
-			{ Percentage = 70 },
-			{ Percentage = 30 },
+			{ Percentage = 50 },
+			{ Percentage = 25 },
+			{ Percentage = 25 },
 		}
 	},
 	splits = {
@@ -19,14 +20,20 @@ xplr.config.layouts.builtin.default.Horizontal.splits[2].Vertical = {
 			},
 		  }
 		},
-		"Selection"
+		"Selection",
+		"HelpMenu"
 	}
 }
 
 xplr.fn.custom.render_stats = function(ctx)
+	local bold = function (str)
+		return "\x1b[1m" .. str .. "\x1b[0m"
+	end
+
 	node = ctx.app.focused_node
+
 	return {
-		{ node.relative_path, "" },
+		{ bold(node.relative_path), "" },
 		{ "", "" },
 		{ "Permissions", xplr.fn.builtin.fmt_general_table_row_cols_2(node) .. " (" .. tostring(xplr.fn.custom.octal_perms(node.permissions)) .. ")" },
 		{ "Size", node.human_size },
