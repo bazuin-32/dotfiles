@@ -9,3 +9,4 @@ require("special") 	-- styling for special files, e.g. `.gitignore`
 require("keybindings") 	-- custom keybindings
 require("bookmarks") 	-- adds the ability to bookmark files
 require("batch_rename") -- add the ability to batch rename files
+require("layout")	-- customizes layout
