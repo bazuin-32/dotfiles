@@ -114,3 +114,13 @@ xplr.config.modes.builtin.default.key_bindings.on_key["end"] = {
 	help = "Jump to end",
 	messages = { "FocusLast" }
 }
+
+-- override shell keybind to use zsh
+xplr.config.modes.builtin.action.key_bindings.on_key["!"] = {
+	help = "shell",
+	messages = {
+		{ Call = { command = "zsh" } },
+		"ExplorePwdAsync",
+		"PopMode"
+	}
+}
