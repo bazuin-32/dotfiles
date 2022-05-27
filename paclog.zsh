@@ -1,7 +1,7 @@
 function paclog () {
 	if [ "$1" = "today" ]; then
-		cat /var/log/pacman.log | grep "$(date '+%Y-%m-%d')" --color=always
+		grep "$(date '+%Y-%m-%d')" /var/log/pacman.log --color=always | bat --file-name=/var/log/pacman.log
 	else
-		cat /var/log/pacman.log
+		bat /var/log/pacman.log
 	fi
 }
