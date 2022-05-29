@@ -5,3 +5,6 @@
 	path = nvim/pack/coc/start/coc.nvim
 	url = https://github.com/neoclide/coc.nvim.git
 	branch = release
+[submodule "nvim"]
+	path = nvim
+	url = https://github.com/NvChad/NvChad
