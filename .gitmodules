@@ -8,3 +8,6 @@
 [submodule "nvim"]
 	path = nvim
 	url = https://github.com/NvChad/NvChad
+[submodule "nvim/nvchad"]
+	path = nvim/nvchad
+	url = https://github.com/NvChad/NvChad
