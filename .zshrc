@@ -162,8 +162,8 @@ alias cat='bat'
 alias less='bat --paging=always'
 
 # git aliases
-alias gcps='/usr/local/bin/git-commit.sh && git push'
-alias gc='/usr/local/bin/git-commit.sh'
+alias gcps='git commit -a && git push'
+alias gc='git commit -a'
 alias gps='git push'
 alias gpl='git pull'
 alias gft='git fetch'
