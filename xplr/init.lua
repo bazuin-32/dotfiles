@@ -1,4 +1,4 @@
-version = "0.18.0"
+version = "0.19.0"
 
 -- add the xplr config dir to `package.path` so that
 -- we can `require` other files from it
