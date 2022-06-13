@@ -24,6 +24,6 @@ styles=($(ls -p --hide="colors.rasi" $dir/styles))
 #theme="${themes[$(( $RANDOM % 7 ))]}"
 
 rofi -no-lazy-grab -show drun \
--modi run,drun,window \
+-modi run,drun \
 -theme $dir/"$theme"
 
