@@ -1,0 +1,81 @@
+* {
+    font-family: MesloLGS NF;
+    font-size: 13px;
+    min-height: 30px;
+    margin-top: 1px; /* keep things off the top area, since flexbox doesnt work for centering */
+}
+
+window#waybar {
+    background-color: #272727;
+    border-top: 3px solid #b5740a;
+    color: #cacaca;
+}
+
+widget * {
+  background-color: #383838;
+}
+
+.modules-left, .modules-center, .modules-right {
+  padding: 6px 8px;
+}
+
+#workspaces {
+    padding: 2px 5px;
+}
+
+#workspaces button {
+    padding: 0;
+    background: transparent;
+    color: #cacaca;
+    border-bottom: 3px solid transparent;
+}
+
+/* #workspaces button.focused { */
+/*     background: #64727D; */
+/*     border-bottom: 3px solid white; */
+/* } */
+
+#workspaces .active * {
+  background-color: #4f4f4f;
+  color: #c5841a;
+}
+
+widget > label {
+    padding: 0 10px;
+}
+
+#mode {
+    background: #64727D;
+    border-bottom: 3px solid white;
+}
+
+#clock {
+    /* background-color: #64727D; */
+}
+
+#battery {
+    background-color: #ffffff;
+    color: #cacaca;
+}
+
+#battery.charging {
+    color: #cacaca;
+    background-color: #26A65B;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #cacaca;
+    }
+}
+
+#battery.warning:not(.charging) {
+    background: #f53c3c;
+    color: #cacaca;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}

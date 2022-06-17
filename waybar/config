@@ -1,0 +1,23 @@
+{
+    "custom/window": {
+        "exec": "hyprctl activewindow | head -n 1 | cut -d ' ' -f 4- | sed 's/.$//'",
+        "interval": 1
+    },
+
+    "layer": "top",
+    "position": "bottom",
+
+    "modules-left": ["wlr/workspaces"],
+    "modules-center": ["custom/window"],
+    "modules-right": ["battery", "clock"],
+
+    "battery": {
+        "format": "{capacity}% {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "clock": {
+        "format" : "{:%I:%M %p}",
+        "format-alt": "{:%a, %b %d %I:%M %p}"
+    }
+}
