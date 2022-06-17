@@ -9,7 +9,29 @@
 
     "modules-left": ["wlr/workspaces"],
     "modules-center": ["custom/window"],
-    "modules-right": ["battery", "clock"],
+    "modules-right": ["pulseaudio", "disk", "memory", "cpu", "battery", "clock", "tray"],
+
+    "pulseaudio": {
+        "format": "🔊 {volume}%",
+        "format-muted": "🔇 {volume}%"
+    },
+
+    "disk": {
+        "format": "🖫 /: {percentage_used}%",
+        "path": "/"
+    },
+    /* "disk": { */
+    /*     "format": "/home: {percentage_used}%", */
+    /*     "path": "/home" */
+    /* }, */
+
+    "memory": {
+        "format": " {}% ({used:0.1f} GiB)"
+      },
+
+    "cpu": {
+        "format": " {usage}%"
+    },
 
     "battery": {
         "format": "{capacity}% {icon}",

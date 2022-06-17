@@ -15,6 +15,11 @@ widget * {
   background-color: #383838;
 }
 
+widget > label {
+    padding: 0 10px;
+    margin: 1px 4px;
+}
+
 .modules-left, .modules-center, .modules-right {
   padding: 6px 8px;
 }
@@ -38,10 +43,6 @@ widget * {
 #workspaces .active * {
   background-color: #4f4f4f;
   color: #c5841a;
-}
-
-widget > label {
-    padding: 0 10px;
 }
 
 #mode {
