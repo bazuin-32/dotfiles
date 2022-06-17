@@ -1,6 +1,6 @@
 {
     "custom/window": {
-        "exec": "hyprctl activewindow | head -n 1 | cut -d ' ' -f 4- | sed 's/.$//'",
+        "exec": "hyprctl activewindow | head -n 1 | cut -d ' ' -f 4- | sed 's/.$//;s/&/&amp;/g'",
         "interval": 1
     },
 
