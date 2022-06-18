@@ -1,0 +1,68 @@
+* {
+    font-family: MesloLGS NF;
+    font-size: 13px;
+    min-height: 30px;
+    margin-top: 1px; /* keep things off the top area, since flexbox doesnt work for centering */
+}
+
+window#waybar {
+    background-color: #272727;
+    border-top: 3px solid #b5740a;
+    color: #cacaca;
+}
+
+widget * {
+  background-color: #383838;
+}
+
+widget > label {
+    padding: 0 10px;
+    margin: 1px 4px;
+}
+
+.modules-left, .modules-center, .modules-right {
+  padding: 6px 8px;
+}
+
+#workspaces {
+    padding: 2px 5px;
+}
+
+#workspaces button {
+    padding: 0;
+    background: transparent;
+    color: #cacaca;
+    border-bottom: 3px solid transparent;
+}
+
+#workspaces .active * {
+  background-color: #4f4f4f;
+  color: #c5841a;
+}
+
+#mode {
+    background: #64727D;
+    border-bottom: 3px solid white;
+}
+
+#battery.charging {
+    color: #cacaca;
+    background-color: #26a65b;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #cacaca;
+    }
+}
+
+#battery.warning:not(.charging) {
+    background: #f53c3c;
+    color: #cacaca;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
