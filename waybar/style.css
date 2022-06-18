@@ -15,7 +15,7 @@ widget * {
   background-color: #383838;
 }
 
-widget > label {
+widget > * {
     padding: 0 10px;
     margin: 1px 4px;
 }
