@@ -45,23 +45,31 @@ widget > label {
     border-bottom: 3px solid white;
 }
 
-#battery.charging {
-    color: #cacaca;
-    background-color: #26a65b;
+@keyframes pulse-green {
+  to {
+    background-color: #008038;
+  }
 }
 
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: #cacaca;
-    }
+#battery.charging {
+    color: #cacaca;
+    animation-name: pulse-green;
+    animation-duration: 4s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes pulse-red {
+  to {
+    background-color: #cf3030;
+  }
 }
 
 #battery.warning:not(.charging) {
-    background: #f53c3c;
     color: #cacaca;
-    animation-name: blink;
-    animation-duration: 0.5s;
+    animation-name: pulse-red;
+    animation-duration: 4s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
