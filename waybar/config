@@ -26,10 +26,12 @@
     /* }, */
 
     "memory": {
+        "interval": 1,
         "format": " {}% ({used:0.1f} GiB)"
       },
 
     "cpu": {
+        "interval": 1,
         "format": " {usage}%"
     },
 
