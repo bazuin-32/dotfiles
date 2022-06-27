@@ -176,37 +176,6 @@ alias vpn-start='openvpn3 session-start -c ameen-arch-laptop.ovpn'
 alias vpn-restart='openvpn3 session-manage --restart -c ameen-arch-laptop.ovpn'
 alias vpn-stop='openvpn3 session-manage --disconnect -c ameen-arch-laptop.ovpn'
 
-# fzf searcher
-function srch() {
-    local result
-    if [ "$1" != "" ]
-    then
-	    result="$(find "$1" | fzf)"
-    else
-	    result="$(find . | fzf)"
-    fi
-
-    echo "$result"
-}
-
-# fuzzy utils
-function srcho() {
-	local result=$(srch "$1")
-	xdg-open "$result"
-}
-
-function fcd() {
-	local result
-	if [ "$1" != "" ]
-	then
-		result="$(find "$1" -type d | fzf)"
-	else
-		result="$(find . -type d | fzf)"
-	fi
-
-	cd "$result"
-}
-
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
