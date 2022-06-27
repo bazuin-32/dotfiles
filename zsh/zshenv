@@ -6,5 +6,5 @@ export XPLR_BOOKMARKS_FILE="$HOME/.local/share/xplr/bookmarks"
 # this is only necessary on my  desktop,
 # which has an nvidia gpu
 if [[ $(cat /etc/hostname) != *"laptop"* ]]; then
-	export WLR_NO_HARDWARE_CURSORS=1
+       export WLR_NO_HARDWARE_CURSORS=1
 fi
