@@ -15,9 +15,9 @@ xplr.config.modes.builtin.default.key_bindings.on_key.enter = {
 		}
 	}
 }
-xplr.config.modes.builtin.default.key_bindings.on_key.z = {
-	-- reload config?
-}
+-- xplr.config.modes.builtin.default.key_bindings.on_key.z = {
+-- 	-- reload config?
+-- }
 
 
 -- re-assign keybindings for deletion, this time without the extra
