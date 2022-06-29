@@ -6,6 +6,7 @@
 
     "layer": "top",
     "position": "bottom",
+    "height": 10,
 
     "modules-left": ["wlr/workspaces"],
     "modules-center": ["custom/window"],

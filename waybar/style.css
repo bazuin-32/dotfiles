@@ -1,7 +1,6 @@
 * {
     font-family: MesloLGS NF;
     font-size: 13px;
-    min-height: 30px;
     margin-top: 1px; /* keep things off the top area, since flexbox doesnt work for centering */
 }
 
