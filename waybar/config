@@ -42,7 +42,7 @@
     },
 
     "clock": {
-        "format" : "{:%I:%M %p\n%a %b %d}",
+        "format" : "{: %I:%M %p\n%a %b %d}",
         "format-alt": "{:%a, %b %d %I:%M %p}"
     }
 }
