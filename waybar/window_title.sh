@@ -8,8 +8,8 @@ active="$(
 )"
 
 # if the title is too long, cut it off
-if [ ${#active} -ge 80 ]; then
-    active="$(echo "$active" | cut -c -80)..."
+if [ ${#active} -ge 75 ]; then
+    active="$(echo $active | cut -c -75)..."
 fi
 
 echo "$active"
