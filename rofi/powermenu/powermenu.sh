@@ -84,13 +84,7 @@ case $chosen in
         fi
         ;;
     $lock)
-	    	dim_scr
-	    	dm-tool switch-to-greeter
-		if [[ -f /usr/bin/i3lock ]]; then
-			i3lock
-		elif [[ -f /usr/bin/betterlockscreen ]]; then
-			betterlockscreen -l
-		fi
+                ~/.config/swaylock/lock.sh
         ;;
     $suspend)
 		ans=$(confirm_exit &)
