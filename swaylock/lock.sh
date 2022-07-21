@@ -11,7 +11,7 @@ for monitor in ${monitors}; do
     screenshot_file="${screenshot_dir}/${monitor}.png"
 
     grim -o "${monitor}" "${screenshot_file}"
-    convert -filter Gaussian -resize 20% -blur 10x2 -resize 500% "${screenshot_file}" "${screenshot_file}"
+    convert -filter Gaussian -resize 20% -blur 10x3 -resize 500% "${screenshot_file}" "${screenshot_file}"
 
     swaylock_args+=("--image=${monitor}:${screenshot_file}")
 done
