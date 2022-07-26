@@ -11,7 +11,7 @@ window#waybar {
 }
 
 widget * {
-  background-color: #383838;
+  background-color: rgba(48, 48, 48, 0.6); /* #383838 */
 }
 
 widget > * {
@@ -35,13 +35,8 @@ widget > * {
 }
 
 #workspaces .active * {
-  background-color: #4f4f4f;
+  background-color: rgba(79, 79, 79, 0.8); /* #4f4f4f */
   color: #c5841a;
-}
-
-#mode {
-    background: #64727D;
-    border-bottom: 3px solid white;
 }
 
 @keyframes pulse-green {
