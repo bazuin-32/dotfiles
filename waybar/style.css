@@ -5,7 +5,7 @@
 }
 
 window#waybar {
-    background-color: #272727;
+    background-color: rgba(39, 39, 39, 0.55); /* this is #272727 in hex, but with alpha */
     border-top: 3px solid #b5740a;
     color: #cacaca;
 }
