@@ -5,8 +5,9 @@ pointsize=36
 padding=120
 color='#c8c8c8'
 
-# get the current splash
-splash="$(hyprctl splash)"
+# get the current splash; escape single quotes
+# see https://stackoverflow.com/a/1250279 for the messy quote thing
+splash="$(hyprctl splash | sed 's/'"'"'/\\'"'"'/g')"
 
 # get the text dimensions
 # see https://stackoverflow.com/a/46705545 for the metrics thing
