@@ -2,12 +2,12 @@
     font-family: MesloLGS NF;
     font-size: 13px;
     margin-top: 1px; /* keep things off the top area, since flexbox doesnt work for centering */
+    color: #ebdbb2;
 }
 
 window#waybar {
     background-color: rgba(39, 39, 39, 0.55); /* this is #272727 in hex, but with alpha */
     border-top: 3px solid #b5740a;
-    color: #cacaca;
 }
 
 widget * {
@@ -30,7 +30,7 @@ widget > * {
 #workspaces button {
     padding: 0;
     background: transparent;
-    color: #cacaca;
+
     border-bottom: 3px solid transparent;
 }
 
@@ -46,7 +46,6 @@ widget > * {
 }
 
 #battery.charging {
-    color: #cacaca;
     animation-name: pulse-green;
     animation-duration: 4s;
     animation-timing-function: linear;
@@ -61,7 +60,6 @@ widget > * {
 }
 
 #battery.warning:not(.charging) {
-    color: #cacaca;
     animation-name: pulse-red;
     animation-duration: 4s;
     animation-timing-function: linear;
