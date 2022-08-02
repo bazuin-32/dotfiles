@@ -3,7 +3,7 @@
 font="MesloLGS-NF-Regular"
 pointsize=36
 padding=120
-color='#c8c8c8'
+color='#ebdbb8'
 
 # get the current splash; escape single quotes
 # see https://stackoverflow.com/a/1250279 for the messy quote thing
