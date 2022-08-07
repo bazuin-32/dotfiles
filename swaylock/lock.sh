@@ -53,6 +53,13 @@ for monitor in ${monitors}; do
     swaylock_args+=("--image=${monitor}:${screenshot_file}")
 done
 
+# not sure why i didnt just do `swayidle ... &`; this is
+# how i wrote it as i was going but I think it looks nice
+# so im just keeping it
+{
+    swayidle -w timeout 300 'hyprctl dispatch dpms off'
+} &
+
 swaylock ${swaylock_args[@]}
 
 rm -r "${screenshot_dir}"
