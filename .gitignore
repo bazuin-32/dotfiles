@@ -1,2 +1,5 @@
 __pycache__/
 nvim/plugin/
+
+# don't commit device-specific hyprland configs
+hypr/vfr.conf
