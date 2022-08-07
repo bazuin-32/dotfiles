@@ -22,8 +22,8 @@ env:
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
   TERM: xterm-256color
-  WINIT_X11_SCALE_FACTOR: "1"
-  WINIT_HIDPI_FACTOR: "1"
+  #WINIT_X11_SCALE_FACTOR: "1"
+  #WINIT_HIDPI_FACTOR: "1"
 
 window:
   # Window dimensions (changes require restart)
@@ -286,7 +286,7 @@ colors:
   bright:
     black:   '#666666'
     red:     '#bf3b40'
-    green:   '#b9ca4a'
+    green:   '#4dcb44'
     yellow:  '#e7c547'
     blue:    '#7aa6da'
     magenta: '#c397d8'
