@@ -1,7 +1,7 @@
 /* colors */
 
 * {
-  bg:      #272727ff; /* menu bg */
-  fg:      #f5f5f5ff; /* non-selected items */
-  ac:      #f9b82eff; /* selected item */
+  bg:      #282828ff; /* menu bg */
+  fg:      #ebdbb8ff; /* non-selected items */
+  ac:      #d79921ff; /* selected item */
 }
