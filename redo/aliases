@@ -4,7 +4,7 @@
 # Generated on 2022-04-08T08:05:04-06:00.
 vpn-stats() { 
     openvpn3 sessions-list
-    openvpn3 session-stats -c ameen-arch-laptop.ovpn
+    openvpn3 session-stats -c home
 }
 
 # Generated on 2022-04-13T14:07:09-06:00.

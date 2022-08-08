@@ -49,6 +49,6 @@ alias grst='git restore'
 alias gupd='fd -HIat d "^\.git$" ~ | egrep -v "(\.cache|\.oh-my-zsh|\.cargo|\.rofi|_deps)" | xargs -i zsh -c "cd {}/.. && echo \"\n\" && echo {} | rev | cut -d \"/\" -f 2- | rev | sed \"s#/home/ameen#~#\" && { git pull --recurse-submodules && git submodule update --recursive } & "'
 
 # vpn aliases
-alias vpn-start='openvpn3 session-start -c ameen-arch-laptop.ovpn'
-alias vpn-restart='openvpn3 session-manage --restart -c ameen-arch-laptop.ovpn'
-alias vpn-stop='openvpn3 session-manage --disconnect -c ameen-arch-laptop.ovpn'
+alias vpn-start='openvpn3 session-start -c home'
+alias vpn-restart='openvpn3 session-manage --restart -c home'
+alias vpn-stop='openvpn3 session-manage --disconnect -c home'
