@@ -25,12 +25,13 @@
     --channeltextarea-background: #383838 !important;
   }
 
-  div[class^=homeContainer] {
+  /* the main area */
+  div[class^=homeContainer], div[class^=chat], .theme-dark .container-3wLKDe {
     background-color: #2c2c2c !important;
   }
 
-  /* firefox doesn't have `:has`, but i'm leaving this here just so I can remember what I was trying to do */
-  div:has(* div[class^=homeContainer]) section[class^=title] {
-    background-color: #2c2c2c !important;
+  /* the top bar on 'Home' pages */
+  .theme-dark .background-fkKrXt {
+    background-color: var(--background-primary) !important;
   }
 }
