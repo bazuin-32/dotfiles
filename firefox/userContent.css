@@ -24,4 +24,13 @@
 
     --channeltextarea-background: #383838 !important;
   }
+
+  div[class^=homeContainer] {
+    background-color: #2c2c2c !important;
+  }
+
+  /* firefox doesn't have `:has`, but i'm leaving this here just so I can remember what I was trying to do */
+  div:has(* div[class^=homeContainer]) section[class^=title] {
+    background-color: #2c2c2c !important;
+  }
 }
