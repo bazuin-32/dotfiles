@@ -1,0 +1,15 @@
+@-moz-document domain(discord.com) {
+  .theme-dark {
+    --header-primary: #ebdbb8 !important;
+    --header-secondary: #ae9e7b !important;
+
+    --interactive-normal: #ebdbb8 !important;
+    --interactive-hover: #ebdbb8 !important;
+    --interactive-active: #eedebb !important;
+
+    --background-primary: #282828 !important;
+    --background-secondary: #282828 !important;
+    --background-secondary-alt: #242424 !important;
+    --background-tertiary: #242424 !important;
+  }
+}
