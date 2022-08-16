@@ -7,9 +7,21 @@
     --interactive-hover: #ebdbb8 !important;
     --interactive-active: #eedebb !important;
 
+    --text-normal: #ebdbb8 !important;
+    --text-muted: #ae9e7b !important;
+
+    --channels-default: #ae9e7b !important;
+    --channel-icon: #ae9e7b !important;
+
     --background-primary: #282828 !important;
     --background-secondary: #282828 !important;
     --background-secondary-alt: #242424 !important;
     --background-tertiary: #242424 !important;
+
+    --background-modifier-hover: #383838 !important;
+    --background-modifier-selected: #383838 !important;
+    --background-accent: #383838 !important;
+
+    --channeltextarea-background: #383838 !important;
   }
 }
