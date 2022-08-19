@@ -38,6 +38,7 @@
   /* channel list */
   div[class^=sidebar] {
     width: min-content !important;
+    max-width: min(20%, 250px) !important;
   }
 
   /* username, mic, settings, etc in the bottom left */
@@ -50,7 +51,7 @@
   aside[class^=membersWrap] {
     min-width: 200px !important;
   }
-  div[class^=members] {
+  div[class^=members-] {
     width: 100% !important;
   }
 }
