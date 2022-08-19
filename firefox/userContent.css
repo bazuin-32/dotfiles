@@ -34,4 +34,23 @@
   .theme-dark .background-fkKrXt {
     background-color: var(--background-primary) !important;
   }
+
+  /* channel list */
+  div[class^=sidebar] {
+    width: min-content !important;
+  }
+
+  /* username, mic, settings, etc in the bottom left */
+  div[class^=avatarWrapper] {
+    min-width: min-content !important;
+    width: 100% !important;
+  }
+
+  /* server member list */
+  aside[class^=membersWrap] {
+    min-width: 200px !important;
+  }
+  div[class^=members] {
+    width: 100% !important;
+  }
 }
