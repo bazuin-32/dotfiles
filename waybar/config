@@ -1,7 +1,6 @@
 {
     "custom/window": {
         "exec": "~/.config/waybar/window_title.sh",
-        "interval": 1
     },
 
     "layer": "top",

@@ -1,15 +1,17 @@
 #!/bin/bash
 
-active="$(
-    hyprctl activewindow \
-    | head -n 1 \
-    | cut -d ' ' -f 4- \
-    | sed 's/.*Invalid.*/No active window /g ; s/.$// ; s/&/&amp;/g'
-)"
+function handle_line() {
+    if [[ ${1} != "activewindow"* ]]; then
+        return
+    fi
 
-# if the title is too long, cut it off
-if [ ${#active} -ge 75 ]; then
-    active="$(echo $active | cut -c -75)..."
-fi
+    active=$(awk -F ',' '{ print $2 }' <<< "${1}")
 
-echo "$active"
+    if [[ ${#active} -ge 60 ]]; then
+        active="$(cut -c -60 <<< ${active})..."
+    fi
+
+    echo "${active}"
+}
+
+socat - /tmp/hypr/${HYPRLAND_INSTANCE_SIGNATURE}/.socket2.sock | while read line; do handle_line "${line}"; done
