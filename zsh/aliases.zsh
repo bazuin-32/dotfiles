@@ -32,8 +32,6 @@ alias netmnt='for dir in {ameen,public}; do sudo mount -t cifs -o cred=/home/ame
 alias dmesg='sudo dmesg --color=always'
 alias ping='ping -O'
 alias grep='grep --color=always'
-alias cat='bat'
-alias less='bat --paging=always'
 
 # git aliases
 alias gcps='git commit -a && git push'
