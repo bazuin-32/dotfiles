@@ -1,14 +1,10 @@
 {
-    "custom/window": {
-        "exec": "~/.config/waybar/window_title.sh",
-    },
-
     "layer": "top",
     "position": "bottom",
     "height": 10,
 
     "modules-left": ["wlr/workspaces"],
-    "modules-center": ["custom/window"],
+    "modules-center": ["hyprland/window"],
     "modules-right": ["pulseaudio", "disk", "memory", "cpu", "battery", "clock", "tray"],
 
     "pulseaudio": {
