@@ -30,11 +30,24 @@ xplr.fn.custom.render_stats = function(ctx)
 		return "\x1b[1m" .. str .. "\x1b[0m"
 	end
 
-	node = ctx.app.focused_node
+	local get_output = function (cmd, raw)
+		local f = assert(io.popen(cmd, 'r'))
+		local s = assert(f:read('*a'))
+		f:close()
+		if raw then return s end
+		s = string.gsub(s, '^%s+', '')
+		s = string.gsub(s, '%s+$', '')
+		s = string.gsub(s, '[\n\r]+', ' ')
+		return s
+	end
+
+	local node = ctx.app.focused_node
 
 	return {
 		{ bold(node.relative_path), "" },
 		{ "", "" },
+		{ "User", get_output("id -un " .. node.uid) .. " (" .. node.uid .. ")" },
+		{ "Group", get_output("getent group " .. node.gid .. " | cut -d ':' -f 1") .. " (" .. node.gid .. ")"},
 		{ "Permissions", xplr.fn.builtin.fmt_general_table_row_cols_2(node) .. " (" .. tostring(xplr.fn.custom.octal_perms(node.permissions)) .. ")" },
 		{ "Size", node.human_size },
 		{ "Modified", xplr.fn.custom.get_modified_time(node) },
