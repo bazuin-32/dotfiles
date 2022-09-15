@@ -1,3 +1,5 @@
+(include "modules/datetime.yuck")
+
 (defwidget window_title []
   (box :class "window_title"
        :orientation "h"
@@ -17,4 +19,4 @@
   :windowtype "dock"
   :exclusive true
   :wm-ignore false
-  (window_title))
+  (time))
