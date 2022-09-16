@@ -1,12 +1,5 @@
-(include "modules/datetime.yuck")
+(include "windows/bar.yuck")
 
-(defwidget window_title []
-  (box :class "window_title"
-       :orientation "h"
-       :space-evenly true
-       :halign "center"
-       :spacing 0
-    (label :text "thing")))
 
 (defwindow bar
   :monitor 0
@@ -19,4 +12,17 @@
   :windowtype "dock"
   :exclusive true
   :wm-ignore false
-  (time))
+  (bar))
+
+(defwindow bar2
+  :monitor 1
+  :geometry (geometry :x "0"
+                      :y "0"
+                      :width "100%"
+                      :height "4%"
+                      :anchor "bottom center")
+  :stacking "fg"
+  :windowtype "dock"
+  :exclusive true
+  :wm-ignore false
+  (bar))

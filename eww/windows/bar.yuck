@@ -1,0 +1,17 @@
+(include "modules/bar/workspaces.yuck")
+(include "modules/bar/window_title.yuck")
+
+(defwidget left []
+  (workspaces))
+
+(defwidget center []
+  (window_title))
+
+(defwidget right []
+  (label :text "hi2"))
+
+(defwidget bar []
+  (centerbox :orientation "h"
+    (left)
+    (center)
+    (right)))
