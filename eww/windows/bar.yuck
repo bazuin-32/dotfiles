@@ -1,5 +1,7 @@
 (include "modules/bar/workspaces.yuck")
 (include "modules/bar/window_title.yuck")
+(include "modules/bar/volume.yuck")
+
 (include "modules/general/clock.yuck")
 
 (defwidget left []
@@ -9,7 +11,14 @@
   (window_title))
 
 (defwidget right []
-  (clock))
+  (box
+    :class "right"
+    :halign "end"
+    :orientation "h"
+    :spacing 5
+    :space-evenly true
+    (volume)
+    (clock)))
 
 (defwidget bar []
   (centerbox :orientation "h"

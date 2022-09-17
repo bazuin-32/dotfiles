@@ -1,0 +1,10 @@
+(defpoll volume_percent :interval "0.5s" :initial "init"
+  `scripts/volume.sh`)
+
+(defwidget volume []
+  (box :class "volume"
+       :orientation "h"
+       :space-evenly true
+       :halign "end"
+       :spacing 0
+    (label :text volume_percent)))
