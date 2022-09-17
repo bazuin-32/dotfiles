@@ -18,8 +18,11 @@ workspaces() {
 module() {
     eww update show_window_title=false
     sleep 0.005
-    echo "${title}" | awk -F ', ' '{ print $2 }'
-    eww update show_window_title=true
+
+    if [[ "${title}" != "" ]]; then
+        echo "${title}" | awk -F ', ' '{ print $2 }'
+        eww update show_window_title=true
+    fi
 }
 
 socat -u UNIX-CONNECT:/tmp/hypr/"$HYPRLAND_INSTANCE_SIGNATURE"/.socket2.sock - | while read -r event; do 
