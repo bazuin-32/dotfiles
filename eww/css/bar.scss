@@ -7,7 +7,10 @@
 
 .bar, .bar2 {
   background-color: rgba(0, 0, 0, 0);
-  padding: 10px;
+}
+
+.horizontal {
+  padding: 0 5px;
 }
 
 .horizontal > *, .window_title {

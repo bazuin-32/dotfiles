@@ -4,10 +4,10 @@
   `date '+%I:%M %p'`)
 
 
-(defwidget time []
+(defwidget clock []
   (box :class "time"
        :orientation "h"
        :space-evenly true
-       :halign "center"
+       :halign "end"
        :spacing 0
     (label :text time)))
