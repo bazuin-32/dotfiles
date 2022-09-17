@@ -1,10 +1,15 @@
-(deflisten _window_title :initial "init"
-  ``)
+(deflisten window_title :initial ""
+  `~/.config/eww/scripts/window_title.sh`)
+(defvar show_window_title true)
 
 (defwidget window_title []
+  (revealer :reveal show_window_title
+            :transition "slideleft"
+            :duration "250ms"
   (box :class "window_title"
        :orientation "h"
        :space-evenly true
        :halign "center"
        :spacing 0
-    (label :text _window_title)))
+    (label :text window_title
+           :limit-width 80))))
