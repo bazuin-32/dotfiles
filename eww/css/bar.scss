@@ -10,7 +10,7 @@
   padding: 10px;
 }
 
-.horizontal > * {
+.horizontal > *, .window_title {
   border: $bar-element-border;
   border-radius: 5px;
 
