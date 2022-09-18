@@ -7,4 +7,5 @@
        :space-evenly true
        :halign "end"
        :spacing 0
+    (label :text "" :class "icon")
     (label :text volume_percent)))
