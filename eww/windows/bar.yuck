@@ -1,6 +1,9 @@
 (include "modules/bar/workspaces.yuck")
 (include "modules/bar/window_title.yuck")
 (include "modules/bar/volume.yuck")
+(include "modules/bar/cpu.yuck")
+(include "modules/bar/memory.yuck")
+(include "modules/bar/disk.yuck")
 
 (include "modules/general/clock.yuck")
 
@@ -18,6 +21,9 @@
     :spacing 5
     :space-evenly true
     (volume)
+    (disk)
+    (memory)
+    (cpu)
     (clock)))
 
 (defwidget bar []

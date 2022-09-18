@@ -2,14 +2,15 @@
 
 * {
   font-family: MesloLGS NF;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: #ebdbb8;
 }
 
 .icon {
   font-family: 'Symbols Nerd Font Mono';
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   padding: 0 5px;
+  color: #cbbb98;
 }
 
 .bar, .bar2 {
@@ -24,7 +25,7 @@
   border: $bar-element-border;
   border-radius: 5px;
 
-  margin: 5px;
+  margin: 5px 2px;
   padding: 2px 5px;
 
   background-color: rgba(48, 48, 48, 0.9);
