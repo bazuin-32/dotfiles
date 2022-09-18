@@ -33,7 +33,7 @@
 
 .workspaces {
   border: none;
-  background-color: rgba(0, 0, 0, 0)
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .workspaces > * {
@@ -41,4 +41,35 @@
   background-color: rgba(48, 48, 48, 0.9);
 
   padding: 2px 3px;
+}
+
+.horizontal > box > box.low_battery {
+  animation: low_battery_pulse 1s linear infinite;
+
+  * {
+    font-weight: bold;
+    color: #ffefcc;
+  }
+}
+
+@keyframes low_battery_pulse {
+  0% {
+    background-color: rgba(48, 48, 48, 0.9);
+  }
+
+  40% {
+    background-color: #aa0000;
+  }
+
+  50% {
+    background-color: #683838;
+  }
+
+  60% {
+    background-color: #aa0000;
+  }
+
+  100% {
+    background-color: rgba(48, 48, 48, 0.9);
+  }
 }

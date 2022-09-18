@@ -4,6 +4,7 @@
 (include "modules/bar/cpu.yuck")
 (include "modules/bar/memory.yuck")
 (include "modules/bar/disk.yuck")
+(include "modules/bar/battery.yuck")
 
 (include "modules/general/clock.yuck")
 
@@ -24,6 +25,7 @@
     (disk)
     (memory)
     (cpu)
+    (battery)
     (clock)))
 
 (defwidget bar []
