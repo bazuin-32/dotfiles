@@ -1,0 +1,15 @@
+(include "modules/calendar/calendar.yuck")
+
+(defwindow calendar0
+  :monitor 0
+  :geometry (geometry :x "1%"
+                      :y "1%"
+                      :width "12%"
+                      :height "16%"
+                      :anchor "bottom right")
+  :focusable true
+  ; :stacking "fg"
+  ; :windowtype "dock"
+  ; :exclusive true
+  ; :wm-ignore false
+  (popup_calendar))

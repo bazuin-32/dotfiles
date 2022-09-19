@@ -1,0 +1,13 @@
+(defpoll calendar_day :interval "5m"
+  `date +%d`)
+(defpoll calendar_month :interval "5m"
+  `date +%m`)
+(defpoll calendar_year :interval "5m"
+  `date +%Y`)
+
+(defwidget popup_calendar []
+  (calendar
+    :class "calendar"
+    :day calendar_day
+    :month calendar_month
+    :year calendar_year))
