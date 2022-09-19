@@ -1,7 +1,7 @@
 (include "windows/bar.yuck")
 
 
-(defwindow bar
+(defwindow bar0
   :monitor 0
   :geometry (geometry :x "0"
                       :y "0"
@@ -14,7 +14,7 @@
   :wm-ignore false
   (bar))
 
-(defwindow bar2
+(defwindow bar1
   :monitor 1
   :geometry (geometry :x "0"
                       :y "0"
