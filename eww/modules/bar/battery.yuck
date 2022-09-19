@@ -1,4 +1,4 @@
-(defvar show_battery true)
+(defvar show_battery false)
 
 (defwidget battery []
   (box :visible show_battery
