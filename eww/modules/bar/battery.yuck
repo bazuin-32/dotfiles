@@ -6,8 +6,8 @@
                     : EWW_BATTERY['BAT0'].capacity < 40
                         ? ""
                         : EWW_BATTERY['BAT0'].capacity < 60
-                            ? ""
+                            ? ""
                             : EWW_BATTERY['BAT0'].capacity < 80
                                 ? ""
-                                : ""})
+                                : "" })
     (label :text "${ EWW_BATTERY['BAT0'].capacity }%")))
