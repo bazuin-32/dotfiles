@@ -1,11 +1,13 @@
 (defpoll volume_percent :interval "0.5s" :initial "init"
   `scripts/volume.sh`)
+(defpoll volume_muted :interval "0.5s" :initial "init"
+  `scripts/volume_muted.sh`)
 
 (defwidget volume []
-  (box :class "volume"
+  (box :class "${ volume_muted == 'no' ? 'volume' : 'volume_muted' }"
        :orientation "h"
        :space-evenly true
        :halign "end"
        :spacing 0
-    (label :text "" :class "icon")
+    (label :text { volume_muted == "no" ? "" : "" } :class "icon")
     (label :text volume_percent)))
