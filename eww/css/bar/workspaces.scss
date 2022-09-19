@@ -1,0 +1,28 @@
+@import '../vars.scss';
+
+.workspaces {
+  border: none;
+  background-color: $window-bg;
+  transition: $active-workspace-transition;
+
+  border-radius: 5px;
+
+  margin: 5px 2px;
+  padding: 2px 5px;
+}
+
+.workspaces > * {
+  border: $bar-element-border;
+  background-color: $widget-bg;
+
+  padding: 2px 3px;
+}
+
+.workspaces > .active {
+  border: $active-workspace-border;
+  padding: 0 0.5px; // to account for the extra space taken by the border
+
+  background-color: $active-workspace-bg;
+  transition: $active-workspace-transition;
+}
+

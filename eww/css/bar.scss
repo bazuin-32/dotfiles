@@ -1,4 +1,6 @@
 @import 'vars.scss';
+@import 'bar/workspaces.scss';
+@import 'bar/battery.scss';
 
 * {
   font-family: MesloLGS NF;
@@ -21,7 +23,7 @@
   padding: 0 5px;
 }
 
-.workspaces, .horizontal > box > box, .window_title, .time {
+.horizontal > box > box, .window_title, .time {
   border: $bar-element-border;
   border-radius: 5px;
 
@@ -29,81 +31,4 @@
   padding: 2px 5px;
 
   background-color: $widget-bg;
-}
-
-.workspaces {
-  border: none;
-  background-color: $window-bg;
-  transition: $active-workspace-transition;
-}
-
-.workspaces > * {
-  border: $bar-element-border;
-  background-color: $widget-bg;
-
-  padding: 2px 3px;
-}
-
-.workspaces > .active {
-  border: $active-workspace-border;
-  padding: 0 0.5px; // to account for the extra space taken by the border
-
-  background-color: $active-workspace-bg;
-  transition: $active-workspace-transition;
-}
-
-.horizontal > box > box.low_battery {
-  animation: low_battery_pulse 1s linear infinite;
-
-  * {
-    font-weight: bold;
-    color: #ffefcc;
-  }
-}
-
-.horizontal > box > box.charging_battery {
-  animation: charging_battery_pulse 5s linear infinite;
-}
-
-@keyframes low_battery_pulse {
-  0% {
-    background-color: $widget-bg;
-  }
-
-  40% {
-    background-color: #aa0000;
-  }
-
-  50% {
-    background-color: #683838;
-  }
-
-  60% {
-    background-color: #aa0000;
-  }
-
-  100% {
-    background-color: $widget-bg;
-  }
-}
-
-@keyframes charging_battery_pulse {
-  0% {
-    background-color: $widget-bg;
-  }
-
-  50% {
-    background-color: #006600;
-  }
-
-  100% {
-    background-color: $widget-bg;
-  }
-}
-
-.horizontal > box > box.volume_muted {
-  :not(.icon) {
-    color: #9b8b68;
-    text-decoration: line-through;
-  }
 }
