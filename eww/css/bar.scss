@@ -14,7 +14,7 @@
 }
 
 .bar, .bar2 {
-  background-color: rgba(0, 0, 0, 0);
+  background-color: $window-bg;
 }
 
 .horizontal {
@@ -28,17 +28,17 @@
   margin: 5px 2px;
   padding: 2px 5px;
 
-  background-color: rgba(48, 48, 48, 0.9);
+  background-color: $widget-bg;
 }
 
 .workspaces {
   border: none;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: $window-bg;
 }
 
 .workspaces > * {
   border: $bar-element-border;
-  background-color: rgba(48, 48, 48, 0.9);
+  background-color: $widget-bg;
 
   padding: 2px 3px;
 }
@@ -54,7 +54,7 @@
 
 @keyframes low_battery_pulse {
   0% {
-    background-color: rgba(48, 48, 48, 0.9);
+    background-color: $widget-bg;
   }
 
   40% {
@@ -70,6 +70,6 @@
   }
 
   100% {
-    background-color: rgba(48, 48, 48, 0.9);
+    background-color: $widget-bg;
   }
 }
