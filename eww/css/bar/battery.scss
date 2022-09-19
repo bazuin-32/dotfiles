@@ -48,11 +48,3 @@
     background-color: $widget-bg;
   }
 }
-
-.horizontal > box > box.volume_muted {
-  :not(.icon) {
-    color: #9b8b68;
-    text-decoration: line-through;
-  }
-}
-

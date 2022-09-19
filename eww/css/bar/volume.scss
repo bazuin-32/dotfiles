@@ -1,0 +1,18 @@
+@import '../vars.scss';
+
+.horizontal > box > box.volume {
+  * {
+    transition: $volume-mute-transition;
+  }
+}
+
+.horizontal > box > box.volume_muted {
+  :not(.icon) {
+    color: #9b8b68;
+    text-decoration: line-through;
+  }
+
+  * {
+    transition: $volume-mute-transition;
+  }
+}
