@@ -3,6 +3,10 @@
               :run-while true
   `date '+%I:%M %p'`)
 
+(defpoll date :interval "1m"
+              :run-while true
+  `date '+%A, %B %d %Y'`)
+
 
 (defwidget clock []
   (box :class "time"
@@ -10,4 +14,5 @@
        :space-evenly true
        :halign "end"
        :spacing 0
+       :tooltip date
     (label :text time)))
