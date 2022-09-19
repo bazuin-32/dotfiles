@@ -8,13 +8,15 @@
 
 (include "modules/general/clock.yuck")
 
+(defvar show_calendar false)
+
 (defwidget left []
   (workspaces))
 
 (defwidget center []
   (window_title))
 
-(defwidget right []
+(defwidget right [monitor]
   (box
     :class "right"
     :halign "end"
@@ -26,13 +28,13 @@
     (memory)
     (cpu)
     (battery)
-    (clock)))
+    (clock :monitor monitor)))
 
-(defwidget bar []
+(defwidget bar [monitor]
   (centerbox :orientation "h"
     (left)
     (center)
-    (right)))
+    (right :monitor monitor)))
 
 (defwindow bar0
   :monitor 0
@@ -45,7 +47,7 @@
   :windowtype "dock"
   :exclusive true
   :wm-ignore false
-  (bar))
+  (bar :monitor 0))
 
 (defwindow bar1
   :monitor 1
@@ -58,4 +60,4 @@
   :windowtype "dock"
   :exclusive true
   :wm-ignore false
-  (bar))
+  (bar :monitor 1))

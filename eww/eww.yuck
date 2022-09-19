@@ -1,1 +1,2 @@
 (include "windows/bar.yuck")
+(include "windows/calendar.yuck")

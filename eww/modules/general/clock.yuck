@@ -8,11 +8,9 @@
   `date '+%A, %B %d %Y'`)
 
 
-(defwidget clock []
-  (box :class "time"
-       :orientation "h"
-       :space-evenly true
-       :halign "end"
-       :spacing 0
-       :tooltip date
+(defwidget clock [monitor]
+  (button :class "time"
+          :onclick "${EWW_CMD} ${show_calendar ? 'close' : 'open'} calendar${monitor} && ${EWW_CMD} update show_calendar=${!show_calendar}"
+          :halign "end"
+          :tooltip date
     (label :text time)))
