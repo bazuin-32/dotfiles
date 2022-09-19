@@ -1,5 +1,5 @@
 (defwidget battery []
-  (box :class { EWW_BATTERY['BAT0'].capacity < 20 ? "low_battery" : "" }
+  (box :class { EWW_BATTERY['BAT0'].status == "Charging" ? "charging_battery" : EWW_BATTERY['BAT0'].capacity < 20 ? "low_battery" : "" }
     (label :class "icon"
            :text { EWW_BATTERY['BAT0'].capacity < 20
                     ? ""

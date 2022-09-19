@@ -52,6 +52,10 @@
   }
 }
 
+.horizontal > box > box.charging_battery {
+  animation: charging_battery_pulse 5s linear infinite;
+}
+
 @keyframes low_battery_pulse {
   0% {
     background-color: $widget-bg;
@@ -67,6 +71,20 @@
 
   60% {
     background-color: #aa0000;
+  }
+
+  100% {
+    background-color: $widget-bg;
+  }
+}
+
+@keyframes charging_battery_pulse {
+  0% {
+    background-color: $widget-bg;
+  }
+
+  50% {
+    background-color: #006600;
   }
 
   100% {
