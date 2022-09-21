@@ -1,6 +1,7 @@
 (deflisten window_title :initial ""
   `~/.config/eww/scripts/window_title.sh`)
-(defvar show_window_title true)
+
+(defvar show_window_title false)
 
 (defwidget window_title []
   (revealer :reveal show_window_title
