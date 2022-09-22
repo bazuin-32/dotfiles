@@ -1,0 +1,63 @@
+(include "modules/bar/workspaces.yuck")
+(include "modules/bar/window_title.yuck")
+(include "modules/bar/volume.yuck")
+(include "modules/bar/cpu.yuck")
+(include "modules/bar/memory.yuck")
+(include "modules/bar/disk.yuck")
+(include "modules/bar/battery.yuck")
+
+(include "modules/general/clock.yuck")
+
+(defvar show_calendar false)
+
+(defwidget left []
+  (workspaces))
+
+(defwidget center []
+  (window_title))
+
+(defwidget right [monitor]
+  (box
+    :class "right"
+    :halign "end"
+    :orientation "h"
+    :spacing 5
+    :space-evenly true
+    (volume)
+    (disk)
+    (memory)
+    (cpu)
+    (battery)
+    (clock :monitor monitor)))
+
+(defwidget bar [monitor]
+  (centerbox :orientation "h"
+    (left)
+    (center)
+    (right :monitor monitor)))
+
+(defwindow bar0
+  :monitor 0
+  :geometry (geometry :x "0"
+                      :y "0"
+                      :width "100%"
+                      :height "4%"
+                      :anchor "bottom center")
+  :stacking "fg"
+  :windowtype "dock"
+  :exclusive true
+  :wm-ignore false
+  (bar :monitor 0))
+
+(defwindow bar1
+  :monitor 1
+  :geometry (geometry :x "0"
+                      :y "0"
+                      :width "100%"
+                      :height "4%"
+                      :anchor "bottom center")
+  :stacking "fg"
+  :windowtype "dock"
+  :exclusive true
+  :wm-ignore false
+  (bar :monitor 1))

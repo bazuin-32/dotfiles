@@ -1,0 +1,35 @@
+@import 'vars.scss';
+@import 'bar/workspaces.scss';
+@import 'bar/battery.scss';
+@import 'bar/volume.scss';
+
+* {
+  font-family: MesloLGS NF;
+  font-size: 0.85rem;
+  color: #ebdbb8;
+}
+
+.icon {
+  font-family: 'Symbols Nerd Font Mono';
+  font-size: 1.1rem;
+  padding: 0 5px;
+  color: #cbbb98;
+}
+
+.bar0, .bar1 {
+  background-color: $window-bg;
+}
+
+.horizontal {
+  padding: 0 5px;
+}
+
+.horizontal > box > box, .window_title, .time {
+  border: $bar-element-border;
+  border-radius: 5px;
+
+  margin: 5px 2px;
+  padding: 2px 5px;
+
+  background-color: $widget-bg;
+}

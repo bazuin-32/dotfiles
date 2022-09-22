@@ -1,0 +1,16 @@
+(defpoll time :interval "1s"
+              :initial "initial"
+              :run-while true
+  `date '+%I:%M %p'`)
+
+(defpoll date :interval "1m"
+              :run-while true
+  `date '+%A, %B %d %Y'`)
+
+
+(defwidget clock [monitor]
+  (button :class "time"
+          :onclick "${EWW_CMD} ${show_calendar ? 'close' : 'open'} calendar${monitor} && ${EWW_CMD} update show_calendar=${!show_calendar}"
+          :halign "end"
+          :tooltip date
+    (label :text time)))
