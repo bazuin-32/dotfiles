@@ -5,14 +5,8 @@ echo_initial() {
 }
 
 process_event() {
-    if [[ ${1%>>*} == "workspace" ]]; then
+    if [[ ${1%>>*} == "createworkspace" || ${1%>>*} == "destroyworkspace" ]]; then
         workspaces_json=$(hyprctl workspaces -j | jq -rc "[ .[].id | select( . != -99 ) ] | sort_by( . )")
-        
-        if [[ "${workspaces_json}" == "${prev_workspaces_json}" ]]; then
-            return
-        fi
-
-        prev_workspaces_json="${workspaces_json}"
 
         echo "${workspaces_json}"
     fi
