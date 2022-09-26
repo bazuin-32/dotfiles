@@ -1,7 +1,7 @@
-(deflisten active_workspace :initial 1
+(deflisten active_workspace
   `scripts/active_workspace.sh`)
 
-(deflisten workspaces_json
+(deflisten workspaces_json :initial "[ 1 ]"
   `scripts/workspaces_json.sh`)
 
 (defwidget workspaces []
