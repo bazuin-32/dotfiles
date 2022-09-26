@@ -1,4 +1,4 @@
-(deflisten active_workspace :initial 1
+(deflisten workspaces_json
   `scripts/active_workspace.sh`)
 
 (defwidget workspaces []
@@ -7,13 +7,7 @@
        :space-evenly true
        :halign "start"
        :spacing 5
-    (button :class { active_workspace == 1 ? "active" : "" } :onclick "hyprctl dispatch workspace 1" 1)
-    (button :class { active_workspace == 2 ? "active" : "" } :onclick "hyprctl dispatch workspace 2" 2)
-    (button :class { active_workspace == 3 ? "active" : "" } :onclick "hyprctl dispatch workspace 3" 3)
-    (button :class { active_workspace == 4 ? "active" : "" } :onclick "hyprctl dispatch workspace 4" 4)
-    (button :class { active_workspace == 5 ? "active" : "" } :onclick "hyprctl dispatch workspace 5" 5)
-    (button :class { active_workspace == 6 ? "active" : "" } :onclick "hyprctl dispatch workspace 6" 6)
-    (button :class { active_workspace == 7 ? "active" : "" } :onclick "hyprctl dispatch workspace 7" 7)
-    (button :class { active_workspace == 8 ? "active" : "" } :onclick "hyprctl dispatch workspace 8" 8)
-    (button :class { active_workspace == 9 ? "active" : "" } :onclick "hyprctl dispatch workspace 9" 9)
-    (button :class { active_workspace == 10 ? "active" : "" } :onclick "hyprctl dispatch workspace 10" 10)))
+    (for workspace in workspaces_json
+      (button :class { workspace.active ? "active" : "" }
+              :onclick "hyprctl dispatch workspace ${workspace.id}"
+              { workspace.id }))))
