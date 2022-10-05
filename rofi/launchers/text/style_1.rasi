@@ -101,11 +101,11 @@ element normal.normal {
 }
 element normal.urgent {
     background-color: 				@bg;
-    text-color:       				@red;
+    /* text-color:       				@red; */
 }
 element normal.active {
     background-color: 				@bg;
-    text-color:       				@green;
+    /* text-color:       				@green; */
 }
 element selected.normal {
     background-color: 				@bg;
@@ -113,7 +113,7 @@ element selected.normal {
 }
 element selected.urgent {
     background-color: 				@bg;
-    text-color:       				@red;
+    /* text-color:       				@red; */
 }
 element selected.active {
     background-color: 				@bg;
