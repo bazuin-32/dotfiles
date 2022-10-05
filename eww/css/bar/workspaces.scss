@@ -9,6 +9,11 @@
 
   margin: 5px 2px;
   padding: 2px 5px;
+
+  // this is necessary to prevent the `.workspaces > *` elements from
+  // resizing when there are only 2 workspaces un the list
+  min-height: 30px;
+  min-width: 54px;
 }
 
 .workspaces > * {
@@ -25,4 +30,3 @@
   background-color: $active-workspace-bg;
   transition: $active-workspace-transition;
 }
-
