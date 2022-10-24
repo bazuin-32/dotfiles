@@ -24,7 +24,13 @@ for branch in ${branches[@]}; do
   padding=$( printf '%*s' $(( ${#branch} - ${max_branch_name_len} )) )
 
   # make the branch name bold and add padding to it
-  branch_info=$(sed -E "s/^\\s*(\\S+)(\\s.*)/\\\\033[1m\\1\\\\033[0m${padding}\2/" <<< ${branch_info})
+  bold='\\033[1m'
+  light='\\033[2m'
+  blue='\\033[34m'
+  normal='\\033[0m'
+  regex='^\s*(\S+)\s(\S+)\s(\[.+\])\s(.*)'
+  replace="${bold}\\1${normal}${padding} ${blue}\\2${normal} ${light}\\4${normal}"
+  branch_info=$(sed -E "s/${regex}/${replace}/" <<< ${branch_info})
 
 
   echo " - ${branch_info}"
