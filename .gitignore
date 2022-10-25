@@ -6,3 +6,6 @@ hypr/vfr.conf
 
 # same for device-specific foot configs
 foot/font.ini
+
+# btop puts its log in ~/.config now...
+btop/btop.log
