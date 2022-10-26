@@ -2,6 +2,8 @@
 unalias gp
 
 # source all the alias files in the subdir
-for file in ${0:A:h}/aliases/*.zsh; do
+script_path="$(readlink -f -- "${0}")"
+script_dir="$(dirname -- "${script_path}")"
+for file in ${script_dir}/aliases/*.zsh; do
   . ${file}
 done
