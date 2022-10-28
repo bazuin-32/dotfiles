@@ -8,7 +8,7 @@
  */
 
 configuration {
-	font:							"FantasqueSansMono Nerd Font 12";
+	font:							"Cantarell 12";
     show-icons:                     false;
 	icon-theme: 					"Papirus";
     drun-display-format:            "{name}";
@@ -84,7 +84,7 @@ element {
 element-text {
     background-color: 				#00000000;
     text-color:       				inherit;
-	font:							"feather 32";
+	font:							"Symbols Nerd Font Mono 32";
     expand:                         true;
     horizontal-align:               0.5;
     vertical-align:                 0.5;
