@@ -32,6 +32,7 @@ alias dmesg='sudo dmesg --color=always'
 alias ping='ping -O'
 alias grep='grep --color=auto'
 alias hgrep='history | grep'
+alias ssh='TERM=xterm-256color ssh'
 
 # git aliases
 alias gcps='git commit -a && git push'
