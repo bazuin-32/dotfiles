@@ -5,7 +5,8 @@ M.ui = {
 }
 
 M.plugins = {
-  ["elkowar/yuck.vim"] = {}
+  ["elkowar/yuck.vim"] = {},
+  ["folke/which-key.nvim"] = {}
 }
 
 return M
