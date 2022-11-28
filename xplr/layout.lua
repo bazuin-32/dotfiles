@@ -48,7 +48,7 @@ xplr.fn.custom.render_stats = function(ctx)
 		{ "", "" },
 		{ "User", get_output("id -un " .. node.uid) .. " (" .. node.uid .. ")" },
 		{ "Group", get_output("getent group " .. node.gid .. " | cut -d ':' -f 1") .. " (" .. node.gid .. ")"},
-		{ "Permissions", xplr.fn.builtin.fmt_general_table_row_cols_2(node) .. " (" .. tostring(xplr.fn.custom.octal_perms(node.permissions)) .. ")" },
+		{ "Permissions", xplr.fn.builtin.fmt_general_table_row_cols_2(node) .. " (" .. get_output("stat -c '%a' " .. node.absolute_path) .. ")" },
 		{ "Size", node.human_size },
 		{ "Modified", xplr.fn.custom.get_modified_time(node) },
 		{ "Created", xplr.fn.custom.local_time(node.created) },
