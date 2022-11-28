@@ -3,7 +3,7 @@ xplr.config.modes.builtin.default.key_bindings.on_key.enter = {
 	help = "enter directory or open file",
 	messages = {
 		{
-		BashExec = [===[
+		BashExec0 = [===[
 		if [ -f "$XPLR_FOCUS_PATH" ]; then
 			if file -k "$XPLR_FOCUS_PATH" | grep -q text; then
 				$EDITOR "$XPLR_FOCUS_PATH"
@@ -26,7 +26,7 @@ xplr.config.modes.builtin.delete.key_bindings.on_key.d = {
 	help = "delete",
 	messages = {
 	{
-		BashExec = [===[
+		BashExec0 = [===[
 		  (while IFS= read -r line; do
 		  if [ -d "$line" ] && [ ! -L "$line" ]; then
 			if rmdir -v -- "${line:?}"; then
@@ -53,7 +53,7 @@ xplr.config.modes.builtin.delete.key_bindings.on_key.D = {
 	help = "force delete",
 	messages = {
 	{
-		BashExec = [===[
+		BashExec0 = [===[
 		  (while IFS= read -r line; do
 		  if rm -rfv -- "${line:?}"; then
 			echo LogSuccess: $line deleted >> "${XPLR_PIPE_MSG_IN:?}"
@@ -74,7 +74,7 @@ xplr.config.modes.builtin.default.key_bindings.on_key.H = {
   help = "search history",
   messages = {
     --"PopMode",
-    { BashExec = [===[
+    { BashExec0 = [===[
 	field='\(\S\+\s*\)'
 	esc=$(printf '\033')
 	N="${esc}[0m"
@@ -119,7 +119,7 @@ xplr.config.modes.builtin.default.key_bindings.on_key["end"] = {
 xplr.config.modes.builtin.action.key_bindings.on_key["!"] = {
 	help = "shell",
 	messages = {
-		{ Call = { command = "zsh" } },
+		{ Call0 = { command = "zsh" } },
 		"ExplorePwdAsync",
 		"PopMode"
 	}

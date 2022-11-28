@@ -3,7 +3,7 @@ xplr.config.modes.builtin.default.key_bindings.on_key.m = {
 	help = "bookmark focused item",
 	messages = {
 		{
-			BashExecSilently = [===[
+			BashExecSilently0 = [===[
 				PTH="${XPLR_FOCUS_PATH:?}"
 				
 				cat "${XPLR_BOOKMARKS_FILE}" | grep -q "${PTH:?}"
@@ -24,7 +24,7 @@ xplr.config.modes.builtin.default.key_bindings.on_key["`"] = {
 	help = "go to bookmark",
 	messages = {
 		"PopMode",
-		{ BashExec = [===[
+		{ BashExec0 = [===[
 			field='\(\S\+\s*\)'
 			esc=$(printf '\033')
 			N="${esc}[0m"
@@ -62,7 +62,7 @@ xplr.config.modes.builtin.default.key_bindings.on_key["`"] = {
 xplr.config.modes.builtin.default.key_bindings.on_key.u = {
 	help = "delete bookmark",
 	messages = {{
-		BashExec = [===[
+		BashExec0 = [===[
 			PTH="${XPLR_FOCUS_PATH:?}"
 			cat "${XPLR_BOOKMARKS_FILE}" | grep -q "${PTH:?}"
 

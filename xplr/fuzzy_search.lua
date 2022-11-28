@@ -12,7 +12,7 @@ xplr.config.modes.custom.fuzzy_search = {
           f = {
             help = "search from current directory",
             messages = {
-              { BashExec = [===[
+              { BashExec0 = [===[
                   abspath="$(readlink -f ${XPLR_FOCUS_PATH:?})"
                   dir="$(dirname $abspath)"
                   pattern="s#$HOME#~#g"
@@ -41,7 +41,7 @@ xplr.config.modes.custom.fuzzy_search = {
           F = {
             help = "search from home directory",
             messages = {
-              { BashExec = [===[
+              { BashExec0 = [===[
                   dir="$HOME"
                   pattern="s#$HOME#~#g"
                   revpattern="s#~#$HOME#g"
