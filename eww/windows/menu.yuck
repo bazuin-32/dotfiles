@@ -1,0 +1,51 @@
+(defvar show_menu0 false)
+(defvar show_menu1 false)
+
+(defwidget menu []
+  (label
+    :text "hello"
+    :xalign 0.5
+    :yalign 0.5))
+
+(defwidget menu_widget0 []
+  (eventbox
+    :onhover "${EWW_CMD} update show_menu0=true"
+    :onhoverlost "${EWW_CMD} update show_menu0=false"
+
+    (revealer
+      :reveal show_menu0
+      :transition "slideleft"
+      :duration "250ms"
+
+      (menu))))
+
+(defwidget menu_widget1 []
+  (eventbox
+    :onhover "${EWW_CMD} update show_menu1=true"
+    :onhoverlost "${EWW_CMD} update show_menu1=false"
+
+    (revealer
+      :reveal show_menu1
+      :transition "slideleft"
+      :duration "250ms"
+
+      (menu))))
+
+(defwindow menu0
+  :monitor 0
+  :geometry (geometry :x "0"
+                      :y "0"
+                      :height "50%"
+                      :anchor "bottom right")
+  :focusable false
+  :exclusive false
+  (menu_widget0))
+
+(defwindow menu1
+  :monitor 1
+  :geometry (geometry :x "0"
+                      :y "0"
+                      :height "50%"
+                      :anchor "bottom left")
+  :focusable false
+  (menu_widget1))
