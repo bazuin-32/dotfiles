@@ -1,0 +1,19 @@
+(defwidget stats []
+  (box
+    :class "menu_item"
+    :orientation "v"
+
+    (box
+      :space-evenly false
+
+      (label :text "CPU")
+      (progress
+        :valign "center"
+        :value { EWW_CPU["avg"] }))
+    (box
+      :space-evenly false
+
+      (label :text "RAM")
+      (progress
+        :valign "center"
+        :value { EWW_RAM["used_mem_perc"] }))))

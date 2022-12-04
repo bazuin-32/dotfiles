@@ -1,13 +1,16 @@
+(include "modules/menu/date.yuck")
+(include "modules/menu/stats.yuck")
+
 (defvar show_menu0 false)
 (defvar show_menu1 false)
 
 (defwidget menu []
   (box
     :class "menu"
-    (label
-      :text "hello"
-      :xalign 0.5
-      :yalign 0.5)))
+    :orientation "v"
+    
+    (stats)
+    (date)))
 
 (defwidget menu_widget0 []
   (eventbox
@@ -37,7 +40,6 @@
   :monitor 0
   :geometry (geometry :x "0"
                       :y "0"
-                      :height "70%"
                       :anchor "bottom right")
   :focusable false
   :exclusive false
@@ -47,7 +49,6 @@
   :monitor 1
   :geometry (geometry :x "0"
                       :y "0"
-                      :height "70%"
                       :anchor "bottom left")
   :focusable false
   (menu_widget1))

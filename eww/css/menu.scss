@@ -12,8 +12,22 @@
 
 .menu {
   margin: 10px;
-  padding: 100px;
-  border: $menu-border;
+  border: none;
+  background: $menu-bg;
+}
+
+.menu_item {
+  margin: 5px;
+  padding: 10px;
+  border: $bar-element-border;
   border-radius: 5px;
   background: $widget-bg;
+}
+
+.menu progressbar {
+  margin: 5px;
+}
+
+.menu progressbar > trough > progress {
+  background-color: $menu-stats-progress-bar-color;
 }
