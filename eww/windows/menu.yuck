@@ -2,10 +2,12 @@
 (defvar show_menu1 false)
 
 (defwidget menu []
-  (label
-    :text "hello"
-    :xalign 0.5
-    :yalign 0.5))
+  (box
+    :class "menu"
+    (label
+      :text "hello"
+      :xalign 0.5
+      :yalign 0.5)))
 
 (defwidget menu_widget0 []
   (eventbox
@@ -26,7 +28,7 @@
 
     (revealer
       :reveal show_menu1
-      :transition "slideleft"
+      :transition "slideright"
       :duration "250ms"
 
       (menu))))
@@ -35,7 +37,7 @@
   :monitor 0
   :geometry (geometry :x "0"
                       :y "0"
-                      :height "50%"
+                      :height "70%"
                       :anchor "bottom right")
   :focusable false
   :exclusive false
@@ -45,7 +47,7 @@
   :monitor 1
   :geometry (geometry :x "0"
                       :y "0"
-                      :height "50%"
+                      :height "70%"
                       :anchor "bottom left")
   :focusable false
   (menu_widget1))
