@@ -1,0 +1,23 @@
+.menu .weather_entry {
+  margin: 5px;
+  padding: 5px;
+  border-right: 2px solid #484848;
+}
+
+.menu .weather_entry:last-child {
+  border: none;
+}
+
+.menu .weather_entry .icon {
+  font-size: 2.25rem;
+  padding-right: 10px;
+}
+
+.menu .weather_entry .temperature {
+  font-size: 1.25rem;
+}
+
+.menu .weather_entry .hour, .menu .weather_entry .wind {
+  color: #cbbb98;
+  font-size: 0.95em;
+}

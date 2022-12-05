@@ -1,5 +1,6 @@
 (include "modules/menu/date.yuck")
 (include "modules/menu/stats.yuck")
+(include "modules/menu/weather.yuck")
 
 (defvar show_menu0 false)
 (defvar show_menu1 false)
@@ -8,7 +9,9 @@
   (box
     :class "menu"
     :orientation "v"
+    :space-evenly false
     
+    (weather)
     (stats)
     (date)))
 

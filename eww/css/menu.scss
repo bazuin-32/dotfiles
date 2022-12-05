@@ -1,6 +1,7 @@
 @import 'vars.scss';
+@import 'menu/weather.scss';
 
-* {
+.menu * {
   font-family: MesloLGS NF;
   font-size: 0.85rem;
   color: $window-fg;
@@ -8,6 +9,13 @@
 
 .menu0, .menu1 {
   background: $window-bg;
+}
+
+.menu .icon {
+  font-family: 'Symbols Nerd Font Mono';
+  font-size: 1.1rem;
+  padding: 0 5px;
+  color: #cbbb98;
 }
 
 .menu {

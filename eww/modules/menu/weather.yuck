@@ -1,0 +1,45 @@
+(defpoll hourly_weather_data
+  :interval "1h"
+  `~/.config/eww/scripts/weather.sh`)
+
+(defvar weather_icons '{ "day": { "Mostly Sunny": "", "Partly Cloudy": "杖", "Mostly Clear": "" }, "night": { "Partly Cloudy": "", "Mostly Clear": "" } }')
+
+(defwidget weather []
+  (box
+    :class "menu_item"
+    :space-evenly false
+
+    (scroll
+      :class "weather_scroller"
+      :vscroll false
+      :hscroll true
+      :hexpand true
+
+      (box
+        (for hour_data in hourly_weather_data
+          (box
+            :class "weather_entry"
+            :space-evenly false
+
+            (label
+              :class "icon"
+              :text { weather_icons[hour_data.isDaytime ? "day" : "night"][hour_data.shortForecast] })
+
+            (box
+              :orientation "v"
+              :space-evenly false
+
+              (label
+                :class "hour"
+                :halign "start"
+                :text { hour_data.hour })
+
+              (label
+                :class "temperature"
+                :halign "start"
+                :text "${hour_data.temperature}° ${hour_data.temperatureUnit}")
+
+              (label
+                :class "wind"
+                :halign "start"
+                :text "${hour_data.windSpeed} ${hour_data.windDirection}"))))))))
