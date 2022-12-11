@@ -1,0 +1,41 @@
+@import 'vars.scss';
+@import 'menu/weather.scss';
+
+.menu * {
+  font-family: MesloLGS NF;
+  font-size: 0.85rem;
+  color: $window-fg;
+}
+
+.menu0, .menu1 {
+  background: $window-bg;
+}
+
+.menu .icon {
+  font-family: 'Symbols Nerd Font Mono';
+  font-size: 1.1rem;
+  padding: 0 5px;
+  color: #cbbb98;
+}
+
+.menu {
+  margin: 10px;
+  border: none;
+  background: $menu-bg;
+}
+
+.menu_item {
+  margin: 5px;
+  padding: 10px;
+  border: $bar-element-border;
+  border-radius: 5px;
+  background: $widget-bg;
+}
+
+.menu progressbar {
+  margin: 5px;
+}
+
+.menu progressbar > trough > progress {
+  background-color: $menu-stats-progress-bar-color;
+}

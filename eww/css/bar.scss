@@ -3,13 +3,13 @@
 @import 'bar/battery.scss';
 @import 'bar/volume.scss';
 
-* {
+.bar0 *, .bar1 * {
   font-family: MesloLGS NF;
   font-size: 0.85rem;
-  color: #ebdbb8;
+  color: $window-fg;
 }
 
-.icon {
+.bar0 .icon, .bar1 .icon {
   font-family: 'Symbols Nerd Font Mono';
   font-size: 1.1rem;
   padding: 0 5px;
@@ -20,11 +20,11 @@
   background-color: $window-bg;
 }
 
-.horizontal {
+.bar0 .horizontal, .bar1 .horizontal {
   padding: 0 5px;
 }
 
-.horizontal > box > box, .window_title, .time {
+.bar0 .horizontal > box > box, .bar1 .horizontal > box > box, .window_title, .time {
   border: $bar-element-border;
   border-radius: 5px;
 
