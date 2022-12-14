@@ -2,7 +2,7 @@
   :interval "1h"
   `~/.config/eww/scripts/weather.sh`)
 
-(defvar weather_icons '{ "day": { "error": "", "Sunny": "", "Mostly Sunny": "", "Partly Cloudy": "杖", "Mostly Clear": "", "Partly Sunny": "", "Mostly Cloudy": "" }, "night": { "Partly Cloudy": "", "Mostly Clear": "", "Mostly Cloudy": "" } }')
+(defvar weather_icons '{ "day": { "error": "", "Sunny": "", "Mostly Sunny": "", "Partly Cloudy": "杖", "Mostly Clear": "", "Partly Sunny": "", "Mostly Cloudy": "", "Cloudy": ""}, "night": { "Cloudy": "摒", "Partly Cloudy": "", "Mostly Clear": "", "Mostly Cloudy": "" } }')
 
 (defwidget weather []
   (box
