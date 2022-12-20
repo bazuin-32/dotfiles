@@ -1,0 +1,15 @@
+(defpoll uptime
+  :interval "1m"
+  `uptime -p | sed 's/up //'`)
+(defpoll uptime_hours
+  :interval "1h"
+  `cat /proc/uptime | awk '{ print int($1 / 3600) }'`)
+
+(defwidget uptime []
+  (box
+    :class "menu_item"
+    :space-evenly false
+    :spacing 10
+
+    (label :class "icon" :text { uptime_hours > 24 ? "鬒" : "" })
+    (label :text "${uptime}")))
