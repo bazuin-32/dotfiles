@@ -1,5 +1,5 @@
 (defpoll show_battery :initial false :interval "999999h"
-  `[[ -e /sys/class/power_supply/BAT0 ]] && echo true`)
+  `[[ -e /sys/class/power_supply/BAT0 ]] && echo true || echo false`)
 
 (defwidget battery []
   (box :visible show_battery
