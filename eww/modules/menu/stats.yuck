@@ -9,11 +9,13 @@
       (label :text "CPU")
       (progress
         :valign "center"
-        :value { EWW_CPU["avg"] }))
+        :value { EWW_CPU["avg"] })
+      (label :text "${ round(EWW_CPU['avg'], 1) }%"))
     (box
       :space-evenly false
 
       (label :text "RAM")
       (progress
         :valign "center"
-        :value { EWW_RAM["used_mem_perc"] }))))
+        :value { EWW_RAM["used_mem_perc"] })
+      (label :text "${ round(EWW_RAM['used_mem_perc'], 1) }%"))))

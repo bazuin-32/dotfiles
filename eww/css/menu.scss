@@ -33,7 +33,11 @@
 }
 
 .menu progressbar {
-  margin: 5px;
+  margin: 5px 10px;
+}
+
+.menu progressbar * {
+  border-radius: 10px;
 }
 
 .menu progressbar > trough > progress {
