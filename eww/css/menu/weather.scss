@@ -17,11 +17,16 @@
   font-size: 1.25rem;
 }
 
-.menu .weather_entry .hour, .menu .weather_entry .wind {
+.menu .weather_entry .short_forecast, .menu .weather_entry .hour, .menu .weather_entry .wind {
   color: #cbbb98;
   font-size: 0.95em;
 }
 
+.menu .weather_entry .short_forecast {
+  padding: 5px 0;
+  font-size: 0.91em;
+}
+
 .menu .weather_entry .vertical {
-  padding: 0 5px;
+  padding: 0 10px;
 }
