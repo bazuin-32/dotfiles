@@ -1,3 +1,6 @@
+(defpoll mic_volume :interval "0.5s"
+  `scripts/mic.sh`)
+
 (defwidget media_stats []
   (box
     :class "menu_item"
@@ -17,5 +20,5 @@
       (label :text "Mic")
       (progress
         :valign "center"
-        :value { EWW_RAM["used_mem_perc"] })
-      (label :text "${ round(EWW_RAM['used_mem_perc'], 1) }%"))))
+        :value { mic_volume })
+      (label :text "${mic_volume}%" ))))

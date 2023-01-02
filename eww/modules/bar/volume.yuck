@@ -1,6 +1,6 @@
-(defpoll volume_percent :interval "0.5s" :initial "init"
+(defpoll volume_percent :interval "0.5s"
   `scripts/volume.sh`)
-(defpoll volume_muted :interval "0.5s" :initial "init"
+(defpoll volume_muted :interval "0.5s"
   `scripts/volume_muted.sh`)
 
 (defwidget volume []
