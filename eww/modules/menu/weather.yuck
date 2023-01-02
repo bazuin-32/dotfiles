@@ -30,7 +30,17 @@
 
               (label
                 :class "icon"
-                :text { weather_icons[hour_data.isDaytime ? "day" : "night"][matches(hour_data.shortForecast, ".*Slight.*Snow.*") ? "Slight Snow" : matches(hour_data.shortForecast, ".*Snow.*") ? "Snow" : matches(hour_data.shortForecast, ".*Fog.*") ? "Fog" : matches(hour_data.shortForecast, ".*Rain.*") ? "Rain" : hour_data.shortForecast] })
+                :text { weather_icons[hour_data.isDaytime ? "day" : "night"][
+                          matches(hour_data.shortForecast, ".*Slight.*Snow.*")
+                            ? "Slight Snow"
+                            : matches(hour_data.shortForecast, ".*Snow.*")
+                              ? "Snow"
+                              : matches(hour_data.shortForecast, ".*Fog.*")
+                                ? "Fog"
+                                : matches(hour_data.shortForecast, ".*Rain.*")
+                                  ? "Rain"
+                                  : hour_data.shortForecast
+                        ] })
               (label
                 :class "short_forecast"
                 :text { hour_data.shortForecast }))
