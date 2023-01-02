@@ -1,17 +1,19 @@
 (defpoll show_battery :initial false :interval "999999h"
-  `[[ -e /sys/class/power_supply/BAT0 ]] && echo true`)
+  `[[ -e /sys/class/power_supply/BAT0 ]] && echo true || echo false`)
 
 (defwidget battery []
   (box :visible show_battery
-       :class { EWW_BATTERY['BAT0'].status == "Charging" ? "charging_battery" : EWW_BATTERY['BAT0'].capacity < 20 ? "low_battery" : "" }
+       :class { EWW_BATTERY == "" ? "" : EWW_BATTERY['BAT0'].status == "Charging" ? "charging_battery" : EWW_BATTERY['BAT0'].capacity < 20 ? "low_battery" : "" }
     (label :class "icon"
-           :text { EWW_BATTERY['BAT0'].capacity < 20
-                    ? ""
-                    : EWW_BATTERY['BAT0'].capacity < 40
-                        ? ""
-                        : EWW_BATTERY['BAT0'].capacity < 60
-                            ? ""
-                            : EWW_BATTERY['BAT0'].capacity < 80
-                                ? ""
-                                : "" })
-    (label :text "${ EWW_BATTERY['BAT0'].capacity }%")))
+           :text { EWW_BATTERY == ""
+                    ? ""
+                    : EWW_BATTERY['BAT0'].capacity < 20
+                      ? ""
+                      : EWW_BATTERY['BAT0'].capacity < 40
+                          ? ""
+                          : EWW_BATTERY['BAT0'].capacity < 60
+                              ? ""
+                              : EWW_BATTERY['BAT0'].capacity < 80
+                                  ? ""
+                                  : "" })
+    (label :text "${ EWW_BATTERY == "" ? "-" : EWW_BATTERY['BAT0'].capacity }%")))

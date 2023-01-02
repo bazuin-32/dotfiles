@@ -10,3 +10,6 @@ for monitor in ${monitors}; do
     eww open bar${monitor}
     eww open menu${monitor}
 done
+
+# load weather icon data
+eww update weather_icons="$(cat ~/.config/eww/modules/menu/weather_icons.json)"

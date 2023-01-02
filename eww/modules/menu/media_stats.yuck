@@ -1,0 +1,24 @@
+(defpoll mic_volume :interval "0.5s"
+  `scripts/mic.sh`)
+
+(defwidget media_stats []
+  (box
+    :class "menu_item"
+    :orientation "v"
+
+    (box
+      :space-evenly false
+
+      (label :text "Vol")
+      (progress
+        :valign "center"
+        :value { replace(volume_percent, "%$", "") })
+      (label :text { volume_percent }))
+    (box
+      :space-evenly false
+
+      (label :text "Mic")
+      (progress
+        :valign "center"
+        :value { mic_volume })
+      (label :text "${mic_volume}%" ))))

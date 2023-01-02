@@ -1,7 +1,8 @@
 (include "modules/menu/date.yuck")
+(include "modules/menu/media_stats.yuck")
+(include "modules/menu/uptime.yuck")
 (include "modules/menu/stats.yuck")
 (include "modules/menu/weather.yuck")
-(include "modules/menu/uptime.yuck")
 
 (defvar show_menu0 false)
 (defvar show_menu1 false)
@@ -13,6 +14,7 @@
     :space-evenly false
     
     (weather)
+    (media_stats)
     (stats)
     (uptime)
     (date)))

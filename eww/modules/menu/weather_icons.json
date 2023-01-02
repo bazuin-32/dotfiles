@@ -1,0 +1,27 @@
+{
+  "day": {
+    "error": "",
+    "Sunny": "",
+    "Mostly Sunny": "",
+    "Partly Cloudy": "杖",
+    "Mostly Clear": "",
+    "Partly Sunny": "",
+    "Mostly Cloudy": "",
+    "Cloudy": "",
+    "Slight Snow": "流",
+    "Snow": "",
+    "Fog": "",
+    "Rain": ""
+  },
+
+  "night": {
+    "Cloudy": "摒",
+    "Partly Cloudy": "",
+    "Mostly Clear": "",
+    "Mostly Cloudy": "",
+    "Slight Snow": "流",
+    "Snow": "",
+    "Fog": "",
+    "Rain": ""
+  }
+}
