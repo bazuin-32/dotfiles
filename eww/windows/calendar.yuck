@@ -7,7 +7,7 @@
                       :width "12%"
                       :height "16%"
                       :anchor "bottom right")
-  :focusable true
+  :focusable false
   ; :stacking "fg"
   ; :windowtype "dock"
   ; :exclusive true
@@ -21,7 +21,7 @@
                       :width "12%"
                       :height "16%"
                       :anchor "bottom right")
-  :focusable true
+  :focusable false
   ; :stacking "fg"
   ; :windowtype "dock"
   ; :exclusive true
