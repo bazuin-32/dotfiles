@@ -35,3 +35,7 @@ border-color=#cc2222cc
 [urgency=low]
 on-notify=none
 text-color=#bbab88
+
+[mode=away]
+default-timeout=0
+ignore-timeout=1
