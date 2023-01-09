@@ -1,6 +1,7 @@
 max-history=20
 
 on-notify=exec mpv /usr/share/sounds/freedesktop/stereo/message.oga --volume=150
+on-button-middle=dismiss-group
 
 font=Cantarell 12
 
