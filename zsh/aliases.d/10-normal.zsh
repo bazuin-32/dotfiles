@@ -33,6 +33,7 @@ alias ping='ping -O'
 alias grep='grep --color=auto'
 alias hgrep='history | grep'
 alias ssh='TERM=xterm-256color ssh'
+alias killall='killall -v'
 
 # git aliases
 alias gcps='git commit -a && git push'
