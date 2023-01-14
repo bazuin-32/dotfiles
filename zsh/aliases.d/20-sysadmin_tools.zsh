@@ -1,0 +1,6 @@
+alias sctl='sudo systemctl'
+alias sctlu='systemctl --user'
+alias svim='sudo -e'
+alias dmesg='sudo dmesg --color=always'
+alias killall='killall -v'
+alias upgrade='yay -Syu && yay -Fy'

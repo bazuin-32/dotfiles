@@ -1,11 +1,4 @@
-source ~/.config/zsh/xkcd.zsh
-source ~/.config/zsh/paclog.zsh
-
-neofetch
-xkcd newest
-
-source ~/.config/zsh/oh-my-zsh.zsh
-
+. ~/.config/zsh/oh-my-zsh.zsh
 
 # User configuration
 
@@ -43,12 +36,16 @@ setopt appendhistory
 # set colors for exa, see https://github.com/ogham/exa/blob/master/man/exa_colors.5.md
 export EXA_COLORS="di=33;1:su=1;4:sf=1:4"
 
-source ~/.config/zsh/aliases.zsh
-
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f ~/.p10k.zsh ]] || . ~/.p10k.zsh
+
+. ~/.config/zsh/aliases.zsh
+. ~/.config/zsh/functions.zsh
+
+neofetch
+xkcd newest
