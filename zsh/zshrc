@@ -9,7 +9,7 @@ autoload -U compinit && compinit
 
 # cache completions for better speed
 zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path "~/.cache/zsh/.zcompcache"
+zstyle ':completion:*' cache-path "$HOME/.cache/zsh/.zcompcache"
 
 # globbing options
 setopt extendedglob
