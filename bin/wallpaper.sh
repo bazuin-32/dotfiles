@@ -30,7 +30,9 @@ img_width="$(awk '{ print $1 }' <<< "${img_dims}")"
 img_height="$(awk '{ print $2 }' <<< "${img_dims}")"
 
 # determine where to place the text
+# shellcheck disable=SC2004
 pos_x=$(( ${img_width} - ${text_width} - ${padding} ))
+# shellcheck disable=SC2004
 pos_y=$(( ${img_height} - ${text_height} - ${padding} ))
 
 # make a new file to write the result to
