@@ -56,6 +56,8 @@ done
 swayidle -w timeout 300 'hyprctl dispatch dpms off' &
 swayidle_pid="${!}"
 
+# shellcheck disable=SC2068
+# the word splitting that happens here is intentional
 swaylock ${swaylock_args[@]}
 
 rm -r "${screenshot_dir}"
