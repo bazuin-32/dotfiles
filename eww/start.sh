@@ -7,8 +7,8 @@ eww kill
 monitors=$(hyprctl monitors -j | jq '.[] | .id')
 
 for monitor in ${monitors}; do
-    eww open bar${monitor}
-    eww open menu${monitor}
+    eww open "bar${monitor}"
+    eww open "menu${monitor}"
 done
 
 # load weather icon data
