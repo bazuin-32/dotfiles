@@ -4,4 +4,6 @@
     foreground:                     #d79921ff; /* text/icons */
     border:               	    #d79921ff; /* left side vertical line */
     selected:               	    #484848ff; /* selected element bg */
+
+    window-border: #d79921cc;
 }

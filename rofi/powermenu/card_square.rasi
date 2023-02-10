@@ -22,7 +22,9 @@ window {
     transparency:                   "real";
     background-color:               @background;
     text-color:                     @foreground;
-    border-radius:                  0px;
+    border:                         2px;
+    border-color:                   @window-border;
+    border-radius:                  12px;
     height:                         30%;
     width:                          50%;
     location:                       center;

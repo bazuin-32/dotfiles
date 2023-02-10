@@ -31,8 +31,8 @@ configuration {
 }
 
 window {
-    border: 						0px;
-    border-color: 					@ac;
+    border: 						2px;
+    border-color: 					@window-border;
     border-radius: 					12px;
     padding: 						40;
     width: 							50%;

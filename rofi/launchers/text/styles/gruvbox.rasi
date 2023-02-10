@@ -4,4 +4,6 @@
   bg:      #282828ff; /* menu bg */
   fg:      #ebdbb8ff; /* non-selected items */
   ac:      #d79921ff; /* selected item */
+
+  window-border: #d79921cc;
 }
