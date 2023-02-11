@@ -9,7 +9,6 @@
 workspaces() {
     if [[ ${1/>>*/} == "activewindow" ]]; then #set focused workspace
         string=${1/*>>/}
-        class="${string/,*/}"
         export title=${string/,/, }
         [[ $title == ", " ]] && unset title
     fi
