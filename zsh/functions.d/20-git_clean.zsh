@@ -44,6 +44,7 @@ function git-clean() {
     for branch in "${branches[@]}"; do
       git branch -d "${branch}"
 
+      # shellcheck disable=SC2181
       if [[ $? -ne 0 ]]; then
         echo -ne "\033[1;31mError deleting branch \`${branch}\`.\033[0m Do you want to try force deleting it? [y/N] "
         read -r response
