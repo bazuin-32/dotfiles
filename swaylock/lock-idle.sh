@@ -56,6 +56,8 @@ for monitor in ${monitors}; do
     swaylock_args+=("--image=${monitor}:${screenshot_file}")
 done
 
+# shellcheck disable=SC2068
+# the word splitting that happens here is intentional
 swaylock ${swaylock_args[@]}
 
 rm -r "${screenshot_dir}"

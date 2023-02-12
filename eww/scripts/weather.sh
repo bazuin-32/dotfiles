@@ -15,7 +15,7 @@ weather_data=$(curl "${weather_url}" 2>/dev/null)
 error=$(echo "${weather_data}" | jq -rc '.status != null')
 
 if [[ "${error}" == "true" ]]; then
-  error_code=$(echo ${weather_data} | jq -rc '.status')
+  error_code=$(echo "${weather_data}" | jq -rc '.status')
   echo "[{ \"isDaytime\": true, \"shortForecast\": \"error\", \"hour\": \"${error_code}\", \"temperature\": \"Error\", \"temperatureUnit\": \"\", \"windSpeed\": \"\", \"windDirection\": \"\" }]"
   exit 1
 fi
