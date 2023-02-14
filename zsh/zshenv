@@ -16,3 +16,6 @@ export QT_QPA_PLATFORM=xcb
 
 # enable wayland firefox
 export MOZ_ENABLE_WAYLAND=1
+
+# colorize/format man pages with bat
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
