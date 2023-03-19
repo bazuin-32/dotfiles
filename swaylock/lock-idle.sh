@@ -14,6 +14,9 @@ swaylock_args=(
     --indicator-idle-visible
     --indicator-caps-lock
 
+    # note: this is a special space (unicode U+2002), not the regular space character
+    --timestr '%I:%M %p'
+
     --indicator-radius 90
 
     --font MesloLGSNF
