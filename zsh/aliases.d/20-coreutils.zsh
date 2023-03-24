@@ -7,3 +7,7 @@ alias mkdir='mkdir -pv'
 alias rmdir='rmdir -v'
 alias ls='ls -lsh'
 alias l='ls -alshv'
+
+alias chmod='chmod -v'
+alias chown='chown -v'
+alias chattr='chattr -V'
