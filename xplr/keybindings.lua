@@ -8,7 +8,7 @@ xplr.config.modes.builtin.default.key_bindings.on_key.enter = {
 			if file -k "$XPLR_FOCUS_PATH" | grep -q text; then
 				$EDITOR "$XPLR_FOCUS_PATH"
 			else
-				xdg-open "$XPLR_FOCUS_PATH" & &>/dev/null
+				xdg-open "$XPLR_FOCUS_PATH" &>/dev/null &
 			fi
 		fi
 		]===]
