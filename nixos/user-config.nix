@@ -32,6 +32,7 @@
       enable = true;
       userName = "bazuin-32";
       userEmail = "ameenpiano@gmail.com";
+      extraConfig.push.autoSetupRemote = true;
     };
     programs.neovim = {
       enable = true;
