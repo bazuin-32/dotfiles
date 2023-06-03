@@ -50,6 +50,11 @@
     useXkbConfig = true; # use xkbOptions in tty.
   };
 
+  services.xserver = {
+    enable = true;
+    displayManager.lightdm.enable = true;
+  };
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
