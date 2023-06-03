@@ -24,6 +24,13 @@
       vscode
       neofetch
       eww-wayland
+      swaybg
+      swaylock-effects
+      grim
+      slurp
+      imagemagick
+      rofi-wayland
+      wl-clipboard
       meslo-lgs-nf
     ];
 
