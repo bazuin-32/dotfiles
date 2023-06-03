@@ -23,6 +23,7 @@
       mpv
       vscode
       neofetch
+      eww-wayland
       meslo-lgs-nf
     ];
 

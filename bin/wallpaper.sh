@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 font="MesloLGS-NF-Regular"
 pointsize=36

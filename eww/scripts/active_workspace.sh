@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 echo_initial() {
     hyprctl activewindow -j | jq -r '.workspace .id'

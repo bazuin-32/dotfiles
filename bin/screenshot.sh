@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 write_to=$(echo -e 'file\nclipboard' | rofi -dmenu -p 'write screenshot to:' -theme ~/.config/rofi/launchers/text/style_1)
 
