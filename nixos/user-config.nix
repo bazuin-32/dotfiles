@@ -23,6 +23,8 @@
       vscode
       foot
       neofetch
+      exa
+      bat
       meslo-lgs-nf
     ];
 
@@ -46,7 +48,19 @@
         size = 50000;
       };
 
-      initExtra = "neofetch";
+      initExtra = ''
+        setopt extendedglob
+        setopt globstarshort
+        setopt autopushd # make cd keep a dir stack
+
+        . ~/.config/zsh/functions.zsh
+
+        neofetch
+      '';
+      envExtra = ''
+        # set colors for exa, see https://github.com/ogham/exa/blob/master/man/exa_colors.5.md
+        export EXA_COLORS="di=33;1:su=1;4:sf=1:4"
+      '';
 
       oh-my-zsh = {
         enable = true;
@@ -54,6 +68,11 @@
           "git"
           "sudo"
         ];
+        extraConfig = ''
+          # cache completions for better speed
+          zstyle ':completion:*' use-cache on
+          zstyle ':completion:*' cache-path "$HOME/.cache/zsh/.zcompcache"
+        '';
       };
 
       plugins = [

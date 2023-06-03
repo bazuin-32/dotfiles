@@ -72,7 +72,11 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     wget
+    gcc
+    clang
     cmake
+    gnumake
+    ninja
     brightnessctl
     btop
     pciutils
