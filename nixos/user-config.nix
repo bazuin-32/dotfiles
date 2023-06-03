@@ -1,9 +1,11 @@
 { config, pkgs, ... }:
 
 {
+  programs.zsh.enable = true; # required to be able to set user's default shell, even though zsh is configured in home-manager
   users.users.ameen = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    shell = pkgs.zsh;
   };
 
   environment.pathsToLink = [ "/share/zsh" ]; # for zsh completions, see https://rycee.gitlab.io/home-manager/options.html#opt-programs.zsh.enableCompletion
