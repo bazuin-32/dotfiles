@@ -270,5 +270,6 @@
     MOZ_ENABLE_WAYLAND = "1";
     XPLR_BOOKMARKS_FILE = "$HOME/.local/share/xplr/bookmarks";
     _JAVA_AWT_WM_NONREPARENTING = "1";
+    PATH = "$PATH:$HOME/.config/bin";
   };
 }
