@@ -13,4 +13,5 @@ fontconfig/
 foot/
 git/
 gtk-*/
+mako/
 systemd/

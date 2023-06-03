@@ -262,6 +262,52 @@
       enable = true;
       enableSshSupport = true;
     };
+
+    services.mako = {
+      enable = true;
+      anchor = "top-right";
+
+      textColor = "#ebdbb8ff";
+      backgroundColor = "#282828bb";
+
+      borderColor = "#d79921cc";
+      borderRadius = 6;
+      borderSize = 1;
+
+      defaultTimeout = 10000;
+
+      font = "Cantarell 12";
+      format = "<sup>%a</sup>\\n<b>%s</b>\\n%b";
+      groupBy = "app-name";
+      icons = true;
+
+      margin = "5";
+      padding = "8";
+
+      progressColor = "source #383838ff";
+
+      extraConfig = ''
+        on-notify=exec mpv ${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/message.oga --volume=150
+        on-button-middle=dismiss-group
+
+        # criteria-based settings
+        [grouped]
+        format=<sup>(%g) %a</sup>\n<b>%s</b>\n%b
+        
+        [urgency=critical]
+        on-notify=exec mpv ${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/dialog-warning.oga --volume=200
+        border-size=2
+        border-color=#cc2222cc
+        
+        [urgency=low]
+        on-notify=none
+        text-color=#bbab88
+        
+        [mode=away]
+        default-timeout=0
+        ignore-timeout=1
+      '';
+    };
   };
 
   environment.variables = {

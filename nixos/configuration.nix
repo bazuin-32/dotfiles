@@ -80,6 +80,8 @@
     brightnessctl
     pciutils
     jq
+    ripgrep
+    fzf
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
