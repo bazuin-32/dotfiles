@@ -220,8 +220,9 @@
 
     programs.firefox = {
       enable = true;
+      package = pkgs.firefox-devedition;
       profiles.default = {
-        name = "default";
+        name = "dev-edition-default";
         isDefault = true;
         
         search.default = "Google";
