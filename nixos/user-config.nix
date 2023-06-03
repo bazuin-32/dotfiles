@@ -1,7 +1,9 @@
 { config, pkgs, ... }:
 
 {
+  programs.dconf.enable = true; # requred for gtk themes
   programs.zsh.enable = true; # required to be able to set user's default shell, even though zsh is configured in home-manager
+
   users.users.ameen = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
@@ -16,7 +18,6 @@
     programs.home-manager.enable = true;
 
     home.packages = with pkgs; [
-      firefox
       thunderbird
       onlyoffice-bin
       mpv
@@ -212,6 +213,50 @@
     };
     programs.neovim = {
       enable = true;
+    };
+
+    gtk.enable = true;
+    gtk.theme.name = "Adwaita-dark"; # TODO: use a gruvbox theme here
+
+    programs.firefox = {
+      enable = true;
+      profiles.default = {
+        name = "default";
+        isDefault = true;
+        
+        search.default = "Google";
+        search.force = true;
+        search.engines = {
+          "Nix Packages" = {
+            urls = [{
+              template = "https://search.nixos.org/packages";
+              params = [
+                { name = "type"; value = "packages"; }
+                { name = "query"; value = "{searchTerms}"; }
+              ];
+            }];
+
+            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+            definedAliases = [ "@np" ];
+          };
+
+          "NixOS Wiki" = {
+            urls = [{ template = "https://nixos.wiki/index.php?search={searchTerms}"; }];
+            iconUpdateURL = "https://nixos.wiki/favicon.png";
+            updateInterval = 24 * 60 * 60 * 1000; # every day
+            definedAliases = [ "@nw" ];
+          };
+
+          "Bing".metaData.hidden = true;
+          "Google".metaData.alias = "@g";
+        };
+
+        settings = {
+          "toolkit.legacyUserProfileCustomizations.stylesheets" = true; # required for custom CSS
+        };
+        userChrome = (builtins.readFile ../firefox/userChrome.css);
+        userContent = (builtins.readFile ../firefox/userContent.css);
+      };
     };
   };
 
