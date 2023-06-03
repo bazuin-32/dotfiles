@@ -22,7 +22,11 @@
       mpv
       vscode
       foot
+      neofetch
+      meslo-lgs-nf
     ];
+
+    fonts.fontconfig.enable = true;
     
     programs.zsh = {
       enable = true;

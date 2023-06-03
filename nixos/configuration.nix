@@ -74,6 +74,8 @@
     wget
     cmake
     brightnessctl
+    btop
+    pciutils
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
