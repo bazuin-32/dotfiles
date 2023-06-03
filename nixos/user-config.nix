@@ -22,7 +22,6 @@
       mpv
       vscode
       neofetch
-      exa
       meslo-lgs-nf
     ];
 
@@ -190,6 +189,8 @@
         };
       };
     };
+
+    programs.exa.enable = true;
 
     programs.bat = {
       enable = true;
