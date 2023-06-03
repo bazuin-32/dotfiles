@@ -254,6 +254,7 @@
 
         settings = {
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true; # required for custom CSS
+          "browser.toolbars.bookmarks.visibility" = "always"; # show bookmarks bar
         };
         userChrome = (builtins.readFile ../firefox/userChrome.css);
         userContent = (builtins.readFile ../firefox/userContent.css);
