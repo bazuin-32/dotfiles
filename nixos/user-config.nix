@@ -200,11 +200,6 @@
       };
     };
 
-    services.gpg-agent = {
-      enable = true;
-      enableSshSupport = true;
-    };
-
     programs.git = {
       enable = true;
       userName = "bazuin-32";
@@ -213,6 +208,7 @@
     };
     programs.neovim = {
       enable = true;
+      defaultEditor = true;
     };
 
     gtk.enable = true;
@@ -259,6 +255,11 @@
         userChrome = (builtins.readFile ../firefox/userChrome.css);
         userContent = (builtins.readFile ../firefox/userContent.css);
       };
+    };
+
+    services.gpg-agent = {
+      enable = true;
+      enableSshSupport = true;
     };
   };
 
