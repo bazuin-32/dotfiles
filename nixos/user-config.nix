@@ -21,7 +21,6 @@
       onlyoffice-bin
       mpv
       vscode
-      foot
       neofetch
       exa
       bat
@@ -150,6 +149,46 @@
         cpu_graph_lower = "iowait";
         clock_format = "%X";
         disks_filter = "";
+      };
+    };
+
+    programs.foot = {
+      enable = true;
+      settings = {
+        main = {
+          font = "MesloLGS NF:size=7";
+        };
+        cursor = {
+          style = "beam";
+          blink = true;
+        };
+        colors = {
+          background = "282828";
+          foreground = "ebdbb8";
+
+          # normal colors
+          regular0 = "1d1f21";
+          regular1 = "cc241d";
+          regular2 = "98971a";
+          regular3 = "d79921";
+          regular4 = "458588";
+          regular5 = "b16286";
+          regular6 = "689d6a";
+          regular7 = "ebdbb8";
+          
+          # bold/bright colors
+          bright0 = "666666";
+          bright1 = "fb4934";
+          bright2 = "b8bb26";
+          bright3 = "fabd2f";
+          bright4 = "83a598";
+          bright5 = "d3869b";
+          bright6 = "8ec07c";
+          bright7 = "ebdbb2";
+          
+          # dim white, I don't like the autodetermined value for it
+          dim7 = "bbab88";
+        };
       };
     };
 
