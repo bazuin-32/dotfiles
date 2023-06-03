@@ -23,7 +23,6 @@
       vscode
       neofetch
       exa
-      bat
       meslo-lgs-nf
     ];
 
@@ -189,6 +188,13 @@
           # dim white, I don't like the autodetermined value for it
           dim7 = "bbab88";
         };
+      };
+    };
+
+    programs.bat = {
+      enable = true;
+      config = {
+        theme = "gruvbox-dark";
       };
     };
 
