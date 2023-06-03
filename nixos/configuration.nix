@@ -78,7 +78,6 @@
     gnumake
     ninja
     brightnessctl
-    btop
     pciutils
   ];
 

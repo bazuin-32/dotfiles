@@ -135,6 +135,23 @@
         ssh = "TERM=xterm-256color ssh";
       };
     };
+    
+    programs.btop = {
+      enable = true;
+      settings = {
+        color_theme = "gruvbox_material_dark";
+        presets = "cpu:1:default,proc:0:default cpu:0:default,mem:0:default,net:0:default cpu:0:block,net:0:tty";
+        vim_keys = true;
+        shown_boxes = "cpu mem net proc";
+        update_ms = 1000;
+        proc_sorting = "memory";
+        proc_tree = true;
+        proc_per_core = false;
+        cpu_graph_lower = "iowait";
+        clock_format = "%X";
+        disks_filter = "";
+      };
+    };
 
     services.gpg-agent = {
       enable = true;
