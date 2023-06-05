@@ -291,7 +291,21 @@
       ];
 
       userSettings = {
+        "editor.fontFamily" = "MesloLGS NF";
+        "editor.rulers" = [ 120 ];
+        "editor.guides.bracketPairs" = true;
+        "editor.stickyScroll.enabled" = true;
+        "editor.stickyTabStops" = true;
         "[nix]"."editor.tabSize" = 2;
+
+        "audioCues.onDebugBreak" = true;
+        "audioCues.taskFailed" = true;
+        "audioCues.terminalCommandFailed" = true;
+
+        "git.autofetch" = true;
+
+        "cmake.configureOnOpen" = true;
+
         "sonarlint.ls.javaHome" = "${pkgs.jdk}";
       };
     };
