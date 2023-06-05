@@ -96,7 +96,25 @@
     pulseaudio # only to provide `pactl`, even though pipewire is used as the real backend
     sof-firmware
     (lib.hiPrio pkgs.procps) # needed to be able to do `uptime -p`, coreutils uptime doesnt have the `-p` flag
+    cifs-utils
   ];
+
+  fileSystems."/net/ameen" = {
+    device = "//10.0.20.5/ameen";
+    fsType = "cifs";
+    options = let
+      # to prevent hanging on network split, see https://nixos.wiki/wiki/Samba
+      automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+    in [ "${automount_opts},credentials=/etc/.cifscred-ameen,uid=1000,gid=100" ];
+  };
+  fileSystems."/net/public" = {
+    device = "//10.0.20.5/public";
+    fsType = "cifs";
+    options = let
+      # to prevent hanging on network split, see https://nixos.wiki/wiki/Samba
+      automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+    in [ "${automount_opts},credentials=/etc/.cifscred-ameen,uid=1000,gid=100" ];
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
