@@ -15,4 +15,5 @@ foot/
 git/
 gtk-*/
 mako/
+pulse/
 systemd/

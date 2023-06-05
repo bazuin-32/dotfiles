@@ -219,6 +219,10 @@
       defaultEditor = true;
     };
 
+    programs.tealdeer = {
+      enable = true;
+    };
+
     gtk.enable = true;
     gtk.theme.name = "Adwaita-dark"; # TODO: use a gruvbox theme here
 
