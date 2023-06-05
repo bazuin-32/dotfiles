@@ -17,15 +17,15 @@
       modules = [
         ./configuration.nix
 
-	home-manager.nixosModules.home-manager
-	{
-	  home-manager.useGlobalPkgs = true;
-	}
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+        }
 
-	hyprland.nixosModules.default
-	{
-	  programs.hyprland.enable = true;
-	}
+        hyprland.nixosModules.default
+        {
+          programs.hyprland.enable = true;
+        }
       ];
     };
 
