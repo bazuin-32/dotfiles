@@ -21,7 +21,6 @@
       thunderbird
       onlyoffice-bin
       mpv
-      vscode
       neofetch
       eww-wayland
       swaybg
@@ -32,6 +31,7 @@
       rofi-wayland
       wl-clipboard
       meslo-lgs-nf
+      jdk # required for sonarlint vscode extension
     ];
 
     fonts.fontconfig.enable = true;
@@ -262,6 +262,31 @@
         };
         userChrome = (builtins.readFile ../firefox/userChrome.css);
         userContent = (builtins.readFile ../firefox/userContent.css);
+      };
+    };
+
+    programs.vscode = {
+      enable = true;
+      extensions = with pkgs.vscode-extensions; [
+        llvm-vs-code-extensions.vscode-clangd
+        vadimcn.vscode-lldb
+        ms-vscode.cmake-tools
+        twxs.cmake
+
+        ms-python.python
+        ms-python.vscode-pylance
+
+        yzhang.markdown-all-in-one
+
+        usernamehw.errorlens
+        eamodio.gitlens
+        sonarsource.sonarlint-vscode
+        asvetliakov.vscode-neovim
+      ];
+
+      userSettings = {
+        "[nix]"."editor.tabSize" = 2;
+        "sonarlint.ls.javaHome" = "${pkgs.jdk}";
       };
     };
 
