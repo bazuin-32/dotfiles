@@ -15,5 +15,6 @@ foot/
 git/
 gtk-*/
 mako/
+mimeapps.list
 pulse/
 systemd/

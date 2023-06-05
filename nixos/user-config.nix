@@ -18,7 +18,6 @@
     programs.home-manager.enable = true;
 
     home.packages = with pkgs; [
-      thunderbird
       onlyoffice-bin
       mpv
       neofetch
@@ -225,8 +224,17 @@
       enable = true;
     };
 
+
+
     gtk.enable = true;
     gtk.theme.name = "Adwaita-dark"; # TODO: use a gruvbox theme here
+
+    programs.thunderbird = {
+      enable = true;
+      profiles.default = {
+        isDefault = true;
+      };
+    };
 
     programs.firefox = {
       enable = true;
