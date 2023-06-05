@@ -376,6 +376,8 @@
         ignore-timeout=1
       '';
     };
+
+    services.syncthing.enable = true;
   };
 
   environment.variables = {

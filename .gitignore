@@ -17,4 +17,5 @@ gtk-*/
 mako/
 mimeapps.list
 pulse/
+syncthing/
 systemd/
