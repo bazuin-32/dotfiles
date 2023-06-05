@@ -29,6 +29,7 @@
       imagemagick
       rofi-wayland
       wl-clipboard
+      cantarell-fonts
       meslo-lgs-nf
       nerdfonts
       jdk # required for sonarlint vscode extension
@@ -226,8 +227,15 @@
 
 
 
-    gtk.enable = true;
-    gtk.theme.name = "Adwaita-dark"; # TODO: use a gruvbox theme here
+    gtk = {
+      enable = true;
+      font = {
+        name = "Cantarell";
+        size = 12;
+      };
+      theme.name = "Adwaita-dark";
+      iconTheme.name = "Adwaita-dark";
+    };
 
     programs.thunderbird = {
       enable = true;
