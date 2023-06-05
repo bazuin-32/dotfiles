@@ -25,6 +25,7 @@
       eww-wayland
       swaybg
       swaylock-effects
+      swayidle
       grim
       slurp
       imagemagick
