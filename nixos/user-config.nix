@@ -34,6 +34,7 @@
       nerdfonts
       jdk # required for sonarlint vscode extension
       socat
+      xplr
     ];
 
     fonts.fontconfig.enable = true;
