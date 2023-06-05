@@ -89,6 +89,7 @@
     fzf
     pulseaudio # only to provide `pactl`, even though pipewire is used as the real backend
     sof-firmware
+    (lib.hiPrio pkgs.procps) # needed to be able to do `uptime -p`, coreutils uptime doesnt have the `-p` flag
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

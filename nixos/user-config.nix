@@ -31,7 +31,9 @@
       rofi-wayland
       wl-clipboard
       meslo-lgs-nf
+      nerdfonts
       jdk # required for sonarlint vscode extension
+      socat
     ];
 
     fonts.fontconfig.enable = true;

@@ -1,4 +1,6 @@
-(defpoll mic_volume :interval "0.5s"
+(defpoll mic_volume
+  :interval "0.5s"
+  :initial 0
   `scripts/mic.sh`)
 
 (defwidget media_stats []
