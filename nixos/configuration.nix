@@ -58,7 +58,15 @@
 
   services.xserver = {
     enable = true;
-    displayManager.lightdm.enable = true;
+
+    displayManager.lightdm = {
+      enable = true;
+      greeters.gtk = {
+        enable = true;
+        theme.name = "Adwaita-dark";
+        iconTheme.name = "Adwaita-dark";
+      };
+    };
   };
 
   # Enable CUPS to print documents.

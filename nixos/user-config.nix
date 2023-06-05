@@ -329,6 +329,8 @@
     services.gpg-agent = {
       enable = true;
       enableSshSupport = true;
+      enableScDaemon = false;
+      pinentryFlavor = "curses";
     };
 
     services.mako = {
