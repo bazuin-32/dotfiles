@@ -337,7 +337,6 @@
       enable = true;
       enableSshSupport = true;
       enableScDaemon = false;
-      pinentryFlavor = "curses";
     };
 
     services.mako = {
