@@ -168,9 +168,7 @@
     programs.foot = {
       enable = true;
       settings = {
-        main = {
-          font = "MesloLGS NF:size=7";
-        };
+        # `main.font` set in device-specifc config files
         cursor = {
           style = "beam";
           blink = true;
