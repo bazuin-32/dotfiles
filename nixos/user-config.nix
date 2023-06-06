@@ -321,6 +321,8 @@
         "audioCues.taskFailed" = true;
         "audioCues.terminalCommandFailed" = true;
 
+        "workbench.colorTheme" = "Gruvbox Material Dark";
+
         "git.autofetch" = true;
 
         "cmake.configureOnOpen" = true;
