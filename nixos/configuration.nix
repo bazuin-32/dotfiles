@@ -93,6 +93,7 @@
     wget
     gcc
     clang
+    clang-tools
     cmake
     gnumake
     ninja
@@ -105,6 +106,9 @@
     sof-firmware
     (lib.hiPrio pkgs.procps) # needed to be able to do `uptime -p`, coreutils uptime doesnt have the `-p` flag
     cifs-utils
+
+    # for windwatcher development. TODO: use dedicated windwatcher nix setup
+    opencv
   ];
 
   fileSystems."/net/ameen" = {
