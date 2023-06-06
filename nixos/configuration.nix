@@ -5,12 +5,10 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-
-      ./user-config.nix
-    ];
+  imports = [
+    # hardware-configuration.nix is handled by the flake, so different versions can be used for different devices
+    ./user-config.nix
+  ];
 
   nixpkgs.config = {
     allowUnfree = true;
