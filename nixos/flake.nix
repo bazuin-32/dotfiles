@@ -17,8 +17,7 @@
         system = "x86_64-linux";
 
         modules = [
-          (./. + "/${device}/hardware-configuration.nix")
-          (./. + "/${device}/hostname.nix")
+          (./. + "/${device}/configuration.nix")
           ./configuration.nix
 
           home-manager.nixosModules.home-manager
@@ -29,6 +28,7 @@
           hyprland.nixosModules.default
           {
             programs.hyprland.enable = true;
+            programs.hyprland.nvidiaPatches = (if device == "desktop" then true else false);
           }
         ];
       };
@@ -38,7 +38,10 @@
 
         modules = [
           hyprland.homeManagerModules.default
-          {wayland.windowManager.hyprland.enable = true;}
+          {
+            wayland.windowManager.hyprland.enable = true;
+            wayland.windowManager.hyprland.nvidiaPatches = (if device == "desktop" then true else false);
+          }
         ];
       };
     };
