@@ -37,6 +37,7 @@
       jdk # required for sonarlint vscode extension
       socat
       xplr
+      nix-index
     ];
 
     fonts.fontconfig.enable = true;
