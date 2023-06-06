@@ -42,7 +42,13 @@
         ];
       };
     };
+
+    laptopConfig = mkSystemConfig "laptop";
+    desktopConfig = mkSystemConfig "desktop";
+
+    nixosConfigurations = laptopConfig.nixosConfigurations // desktopConfig.nixosConfigurations;
+    homeConfigurations = laptopConfig.homeConfigurations // desktopConfig.homeConfigurations;
   in {
-    inherit (mkSystemConfig "laptop") nixosConfigurations homeConfigurations;
+    inherit nixosConfigurations homeConfigurations;
   };
 }
