@@ -12,6 +12,7 @@ dconf/
 environment.d/
 fontconfig/
 foot/
+gammastep/
 git/
 gtk-*/
 mako/

@@ -383,6 +383,18 @@
     };
 
     services.syncthing.enable = true;
+
+    services.gammastep = {
+      enable = true;
+      provider = "manual";
+      latitude = 39.59;
+      longitude = -104.68;
+      temperature.day = 6500;
+
+      settings.general = {
+        adjustment-method = "wayland";
+      };
+    };
   };
 
   environment.variables = {
