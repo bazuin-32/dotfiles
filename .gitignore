@@ -4,7 +4,7 @@ nvim/plugin/
 # don't commit device-specific hyprland configs
 hypr/vfr.conf
 
-# managed by home-manager
+# managed by home-manager or just random things I don't want to track
 bat/
 btop/
 Code/
@@ -17,6 +17,8 @@ git/
 gtk-*/
 mako/
 mimeapps.list
+onlyoffice/
 pulse/
+QtProject.conf
 syncthing/
 systemd/
