@@ -18,6 +18,7 @@
 
         modules = [
           (./. + "/${device}/hardware-configuration.nix")
+          (./. + "/${device}/hostname.nix")
           ./configuration.nix
 
           home-manager.nixosModules.home-manager

@@ -39,7 +39,6 @@
   # boot.loader.systemd-boot.editor = false; # disable editing of kernel cmdline, to prevent root access
   boot.loader.systemd-boot.memtest86.enable = true;
 
-  networking.hostName = "ameen-nixos-laptop"; # Define your hostname.
   # Pick only one of the below networking options.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
