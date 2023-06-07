@@ -38,6 +38,7 @@
       socat
       xplr
       nix-index
+      unrar
     ];
 
     fonts.fontconfig.enable = true;
