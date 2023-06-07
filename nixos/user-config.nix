@@ -40,6 +40,7 @@
       nix-index
       unrar
       file
+      fd
     ];
 
     fonts.fontconfig.enable = true;
