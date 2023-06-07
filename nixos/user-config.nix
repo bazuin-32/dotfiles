@@ -39,6 +39,7 @@
       xplr
       nix-index
       unrar
+      file
     ];
 
     fonts.fontconfig.enable = true;
