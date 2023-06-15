@@ -401,6 +401,21 @@
       };
     };
 
+    xdg.desktopEntries.discord = let
+      ffd = pkgs.fetchFromGitHub {
+        owner = "bazuin-32";
+        repo = "ff-discord-launcher";
+        rev = "5bd0c97500883a8fc6a695385843849ce422e5a6";
+        hash = "sha256-vz+CNylgGebq3FZPHsI/FLfplsaEyiZdPS0rKWR86v0=";
+      };
+    in {
+      name = "Discord";
+      genericName = "Internet Messenger";
+      categories = [ "Network" "InstantMessaging" ];
+      exec = "${ffd}/discord.sh %U";
+      terminal = false;
+    };
+
     # make a symlink that can be pointed to from `/lib` so prebuilt binaries can work
     home.file.".local/lib/ld-linux-x86-64.so.2".source = config.lib.file.mkOutOfStoreSymlink "${pkgs.glibc}/lib/ld-linux-x86-64.so.2";
     home.file.".local/lib/libuuid.so.1".source = config.lib.file.mkOutOfStoreSymlink "${pkgs.util-linux.lib}/lib/libuuid.so.1";
