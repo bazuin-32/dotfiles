@@ -38,6 +38,8 @@
       socat
       xplr
       nix-index
+      zip
+      unzip
       unrar
       file
       fd
