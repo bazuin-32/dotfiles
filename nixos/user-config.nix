@@ -43,6 +43,8 @@
       unrar
       file
       fd
+      nomacs
+      wineWowPackages.wayland
     ];
 
     fonts.fontconfig.enable = true;
