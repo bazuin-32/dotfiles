@@ -45,6 +45,7 @@
       fd
       nomacs
       wineWowPackages.wayland
+      yt-dlp
     ];
 
     fonts.fontconfig.enable = true;
