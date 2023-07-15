@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 font="MesloLGS-NF-Regular"
-pointsize=36
-padding=120
+pointsize=24
+padding=60
 color='#ebdbb8'
 
 # get the current splash; escape single quotes

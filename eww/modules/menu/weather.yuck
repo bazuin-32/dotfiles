@@ -1,5 +1,6 @@
 (defpoll hourly_weather_data
   :interval "1h"
+  :initial "[]"
   `~/.config/eww/scripts/weather.sh`)
 
 (defvar weather_icons '') ; will be loaded by start.sh from external file

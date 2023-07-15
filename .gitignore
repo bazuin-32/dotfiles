@@ -4,8 +4,22 @@ nvim/plugin/
 # don't commit device-specific hyprland configs
 hypr/vfr.conf
 
-# same for device-specific foot configs
-foot/font.ini
-
-# btop puts its log in ~/.config now...
-btop/btop.log
+# managed by home-manager or just random things I don't want to track
+bat/
+btop/
+Code/
+dconf/
+environment.d/
+fontconfig/
+foot/
+gammastep/
+git/
+gtk-*/
+mako/
+mimeapps.list
+nomacs/
+onlyoffice/
+pulse/
+QtProject.conf
+syncthing/
+systemd/

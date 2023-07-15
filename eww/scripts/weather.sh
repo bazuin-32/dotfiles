@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # get hourly weather from the NWS
 weather_url='https://api.weather.gov/gridpoints/BOU/72,53/forecast/hourly'

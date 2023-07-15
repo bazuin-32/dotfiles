@@ -3,6 +3,7 @@
   `uptime -p | sed 's/up //'`)
 (defpoll uptime_hours
   :interval "1h"
+  :initial 1
   `cat /proc/uptime | awk '{ print int($1 / 3600) }'`)
 
 (defwidget uptime []

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 echo_initial() {
     hyprctl workspaces -j | jq -rc '[ .[].id | select( . != -99 ) ] | sort_by( . )'

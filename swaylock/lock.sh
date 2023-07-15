@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # get the current desktop screen and blur it
 monitors="$(hyprctl monitors -j | jq -r '.[] | .name' | tr '\n' ' ')"
