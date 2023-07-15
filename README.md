@@ -1,2 +1,2 @@
 # dotfiles
-Dotfiles for my Arch Linux WM, compositor, bar, etc. setup.
+Dotfiles for my NixOS installation, on both laptop and desktop.
