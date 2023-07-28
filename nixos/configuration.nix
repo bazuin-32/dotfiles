@@ -126,6 +126,14 @@
     in [ "${automount_opts},credentials=/etc/.cifscred-ameen,uid=1000,gid=100" ];
   };
 
+  # Make SysRq actually useful
+  # This enables all but debugging dumps from the bitmask categories listed on https://www.kernel.org/doc/html/latest/admin-guide/sysrq.html
+  # aka `0x2 | 0x4 | 0x10 | 0x20 | 0x40 | 0x80 | 0x100`
+  # aka `0x1f6`
+  boot.kernel.sysctl = {
+    "kernel.sysrq" = 502;
+  };
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
