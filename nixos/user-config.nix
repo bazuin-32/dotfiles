@@ -1,9 +1,14 @@
-{ config, pkgs, ... }:
+{ config, inputs, pkgs, ... }:
 
 {
   programs.dconf.enable = true; # requred for gtk themes
   programs.zsh.enable = true; # required to be able to set user's default shell, even though zsh is configured in home-manager
   security.pam.services.swaylock = {}; # without this it is impossible to unlock
+
+  programs.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+  };
 
   users.users.ameen = {
     isNormalUser = true;
