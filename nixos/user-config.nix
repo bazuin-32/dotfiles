@@ -115,10 +115,12 @@
           active_opacity = 0.90;
           inactive_opacity = 0.80;
 
-          blur = true;
-          blur_size = 4;
-          blur_passes = 1;
-          blur_new_optimizations = true;
+          blur = {
+            enabled = true;
+            size = 4;
+            passes = 1;
+            new_optimizations = true;
+          };
 
           dim_inactive = true;
           dim_strength = 0.2;
