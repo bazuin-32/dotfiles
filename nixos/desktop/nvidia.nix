@@ -9,6 +9,7 @@
 
   # patches for wlroots
   programs.hyprland.nvidiaPatches = true;
+  home-manager.users.ameen.wayland.windowManager.hyprland.enableNvidiaPatches = true;
 
   environment.variables = {
     LIBSEAT_BACKEND = "logind";

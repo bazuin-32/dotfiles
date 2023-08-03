@@ -36,7 +36,6 @@
           hyprland.homeManagerModules.default
           {
             wayland.windowManager.hyprland.enable = true;
-            wayland.windowManager.hyprland.nvidiaPatches = (if device == "desktop" then true else false);
           }
         ];
       };
