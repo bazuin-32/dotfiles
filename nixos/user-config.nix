@@ -1,9 +1,14 @@
-{ config, pkgs, ... }:
+{ config, inputs, pkgs, ... }:
 
 {
   programs.dconf.enable = true; # requred for gtk themes
   programs.zsh.enable = true; # required to be able to set user's default shell, even though zsh is configured in home-manager
   security.pam.services.swaylock = {}; # without this it is impossible to unlock
+
+  programs.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+  };
 
   users.users.ameen = {
     isNormalUser = true;
@@ -49,6 +54,196 @@
     ];
 
     fonts.fontconfig.enable = true;
+
+    wayland.windowManager.hyprland = {
+      enable = true;  
+      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+
+      settings = let
+        mod = "SUPER";
+        term = "foot";
+        launcher = "~/.config/rofi/bin/launcher_text";
+        lock_cmd = "~/.config/swaylock/lock.sh";
+        powermenu = "~/.config/rofi/bin/powermenu";
+      in {
+        monitor = [
+          "eDP-1, 1920x1080@60, 0x0, 1"
+          "HDMI-A-2, 1920x1080@60, 0x0, 1"
+          "HDMI-A-1, 1920x1080@60, 1920x0, 1"
+        ];
+        workspace = [
+          # starting workspaces for each monitor
+          "eDP-1, 1"
+          "HDMI-A-2, 1"
+          "HDMI-A-1, 6"
+
+          # force workspaces to always be on specific monitors
+          "1, monitor:HDMI-A-2"
+          "2, monitor:HDMI-A-2"
+          "3, monitor:HDMI-A-2"
+          "4, monitor:HDMI-A-2"
+          "5, monitor:HDMI-A-2"
+          "6, monitor:HDMI-A-1"
+          "7, monitor:HDMI-A-1"
+          "8, monitor:HDMI-A-1"
+          "9, monitor:HDMI-A-1"
+          "10, monitor:HDMI-A-1"
+        ];
+
+        general = {
+          sensitivity = 2;
+
+          gaps_in = 5;
+          gaps_out = 10;
+          border_size = 2;
+          "col.active_border" = "rgba(d79921cc)";
+          "col.inactive_border" = "rgba(ebdbb888)";
+        };
+        
+        input = {
+          kb_options = "compose:ralt";
+          follow_mouse = 1;
+          numlock_by_default = 1;
+        };
+
+        dwindle.pseudotile = false;
+
+        decoration = {
+          rounding = 6; # corner radius
+          multisample_edges = true; # antialiasing
+
+          active_opacity = 0.90;
+          inactive_opacity = 0.80;
+
+          blur = true;
+          blur_size = 4;
+          blur_passes = 1;
+          blur_new_optimizations = true;
+
+          dim_inactive = true;
+          dim_strength = 0.2;
+        };
+
+        bezier = [
+          "mybez,           0.6, 0.5, 0.1, 1"
+          "inactive_dimmer, 0.3, 0.4, 0.6, 0.7"
+        ];
+
+        animations = {
+          enabled = true;
+
+          animation = [
+            "windows,     1, 6, mybez, popin 70%"
+            "border,      1, 7, mybez"
+            "fade,        1, 7, mybez"
+            "fadeDim,     1, 5, inactive_dimmer"
+            "workspaces,  1, 4, mybez"
+          ];
+        };
+
+        bind = [
+          "${mod},			Return,  exec,       ${term}"
+          "${mod},			Tab,     cyclenext"
+          "${mod},			Q,       killactive,"
+          "${mod},			SPACE,   exec,       ${launcher}"
+          "${mod} CTRL, L,       exec,       ${lock_cmd}"
+          "${mod},      P,       exec,       ${powermenu}"
+          "${mod},      S,       togglespecialworkspace"
+
+          "${mod}, H, movewindow, L"
+          "${mod}, J, movewindow, D"
+          "${mod}, K, movewindow, U"
+          "${mod}, L, movewindow, R"
+        ] ++ (builtins.genList ( # switch to worskpace
+          x: let
+            ws = let
+              c = (x + 1) / 10;
+            in
+              builtins.toString (x + 1 - (c * 10));
+          in "${mod}, ${ws}, workspace, ${toString (x + 1)}"
+        ) 10) ++ (builtins.genList ( # move current window to workspace
+          x: let
+            ws = let
+              c = (x + 1) / 10;
+            in
+              builtins.toString (x + 1 - (c * 10));
+          in "ALT, ${ws}, movetoworkspace, ${toString (x + 1)}"
+        ) 10) ++ [
+          "ALT, s, movetoworkspace, special"
+
+          "${mod}, t, togglefloating"
+
+          ", xf86audioraisevolume, exec, pactl set-sink-volume $(cat ~/.sounddev) +5%"
+          ", xf86audiolowervolume, exec, pactl set-sink-volume $(cat ~/.sounddev) -5%"
+          ", xf86audiomute,        exec, pactl set-sink-mute $(cat ~/.sounddev) toggle"
+
+          ", Print, exec, ~/.config/bin/screenshot.sh"
+
+          "${mod}, F, fullscreen, 0"
+
+          # laptop display brightness
+          ", xf86monbrightnessup,   exec, brightnessctl set 5%+"
+          ", xf86monbrightnessdown, exec, brightnessctl set 5%-"
+
+          # desktop keyboard rgb profiles
+          "CTRLSHIFTALT, 1, exec, rgb_keyboard -a 1"
+          "CTRLSHIFTALT, 2, exec, rgb_keyboard -a 2"
+          "CTRLSHIFTALT, 3, exec, rgb_keyboard -a 3"
+        ];
+
+        windowrule = [
+          "float, Rofi"
+
+          "noblur,      BeamNG.*"
+          "opaque,      BeamNG.*"
+          "fullscreen,  BeamNG.*"
+
+          "float,         title:Open Folder"
+          "size 60% 80%,  title:Open Folder"
+          "center,        title:Open Folder"
+          "float,         title:Open File"
+          "size 60% 80%,  title:Open File"
+          "center,        title:Open File"
+        ];
+
+        exec-once = [
+          # prevent delay of gtk app startup
+          "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+          "~/.config/bin/wallpaper.sh ~/.local/share/wallpapers/acura-cl-silhouette.jpg"
+          "gammastep -v -l 39.59:-104.68"
+          "~/.config/eww/start.sh"
+          "swayidle -w timeout 60 'makoctl mode -s away' resume 'makoctl mode -r away' timeout 600 '~/.config/swaylock/lock-idle.sh &' timeout 900 'hyprctl dispatch dpms off'"
+
+          # start terminal in special workspace, then store it
+          # away for later
+          "hyprctl keyword windowrule 'workspace special silent,foot' && hyprctl dispatch exec $term && sleep 0.1 && hyprctl dispatch togglespecialworkspace x && sleep 1 && hyprctl dispatch togglespecialworkspace x && hyprctl keyword windowrule 'workspace unset,foot'"
+
+          "sleep 1 && hyprctl dispatch workspace 1 && thunderbird & disown"
+        ];
+
+        misc.vfr = true;
+        misc.mouse_move_enables_dpms = true;
+
+        #debug.overlay = true;
+      };
+
+      extraConfig = ''
+        bind = SUPER, R, submap, resize
+        submap = resize
+
+        binde = ,			 H, resizeactive, -40 0
+        binde = ,			 J, resizeactive, 0 40
+        binde = ,			 K, resizeactive, 0 -40
+        binde = ,			 L, resizeactive, 40 0
+        binde = SHIFT, H, moveactive, -40 0
+        binde = SHIFT, J, moveactive, 0 40
+        binde = SHIFT, K, moveactive, 0 -40
+        binde = SHIFT, L, moveactive, 40 0
+
+        bind = , escape, submap, reset
+        submap = reset
+      '';
+    };
     
     programs.zsh = {
       enable = true;

@@ -11,12 +11,13 @@
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, home-manager, hyprland, ... }:
+  outputs = { nixpkgs, home-manager, hyprland, ... } @ inputs:
   let
     mkSystemConfig = device: {
       nixosConfigurations."ameen-nixos-${device}" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
 
+        specialArgs = { inherit inputs; };
         modules = [
           (./. + "/${device}/configuration.nix")
           ./configuration.nix
@@ -24,12 +25,6 @@
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
-          }
-
-          hyprland.nixosModules.default
-          {
-            programs.hyprland.enable = true;
-            programs.hyprland.nvidiaPatches = (if device == "desktop" then true else false);
           }
         ];
       };
@@ -41,7 +36,6 @@
           hyprland.homeManagerModules.default
           {
             wayland.windowManager.hyprland.enable = true;
-            wayland.windowManager.hyprland.nvidiaPatches = (if device == "desktop" then true else false);
           }
         ];
       };
