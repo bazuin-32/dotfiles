@@ -223,8 +223,17 @@
           "sleep 1 && hyprctl dispatch workspace 1 && thunderbird & disown"
         ];
 
-        misc.vfr = true;
-        misc.mouse_move_enables_dpms = true;
+        misc = {
+          vfr = true;
+
+          mouse_move_enables_dpms = true;
+          key_press_enables_dpms = true;
+
+          # an attempt to reduce memory and cpu usage (and therefore battery usage), even if only a little bit
+          disable_hyprland_logo = true;
+          disable_splash_rendering = true;
+          disable_autoreload = true;
+        };
 
         #debug.overlay = true;
       };
