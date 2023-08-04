@@ -360,6 +360,8 @@
         grep = "grep --color=auto";
         hgrep = "history | grep";
         ssh = "TERM=xterm-256color ssh";
+
+        update = "sudo nix-channel --update && nix flake update && sudo nixos-rebuild switch";
       };
     };
     
