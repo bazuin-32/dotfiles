@@ -218,7 +218,7 @@
 
           # start terminal in special workspace, then store it
           # away for later
-          "hyprctl keyword windowrule 'workspace special silent,foot' && hyprctl dispatch exec $term && sleep 0.1 && hyprctl dispatch togglespecialworkspace x && sleep 1 && hyprctl dispatch togglespecialworkspace x && hyprctl keyword windowrule 'workspace unset,foot'"
+          "hyprctl keyword windowrule 'workspace special silent,foot' && hyprctl dispatch exec ${term} && sleep 0.1 && hyprctl dispatch togglespecialworkspace x && sleep 1 && hyprctl dispatch togglespecialworkspace x && hyprctl keyword windowrule 'workspace unset,foot'"
 
           "sleep 1 && hyprctl dispatch workspace 1 && thunderbird & disown"
         ];
