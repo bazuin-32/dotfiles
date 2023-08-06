@@ -1,8 +1,11 @@
 (defpoll show_battery :initial false :interval "999999h"
   `[[ -e /sys/class/power_supply/BAT0 ]] && echo true || echo false`)
+(defpoll time_remaining :interval "1m"
+  `scripts/battery_remaining.sh`)
 
 (defwidget battery []
   (box :visible show_battery
+       :tooltip time_remaining
        :class { EWW_BATTERY == "" ? "" : EWW_BATTERY['BAT0'].status == "Charging" ? "charging_battery" : EWW_BATTERY['BAT0'].capacity < 20 ? "low_battery" : "" }
     (label :class "icon"
            :text { EWW_BATTERY == ""
