@@ -51,6 +51,10 @@
       nomacs
       wineWowPackages.wayland
       yt-dlp
+      bc
+      calc
+      acpi
+      powertop
     ];
 
     fonts.fontconfig.enable = true;
