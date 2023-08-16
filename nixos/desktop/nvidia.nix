@@ -8,7 +8,7 @@
   boot.kernelParams = [ "nvidia_drm.modeset=1" ];
 
   # patches for wlroots
-  programs.hyprland.nvidiaPatches = true;
+  programs.hyprland.enableNvidiaPatches = true;
   home-manager.users.ameen.wayland.windowManager.hyprland.enableNvidiaPatches = true;
 
   environment.variables = {
