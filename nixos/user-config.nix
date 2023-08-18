@@ -55,6 +55,8 @@
       calc
       acpi
       powertop
+      nmap
+      dig
     ];
 
     fonts.fontconfig.enable = true;
