@@ -367,6 +367,8 @@
         grep = "grep --color=auto";
         hgrep = "history | grep";
         ssh = "TERM=xterm-256color ssh";
+
+        nix-gc-full = "sudo nix-collect-garbage --delete-older-than 7d && nix-collect-garbage --delete-older-than 7d && sudo nixos-rebuild boot";
       };
     };
     
