@@ -367,8 +367,6 @@
         grep = "grep --color=auto";
         hgrep = "history | grep";
         ssh = "TERM=xterm-256color ssh";
-
-        update = "pushd $HOME/.config/nixos &>/dev/null && sudo nix-channel --update && nix flake update && sudo nixos-rebuild switch && popd &>/dev/null";
       };
     };
     
