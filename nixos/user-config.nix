@@ -57,6 +57,7 @@
       powertop
       nmap
       dig
+      nvd
     ];
 
     fonts.fontconfig.enable = true;
