@@ -58,6 +58,7 @@
       nmap
       dig
       nvd
+      traceroute
     ];
 
     fonts.fontconfig.enable = true;
