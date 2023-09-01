@@ -1,5 +1,6 @@
 function update() {
   old_dir="$(pwd)"
+  cd "${HOME}/.config/nixos"
 
   sudo nix-channel --update
   nix flake update
