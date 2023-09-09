@@ -1,13 +1,3 @@
-[submodule "nvim/pack/github/start/copilot.vim"]
-	path = nvim/pack/github/start/copilot.vim
-	url = https://github.com/github/copilot.vim.git
-[submodule "nvim/pack/coc/start/coc.nvim"]
-	path = nvim/pack/coc/start/coc.nvim
-	url = https://github.com/neoclide/coc.nvim.git
-	branch = release
-[submodule "nvim"]
-	path = nvim
-	url = https://github.com/NvChad/NvChad
 [submodule "nvim/nvchad"]
 	path = nvim/nvchad
-	url = https://github.com/NvChad/NvChad
+	url = https://github.com/nvchad/nvchad

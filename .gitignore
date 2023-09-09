@@ -1,5 +1,8 @@
 __pycache__/
+
+# nvchad stuff
 nvim/plugin/
+nvim/lazy-lock.json
 
 # don't commit device-specific hyprland configs
 hypr/vfr.conf
