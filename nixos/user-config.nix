@@ -553,6 +553,9 @@
         "cmake.configureOnOpen" = true;
 
         "sonarlint.ls.javaHome" = "${pkgs.jdk}";
+
+        # for vscode-neovim
+        "extensions.experimental.affinity" = { "asvetliakov.vscode-neovim" = 1; };
       };
     };
 
