@@ -118,7 +118,6 @@
 
         decoration = {
           rounding = 6; # corner radius
-          multisample_edges = true; # antialiasing
 
           active_opacity = 0.90;
           inactive_opacity = 0.80;
