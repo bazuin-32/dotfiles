@@ -59,6 +59,7 @@
       dig
       nvd
       traceroute
+      pavucontrol
     ];
 
     fonts.fontconfig.enable = true;
