@@ -23,37 +23,6 @@ xplr.config.general.table.row.cols[5] = {
 
 -- convert xplr Permissions to octal
 xplr.fn.custom.octal_perms = function(perms)
-	local octal = 0
-
-	if perms.user_read then
-		octal = octal + 400
-	end
-	if perms.user_write then
-		octal = octal + 200
-	end
-	if perms.user_execute then
-		octal = octal + 100
-	end
-
-	if perms.group_read then
-		octal = octal + 40
-	end
-	if perms.group_write then
-		octal = octal + 20
-	end
-	if perms.group_execute then
-		octal = octal + 10
-	end
-
-	if perms.other_read then
-		octal = octal + 4
-	end
-	if perms.other_write then
-		octal = octal + 2
-	end
-	if perms.other_execute then
-		octal = octal + 1
-	end
-
-	return octal
+  local arr = xplr.util.permissions_octal(perms)
+  return arr[1] .. arr[2] .. arr[3] .. arr[4]
 end
