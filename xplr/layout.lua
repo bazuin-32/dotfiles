@@ -31,7 +31,7 @@ xplr.fn.custom.render_stats = function(ctx)
 
 	local node = ctx.app.focused_node
 
-	return {
+	local result = {
     CustomTable = {
       ui = { title = { format = node.relative_path } },
       widths = {
@@ -54,4 +54,8 @@ xplr.fn.custom.render_stats = function(ctx)
       }
     }
   }
+
+  xplr.fn.custom.update_img_preview(ctx)
+
+  return result
 end
