@@ -60,6 +60,7 @@
       nvd
       traceroute
       pavucontrol
+      exiftool
     ];
 
     fonts.fontconfig.enable = true;
