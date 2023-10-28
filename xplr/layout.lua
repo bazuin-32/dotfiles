@@ -30,6 +30,9 @@ xplr.fn.custom.render_stats = function(ctx)
 	end
 
 	local node = ctx.app.focused_node
+  if not node then
+    node = xplr.util.node(ctx.app.pwd)
+  end
 
 	local result = {
     CustomTable = {

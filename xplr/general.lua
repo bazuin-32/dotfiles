@@ -57,6 +57,11 @@ xplr.fn.custom.update_img_preview = function(ctx)
   end
 
   local node = ctx.app.focused_node
+  if not node then
+    -- we are in an empty directory, so no image to render
+    return
+  end
+
   if node.mime_essence:find("image") then
     local coord_str = string.format("\\033[%i;%iH", img_coords[1], img_coords[2]) -- escape sequence to move cursor to position, see https://tldp.org/HOWTO/Bash-Prompt-HOWTO/x361.html)
     local sixel_cmd = string.format("convert %s -geometry 200x150 sixel:- 2>/dev/null", xplr.util.shell_escape(node.absolute_path))
