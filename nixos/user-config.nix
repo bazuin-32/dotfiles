@@ -64,8 +64,8 @@
       ncdu
       sysstat
       python3
-      wf-recorder
       ffmpeg
+      obs-studio
     ];
 
     fonts.fontconfig.enable = true;
