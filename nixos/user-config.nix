@@ -64,6 +64,7 @@
       ncdu
       sysstat
       python3
+      wf-recorder
     ];
 
     fonts.fontconfig.enable = true;
