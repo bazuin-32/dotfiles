@@ -161,10 +161,10 @@
           "${mod},      P,       exec,       ${powermenu}"
           "${mod},      S,       togglespecialworkspace"
 
-          "${mod}, H, movewindow, L"
-          "${mod}, J, movewindow, D"
-          "${mod}, K, movewindow, U"
-          "${mod}, L, movewindow, R"
+          "${mod}, H, movewindow, l"
+          "${mod}, J, movewindow, d"
+          "${mod}, K, movewindow, u"
+          "${mod}, L, movewindow, r"
         ] ++ (builtins.genList ( # switch to worskpace
           x: let
             ws = let
