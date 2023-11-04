@@ -65,6 +65,7 @@
       sysstat
       python3
       wf-recorder
+      ffmpeg
     ];
 
     fonts.fontconfig.enable = true;
