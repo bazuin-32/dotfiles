@@ -25,7 +25,6 @@
 
     home.packages = with pkgs; [
       onlyoffice-bin
-      mpv
       neofetch
       eww-wayland
       swaybg
@@ -456,6 +455,13 @@
 
     programs.tealdeer = {
       enable = true;
+    };
+
+    programs.mpv = {
+      enable = true;
+      config = {
+        sub-font-size = 30;
+      };
     };
 
 
