@@ -61,6 +61,9 @@
       traceroute
       pavucontrol
       exiftool
+      ncdu
+      sysstat
+      python3
     ];
 
     fonts.fontconfig.enable = true;
