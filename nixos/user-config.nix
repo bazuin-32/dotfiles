@@ -45,6 +45,7 @@
       zip
       unzip
       p7zip
+      peazip # for browsing archives without extracting them
       unrar
       file
       fd
