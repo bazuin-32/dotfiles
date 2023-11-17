@@ -67,6 +67,7 @@
       python3
       ffmpeg
       obs-studio
+      googleearth-pro
     ];
 
     fonts.fontconfig.enable = true;
