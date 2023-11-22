@@ -222,6 +222,8 @@
           "float,         title:Open File"
           "size 60% 80%,  title:Open File"
           "center,        title:Open File"
+
+          "tile, DesktopEditors"
         ];
 
         exec-once = [
