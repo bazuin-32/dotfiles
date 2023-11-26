@@ -7,10 +7,6 @@
   hardware.nvidia.modesetting.enable = true;
   boot.kernelParams = [ "nvidia_drm.modeset=1" ];
 
-  # patches for wlroots
-  programs.hyprland.enableNvidiaPatches = true;
-  home-manager.users.ameen.wayland.windowManager.hyprland.enableNvidiaPatches = true;
-
   environment.variables = {
     LIBSEAT_BACKEND = "logind";
     LIBVA_DRIVER_NAME = "nvidia";
