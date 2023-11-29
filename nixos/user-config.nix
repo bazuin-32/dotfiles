@@ -65,6 +65,7 @@
       ncdu
       sysstat
       python3
+      python311Packages.ipython
       ffmpeg
       obs-studio
       googleearth-pro
