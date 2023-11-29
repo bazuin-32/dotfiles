@@ -106,6 +106,10 @@
           "8, monitor:HDMI-A-1"
           "9, monitor:HDMI-A-1"
           "10, monitor:HDMI-A-1"
+
+          # special workspace
+          "special, on-created-empty:${term}" # this doesn't seem to work but leaving it here for reference
+          "special, gapsout:100"
         ];
 
         general = {
