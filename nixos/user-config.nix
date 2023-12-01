@@ -40,6 +40,7 @@
       nerdfonts
       jdk # required for sonarlint vscode extension
       socat
+      pipe-rename # required for batch rename in xplr
       xplr
       nix-index
       zip
