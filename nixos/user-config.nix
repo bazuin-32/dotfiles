@@ -672,41 +672,6 @@
       exec = "${ffd}/discord.sh %U";
       terminal = false;
     };
-
-    # make a symlink that can be pointed to from `/lib` so prebuilt binaries can work
-    home.file.".local/lib/ld-linux-x86-64.so.2".source    = config.lib.file.mkOutOfStoreSymlink "${pkgs.glibc}/lib/ld-linux-x86-64.so.2";
-    home.file.".local/lib/libuuid.so.1".source            = config.lib.file.mkOutOfStoreSymlink "${pkgs.util-linux.lib}/lib/libuuid.so.1";
-    home.file.".local/lib/libX11.so.6".source             = config.lib.file.mkOutOfStoreSymlink "${pkgs.xorg.libX11}/lib/libX11.so.6";
-    home.file.".local/lib/libX11-xcb.so.1".source         = config.lib.file.mkOutOfStoreSymlink "${pkgs.xorg.libX11}/lib/libX11-xcb.so.1";
-    home.file.".local/lib/libXft.so.2".source             = config.lib.file.mkOutOfStoreSymlink "${pkgs.xorg.libXft}/lib/libXft.so.2";
-    home.file.".local/lib/libstdc++.so.6".source          = config.lib.file.mkOutOfStoreSymlink "${pkgs.gcc-unwrapped.lib}/lib/libstdc++.so.6";
-    home.file.".local/lib/libgobject-2.0.so.0".source     = config.lib.file.mkOutOfStoreSymlink "${pkgs.glib.out}/lib/libgobject-2.0.so.0";
-    home.file.".local/lib/libglib-2.0.so.0".source        = config.lib.file.mkOutOfStoreSymlink "${pkgs.glib.out}/lib/libglib-2.0.so.0";
-    home.file.".local/lib/libgio-2.0.so.0".source         = config.lib.file.mkOutOfStoreSymlink "${pkgs.glib.out}/lib/libgio-2.0.so.0";
-    home.file.".local/lib/libnss3.so".source              = config.lib.file.mkOutOfStoreSymlink "${pkgs.nss}/lib/libnss3.so";
-    home.file.".local/lib/libnssutil3.so".source          = config.lib.file.mkOutOfStoreSymlink "${pkgs.nss}/lib/libnssutil3.so";
-    home.file.".local/lib/libsmime3.so".source            = config.lib.file.mkOutOfStoreSymlink "${pkgs.nss}/lib/libsmime3.so";
-    home.file.".local/lib/libnspr4.so".source             = config.lib.file.mkOutOfStoreSymlink "${pkgs.nspr}/lib/libnspr4.so";
-    home.file.".local/lib/libXcomposite.so.1".source      = config.lib.file.mkOutOfStoreSymlink "${pkgs.xorg.libXcomposite}/lib/libXcomposite.so.1";
-    home.file.".local/lib/libXcursor.so.1".source         = config.lib.file.mkOutOfStoreSymlink "${pkgs.xorg.libXcursor}/lib/libXcursor.so.1";
-    home.file.".local/lib/libXdamage.so.1".source         = config.lib.file.mkOutOfStoreSymlink "${pkgs.xorg.libXdamage}/lib/libXdamage.so.1";
-    home.file.".local/lib/libXext.so.6".source            = config.lib.file.mkOutOfStoreSymlink "${pkgs.xorg.libXext}/lib/libXext.so.6";
-    home.file.".local/lib/libXfixes.so.3".source          = config.lib.file.mkOutOfStoreSymlink "${pkgs.xorg.libXfixes}/lib/libXfixes.so.3";
-    home.file.".local/lib/libXi.so.6".source              = config.lib.file.mkOutOfStoreSymlink "${pkgs.xorg.libXi}/lib/libXi.so.6";
-    home.file.".local/lib/libXrender.so.1".source         = config.lib.file.mkOutOfStoreSymlink "${pkgs.xorg.libXrender}/lib/libXrender.so.1";
-    home.file.".local/lib/libXtst.so.6".source            = config.lib.file.mkOutOfStoreSymlink "${pkgs.xorg.libXtst}/lib/libXtst.so.6";
-    home.file.".local/lib/libXss.so.1".source             = config.lib.file.mkOutOfStoreSymlink "${pkgs.xorg.libXScrnSaver}/lib/libXss.so.1";
-    home.file.".local/lib/libXrandr.so.2".source          = config.lib.file.mkOutOfStoreSymlink "${pkgs.xorg.libXrandr}/lib/libXrandr.so.2";
-    home.file.".local/lib/libexpat.so.1".source           = config.lib.file.mkOutOfStoreSymlink "${pkgs.expat}/lib/libexpat.so.1";
-    home.file.".local/lib/libdbus-1.so.3".source          = config.lib.file.mkOutOfStoreSymlink "${pkgs.dbus.lib}/lib/libdbus-1.so.3";
-    home.file.".local/lib/libasound.so.2".source          = config.lib.file.mkOutOfStoreSymlink "${pkgs.alsa-lib}/lib/libasound.so.2";
-    home.file.".local/lib/libpangocairo-1.0.so.0".source  = config.lib.file.mkOutOfStoreSymlink "${pkgs.pango.out}/lib/libpangocairo-1.0.so.0";
-    home.file.".local/lib/libpango-1.0.so.0".source       = config.lib.file.mkOutOfStoreSymlink "${pkgs.pango.out}/lib/libpango-1.0.so.0";
-    home.file.".local/lib/libatk-1.0.so.0".source         = config.lib.file.mkOutOfStoreSymlink "${pkgs.at-spi2-core}/lib/libatk-1.0.so.0";
-    home.file.".local/lib/libatk-bridge-2.0.so.0".source  = config.lib.file.mkOutOfStoreSymlink "${pkgs.at-spi2-core}/lib/libatk-bridge-2.0.so.0";
-    home.file.".local/lib/libatspi.so.0".source           = config.lib.file.mkOutOfStoreSymlink "${pkgs.at-spi2-core}/lib/libatspi.so.0";
-    home.file.".local/lib/libudev.so.1".source            = config.lib.file.mkOutOfStoreSymlink "${pkgs.systemdMinimal}/lib/libudev.so.1";
-    home.file.".local/lib/libvulkan.so.1".source          = config.lib.file.mkOutOfStoreSymlink "${pkgs.vulkan-loader}/lib/libvulkan.so.1";
   };
 
   environment.variables = {

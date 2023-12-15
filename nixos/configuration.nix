@@ -85,6 +85,35 @@
     pulse.enable = true;
   };
 
+  programs.nix-ld.enable = true;
+  environment.variables = {
+    NIX_LD_LIBRARY_PATH = with pkgs; lib.mkForce (lib.makeLibraryPath [
+      "/run/current-system/sw/share/nix-ld" # keep the default libs, so we only need to add extras here
+      util-linux
+      xorg.libX11
+      xorg.libXft
+      xorg.libXcomposite
+      xorg.libXcursor
+      xorg.libXdamage
+      xorg.libXext
+      xorg.libXfixes
+      xorg.libXi
+      xorg.libXrender
+      xorg.libXtst
+      xorg.libXScrnSaver
+      xorg.libXrandr
+      glib
+      nss
+      nspr
+      expat
+      dbus
+      alsa-lib
+      pango
+      at-spi2-core
+      vulkan-loader
+    ]);
+  };
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
