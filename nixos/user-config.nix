@@ -596,6 +596,7 @@
       enable = true;
       enableSshSupport = true;
       enableScDaemon = false;
+      pinentryFlavor = "gnome3";
     };
 
     services.mako = {
