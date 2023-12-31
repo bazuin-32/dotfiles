@@ -35,10 +35,10 @@ rofi_command="rofi -theme $dir/$theme"
 
 # Options
 shutdown=""
-reboot="勒"
+reboot=""
 lock=""
 suspend=""
-logout=""
+logout="󰍃"
 
 # Confirmation
 confirm_exit() {
