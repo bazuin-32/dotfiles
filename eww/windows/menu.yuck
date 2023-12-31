@@ -47,6 +47,7 @@
   :monitor 0
   :geometry (geometry :x "0"
                       :y "0"
+                      :width 2
                       :anchor "bottom right")
   :focusable false
   :exclusive false
@@ -56,6 +57,7 @@
   :monitor 1
   :geometry (geometry :x "0"
                       :y "0"
+                      :width 2
                       :anchor "bottom left")
   :focusable false
   (menu_widget1))

@@ -14,10 +14,10 @@ jq_cmd='.properties.periods | map(select( .number <= 13 ))
 weather_data=$(curl "${weather_url}" 2>/dev/null)
 error=$(echo "${weather_data}" | jq -rc '.status != null')
 
-if [[ "${error}" == "true" ]]; then
+if [[ "${error}" == "true" || "${error}" == "" ]]; then
   error_code=$(echo "${weather_data}" | jq -rc '.status')
   echo "[{ \"isDaytime\": true, \"shortForecast\": \"error\", \"hour\": \"${error_code}\", \"temperature\": \"Error\", \"temperatureUnit\": \"\", \"windSpeed\": \"\", \"windDirection\": \"\" }]"
-  exit 1
+  exit 0
 fi
 
 echo "${weather_data}" | jq -rc "${jq_cmd}"
