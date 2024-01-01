@@ -1,21 +1,28 @@
 { pkgs, ... }: {
   services.upower.enable = true;
 
-  # services.udev.extraRules = let
-  #   log_battery = pkgs.writeShellScript "log_battery.sh" ''
-  #     log_file='/var/log/battery.log'
-  #     last_time=$(tail -n 1 $log_file | cut -d ' ' -f 1)
-  #     current_time=$(date '+%s')
-  #     diff=$(( current_time - last_time ))
-  #
-  #     if [[ $diff -lt 5 ]]; then
-  #       exit
-  #     fi
-  #
-  #     echo "$current_time $(cat /sys/class/power_supply/BAT0/capacity)% $@" >> $log_file
-  #   '';
-  # in ''
-  #   SUBSYSTEM=="power_supply", ATTR{online}=="1", RUN+="${log_battery} charging"
-  #   SUBSYSTEM=="power_supply", ATTR{online}=="0", RUN+="${log_battery} discharging"
-  # '';
+  boot.kernel.sysctl = {
+    "vm.dirty_writeback_centisecs" = 1500;
+  };
+
+  systemd.services.setSysfsVars = {
+    wantedBy = [ "multi-user.target" ];
+    description = "Sets sysfs vars for power saving";
+    serviceConfig.type = "oneshot";
+
+    script = ''
+      echo 1          > /sys/module/snd_hda_intel/parameters/power_save
+      echo 'auto'     > /sys/bus/usb/devices/3-10/power/control
+      echo 'auto'     > /sys/bus/pci/devices/0000:00:14.2/power/control
+      echo 'auto'     > /sys/bus/pci/devices/0000:00:1f.5/power/control
+      echo 'auto'     > /sys/bus/pci/devices/0000:00:1f.6/power/control
+      echo 'auto'     > /sys/bus/pci/devices/0000:0a:00.0/power/control
+      echo 'auto'     > /sys/bus/pci/devices/0000:04:00.0/power/control
+      echo 'auto'     > /sys/bus/pci/devices/0000:00:04.0/power/control
+      echo 'auto'     > /sys/bus/pci/devices/0000:09:00.0/power/control
+      echo 'auto'     > /sys/bus/pci/devices/0000:00:1f.0/power/control
+      echo 'auto'     > /sys/bus/pci/devices/0000:00:00.0/power/control
+      echo 'disabled' > /sys/class/net/enp0s31f6/device/power/wakeup
+    '';
+  };
 }
