@@ -70,6 +70,7 @@
       ffmpeg
       obs-studio
       googleearth-pro
+      telegram-desktop
     ];
 
     fonts.fontconfig.enable = true;
