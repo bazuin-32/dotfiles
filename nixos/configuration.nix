@@ -69,6 +69,9 @@
     };
   };
 
+  # enable sudo insults
+  security.sudo.package = pkgs.sudo.override { withInsults = true; };
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
   services.avahi.enable = true;
