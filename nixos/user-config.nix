@@ -71,6 +71,9 @@
       obs-studio
       googleearth-pro
       telegram-desktop
+
+      corefonts
+      vistafonts
     ];
 
     fonts.fontconfig.enable = true;
