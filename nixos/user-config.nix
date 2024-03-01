@@ -26,7 +26,7 @@
     home.packages = with pkgs; [
       onlyoffice-bin
       neofetch
-      eww-wayland
+      eww
       swaybg
       swaylock-effects
       swayidle
