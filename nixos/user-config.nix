@@ -46,7 +46,6 @@
       zip
       unzip
       p7zip
-      peazip # for browsing archives without extracting them
       unrar
       file
       fd
@@ -286,7 +285,7 @@
     
     programs.zsh = {
       enable = true;
-      enableAutosuggestions = true;
+      autosuggestion.enable = true;
       enableCompletion = true;
       syntaxHighlighting.enable = true;
       enableVteIntegration = true;
@@ -600,7 +599,6 @@
       enable = true;
       enableSshSupport = true;
       enableScDaemon = false;
-      pinentryFlavor = "gnome3";
     };
 
     services.mako = {
