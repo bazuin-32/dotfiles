@@ -70,6 +70,7 @@
       obs-studio
       googleearth-pro
       telegram-desktop
+      units
 
       corefonts
       vistafonts
