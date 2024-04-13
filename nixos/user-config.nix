@@ -579,10 +579,6 @@
         "editor.stickyTabStops" = true;
         "[nix]"."editor.tabSize" = 2;
 
-        "audioCues.onDebugBreak" = true;
-        "audioCues.taskFailed" = true;
-        "audioCues.terminalCommandFailed" = true;
-
         "workbench.colorTheme" = "Gruvbox Material Dark";
 
         "git.autofetch" = true;
