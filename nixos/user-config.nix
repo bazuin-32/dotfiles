@@ -94,7 +94,8 @@
           # monitor assignments handled in device specific configs
 
           # special workspace
-          "s[true], on-created-empty:${term}" # this doesn't seem to work but leaving it here for reference
+          # NOTE: the below rule causes problems and doesn't work right, I'm leaving it disabled for now
+          # "s[true], on-created-empty:hyprctl dispatch exec '[workspace special; noanim] ${term}'" # when this runs, the special workspace needs to be closed and re-opened to see the window
           "s[true], gapsout:100"
         ];
 
