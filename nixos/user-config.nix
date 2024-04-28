@@ -662,8 +662,8 @@
       ffd = pkgs.fetchFromGitHub {
         owner = "bazuin-32";
         repo = "ff-discord-launcher";
-        rev = "5bd0c97500883a8fc6a695385843849ce422e5a6";
-        hash = "sha256-vz+CNylgGebq3FZPHsI/FLfplsaEyiZdPS0rKWR86v0=";
+        rev = "f8265a2ca2dc9e1658679e95d57e8cca4362c7f2";
+        hash = "sha256-lCEjI61wc3VK1LoEXP0Qd9rePSGmekZikZJ2Xf3ikVs=";
       };
     in {
       name = "Discord";
