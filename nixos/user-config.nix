@@ -89,28 +89,9 @@
         lock_cmd = "~/.config/swaylock/lock.sh";
         powermenu = "~/.config/rofi/bin/powermenu";
       in {
-        monitor = [
-          "eDP-1, 1920x1080@60, 0x0, 1"
-          "HDMI-A-2, 1920x1080@60, 0x0, 1"
-          "HDMI-A-1, 1920x1080@60, 1920x0, 1"
-        ];
+        # monitors handled in device specific configs
         workspace = [
-          # starting workspaces for each monitor
-          "eDP-1, 1"
-          "HDMI-A-2, 1"
-          "HDMI-A-1, 6"
-
-          # force workspaces to always be on specific monitors
-          "1, monitor:HDMI-A-2"
-          "2, monitor:HDMI-A-2"
-          "3, monitor:HDMI-A-2"
-          "4, monitor:HDMI-A-2"
-          "5, monitor:HDMI-A-2"
-          "6, monitor:HDMI-A-1"
-          "7, monitor:HDMI-A-1"
-          "8, monitor:HDMI-A-1"
-          "9, monitor:HDMI-A-1"
-          "10, monitor:HDMI-A-1"
+          # monitor assignments handled in device specific configs
 
           # special workspace
           "special, on-created-empty:${term}" # this doesn't seem to work but leaving it here for reference
