@@ -94,8 +94,8 @@
           # monitor assignments handled in device specific configs
 
           # special workspace
-          "special, on-created-empty:${term}" # this doesn't seem to work but leaving it here for reference
-          "special, gapsout:100"
+          "s[true], on-created-empty:${term}" # this doesn't seem to work but leaving it here for reference
+          "s[true], gapsout:100"
         ];
 
         general = {
