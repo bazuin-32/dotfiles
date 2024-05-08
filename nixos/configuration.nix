@@ -18,7 +18,7 @@
   };
 
   nix = {
-    package = pkgs.nixUnstable;
+    package = pkgs.nixVersions.latest;
     
     settings = {
       substituters = [ "https://hyprland.cachix.org" ];
