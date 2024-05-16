@@ -9,6 +9,11 @@
 
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
+
+    cassowary = {
+      url = "github:AtaraxiaSjel/cassowary";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { nixpkgs, home-manager, hyprland, ... } @ inputs:
