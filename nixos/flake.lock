@@ -1,5 +1,25 @@
 {
   "nodes": {
+    "cassowary": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1681399212,
+        "narHash": "sha256-A8Mt1nVoyGlY1+nAg+6mEJiO/5Xbcus4L0aeD5/S0cU=",
+        "owner": "AtaraxiaSjel",
+        "repo": "cassowary",
+        "rev": "c2d70f1a34060c8b22478b7ee68751da181a6512",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AtaraxiaSjel",
+        "repo": "cassowary",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -171,6 +191,7 @@
     },
     "root": {
       "inputs": {
+        "cassowary": "cassowary",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "nixpkgs": "nixpkgs"
