@@ -25,6 +25,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           (./. + "/${device}/configuration.nix")
+          ./applications/configuration.nix
           ./configuration.nix
 
           home-manager.nixosModules.home-manager
