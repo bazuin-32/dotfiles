@@ -3,7 +3,7 @@
 {
   programs.dconf.enable = true; # requred for gtk themes
   programs.zsh.enable = true; # required to be able to set user's default shell, even though zsh is configured in home-manager
-  security.pam.services.swaylock = {}; # without this it is impossible to unlock
+  security.pam.services.hyprlock = {}; # without this it is impossible to unlock
 
   programs.hyprland = {
     enable = true;
@@ -264,6 +264,66 @@
         bind = , escape, submap, reset
         submap = reset
       '';
+    };
+
+    programs.hyprlock = {
+      enable = true;
+      settings = {
+        general = {
+          grace = 10;
+        };
+
+        background = [{
+          path = "screenshot";
+          blur_passes = 3;
+          blur_size = 8;
+          noise = 0.02;
+        }];
+
+        label = [
+          {
+            halign = "center";
+            valign = "center";
+            position = "0, 60";
+
+            text = "Hi, $USER";
+            text_align = "center";
+            color = "rgb(ebdbb8)";
+          }
+          {
+            halign = "center";
+            valign = "center";
+            position = "0, 20";
+
+            text = "cmd[update:60000] date '+%-H:%M %p'";
+            text_align = "center";
+            color = "rgb(dbcba8)";
+            font_size = 12;
+          }
+        ];
+
+        input-field = [{
+          size = "250, 50";
+          halign = "center";
+          valign = "center";
+          position = "0, -20";
+
+          placeholder_text = "Password";
+          fail_text = "$FAIL <b>($ATTEMPTS)</b>";
+
+          fade_timeout = "10000";
+
+          outer_color = "rgba(d79921cc)";
+          inner_color = "rgba(202828f0)";
+          font_color = "rgb(ebdbb8)";
+          fail_color = "rgb(204, 34, 34)";
+          capslock_color = "rgb(204, 34, 34)";
+
+          outline_thickness = 1;
+          rounding = 5;
+
+        }];
+      };
     };
     
     programs.zsh = {
