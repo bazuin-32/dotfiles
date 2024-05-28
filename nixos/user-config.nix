@@ -28,7 +28,6 @@
       neofetch
       eww
       swaybg
-      swayidle
       grim
       slurp
       imagemagick
@@ -223,7 +222,6 @@
           "~/.config/bin/wallpaper.sh ~/.local/share/wallpapers/acura-cl-silhouette.jpg"
           "gammastep -v -l 39.59:-104.68"
           "~/.config/eww/start.sh"
-          "swayidle -w timeout 60 'makoctl mode -s away' resume 'makoctl mode -r away' timeout 600 '${lock_cmd} &' timeout 900 'hyprctl dispatch dpms off'"
 
           # start terminal in special workspace, then store it
           # away for later
@@ -322,6 +320,38 @@
           rounding = 5;
 
         }];
+      };
+    };
+
+    service.hypridle = {
+      enable = true;
+      settings = {
+        general = {
+          lock_cmd = "pidof hyprlock || hyprlock"; # don't start more than 1 instance
+          before_sleep_cmd = "loginctl lock-session";
+          after_sleep_cmd = "hyprctl dispatch dpms on";
+        };
+
+        listener = [
+          {
+            timeout = 60; # 1 min
+            on-timeout = "makoctl set -s away";
+            on-resume = "makoctl set -r away";
+          }
+          {
+            timeout = 300; # 5 min
+            on-timeout = "loginctl lock-session";
+          }
+          {
+            timeout = 330; # 5.5 min
+            on-timeout = "hyprctl dispatch dpms off";
+            on-resume = "hyprctl dispatch dpms on";
+          }
+          {
+            timeout = 1800; # 30 min
+            on-timeout = "systemctl suspend";
+          }
+        ];
       };
     };
     
