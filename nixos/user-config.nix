@@ -28,7 +28,6 @@
       neofetch
       eww
       swaybg
-      swaylock-effects
       swayidle
       grim
       slurp
@@ -86,7 +85,7 @@
         mod = "SUPER";
         term = "foot";
         launcher = "~/.config/rofi/bin/launcher_text";
-        lock_cmd = "~/.config/swaylock/lock.sh";
+        lock_cmd = "${pkgs.hyprlock}/bin/hyprlock";
         powermenu = "~/.config/rofi/bin/powermenu";
       in {
         # monitors handled in device specific configs
@@ -224,7 +223,7 @@
           "~/.config/bin/wallpaper.sh ~/.local/share/wallpapers/acura-cl-silhouette.jpg"
           "gammastep -v -l 39.59:-104.68"
           "~/.config/eww/start.sh"
-          "swayidle -w timeout 60 'makoctl mode -s away' resume 'makoctl mode -r away' timeout 600 '~/.config/swaylock/lock-idle.sh &' timeout 900 'hyprctl dispatch dpms off'"
+          "swayidle -w timeout 60 'makoctl mode -s away' resume 'makoctl mode -r away' timeout 600 '${lock_cmd} &' timeout 900 'hyprctl dispatch dpms off'"
 
           # start terminal in special workspace, then store it
           # away for later
