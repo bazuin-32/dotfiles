@@ -27,7 +27,6 @@
       onlyoffice-bin
       neofetch
       eww
-      swaybg
       grim
       slurp
       imagemagick
@@ -219,7 +218,6 @@
         exec-once = [
           # prevent delay of gtk app startup
           "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-          "~/.config/bin/wallpaper.sh ~/.local/share/wallpapers/acura-cl-silhouette.jpg"
           "gammastep -v -l 39.59:-104.68"
           "~/.config/eww/start.sh"
 
