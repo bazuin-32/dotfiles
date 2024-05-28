@@ -323,7 +323,7 @@
       };
     };
 
-    service.hypridle = {
+    services.hypridle = {
       enable = true;
       settings = {
         general = {
@@ -352,6 +352,19 @@
             on-timeout = "systemctl suspend";
           }
         ];
+      };
+    };
+
+    services.hyprpaper = {
+      enable = true;
+      settings = {
+        ipc = false;
+        splash = true;
+        splash_offset = 5;
+        splash_color = "rgb(ebdbb8)";
+
+        preload = [ "$HOME/.local/share/wallpapers/acura-cl-silhouette.jpg" ];
+        wallpaper = [ ", $HOME/.local/share/wallpapers/acura-cl-silhouette.jpg" ];
       };
     };
     
