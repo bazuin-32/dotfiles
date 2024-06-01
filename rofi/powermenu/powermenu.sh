@@ -80,7 +80,7 @@ case $chosen in
         fi
         ;;
     $lock)
-                ~/.config/swaylock/lock.sh
+                hyprlock
         ;;
     $suspend)
 		ans=$(confirm_exit &)
