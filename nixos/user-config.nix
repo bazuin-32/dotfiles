@@ -3,7 +3,7 @@
 {
   programs.dconf.enable = true; # requred for gtk themes
   programs.zsh.enable = true; # required to be able to set user's default shell, even though zsh is configured in home-manager
-  security.pam.services.swaylock = {}; # without this it is impossible to unlock
+  security.pam.services.hyprlock = {}; # without this it is impossible to unlock
 
   programs.hyprland = {
     enable = true;
@@ -27,9 +27,6 @@
       onlyoffice-bin
       neofetch
       eww
-      swaybg
-      swaylock-effects
-      swayidle
       grim
       slurp
       imagemagick
@@ -86,7 +83,7 @@
         mod = "SUPER";
         term = "foot";
         launcher = "~/.config/rofi/bin/launcher_text";
-        lock_cmd = "~/.config/swaylock/lock.sh";
+        lock_cmd = "${pkgs.hyprlock}/bin/hyprlock";
         powermenu = "~/.config/rofi/bin/powermenu";
       in {
         # monitors handled in device specific configs
@@ -221,10 +218,9 @@
         exec-once = [
           # prevent delay of gtk app startup
           "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-          "~/.config/bin/wallpaper.sh ~/.local/share/wallpapers/acura-cl-silhouette.jpg"
+          "systemctl --user start hypridle.service hyprpaper.service" # they are enabled, but don't start because they try to start before WAYLAND_DISPLAY is set
           "gammastep -v -l 39.59:-104.68"
           "~/.config/eww/start.sh"
-          "swayidle -w timeout 60 'makoctl mode -s away' resume 'makoctl mode -r away' timeout 600 '~/.config/swaylock/lock-idle.sh &' timeout 900 'hyprctl dispatch dpms off'"
 
           # start terminal in special workspace, then store it
           # away for later
@@ -264,6 +260,111 @@
         bind = , escape, submap, reset
         submap = reset
       '';
+    };
+
+    programs.hyprlock = {
+      enable = true;
+      settings = {
+        general = {
+          grace = 10;
+        };
+
+        background = [{
+          path = "screenshot";
+          blur_passes = 3;
+          blur_size = 8;
+          noise = 0.02;
+        }];
+
+        label = [
+          {
+            halign = "center";
+            valign = "center";
+            position = "0, 60";
+
+            text = "Hi, $USER";
+            text_align = "center";
+            color = "rgb(ebdbb8)";
+          }
+          {
+            halign = "center";
+            valign = "center";
+            position = "0, 20";
+
+            text = "cmd[update:60000] date '+%I:%M %p'";
+            text_align = "center";
+            color = "rgb(dbcba8)";
+            font_size = 12;
+          }
+        ];
+
+        input-field = [{
+          size = "250, 50";
+          halign = "center";
+          valign = "center";
+          position = "0, -20";
+
+          placeholder_text = "Password";
+          fail_text = "$FAIL <b>($ATTEMPTS)</b>";
+
+          fade_timeout = "10000";
+
+          outer_color = "rgba(d79921cc)";
+          inner_color = "rgba(202828f0)";
+          font_color = "rgb(ebdbb8)";
+          fail_color = "rgb(204, 34, 34)";
+          capslock_color = "rgb(204, 34, 34)";
+
+          outline_thickness = 1;
+          rounding = 5;
+
+        }];
+      };
+    };
+
+    services.hypridle = {
+      enable = true;
+      settings = {
+        general = {
+          lock_cmd = "pidof hyprlock || hyprlock"; # don't start more than 1 instance
+          before_sleep_cmd = "loginctl lock-session";
+          after_sleep_cmd = "hyprctl dispatch dpms on";
+        };
+
+        listener = [
+          {
+            timeout = 60; # 1 min
+            on-timeout = "makoctl set -s away";
+            on-resume = "makoctl set -r away";
+          }
+          {
+            timeout = 300; # 5 min
+            on-timeout = "loginctl lock-session";
+          }
+          {
+            timeout = 330; # 5.5 min
+            on-timeout = "hyprctl dispatch dpms off";
+            on-resume = "hyprctl dispatch dpms on";
+          }
+          {
+            timeout = 1800; # 30 min
+            on-timeout = "systemctl suspend";
+          }
+        ];
+      };
+    };
+
+    services.hyprpaper = {
+      enable = true;
+      settings = {
+        ipc = false;
+        splash = true;
+        splash_offset = 5;
+        splash_color = "rgb(ebdbb8)";
+
+        preload = [ "$HOME/.local/share/wallpapers/acura-cl-silhouette.jpg" ];
+        wallpaper = [ ", $HOME/.local/share/wallpapers/acura-cl-silhouette.jpg" ];
+      };
     };
     
     programs.zsh = {
