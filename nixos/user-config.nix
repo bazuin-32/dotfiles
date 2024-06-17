@@ -291,7 +291,7 @@
             valign = "center";
             position = "0, 20";
 
-            text = "cmd[update:60000] date '+%-H:%M %p'";
+            text = "cmd[update:60000] date '+%I:%M %p'";
             text_align = "center";
             color = "rgb(dbcba8)";
             font_size = 12;
