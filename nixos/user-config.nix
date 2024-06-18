@@ -22,11 +22,13 @@
     home.stateVersion = "23.05";
     nixpkgs.config.allowUnfree = true;
     programs.home-manager.enable = true;
+    imports = [ inputs.ags.homeManagerModules.default ];
 
     home.packages = with pkgs; [
       onlyoffice-bin
       neofetch
       eww
+      bun # for using typescript with ags
       grim
       slurp
       imagemagick
@@ -571,6 +573,8 @@
         sub-font-size = 30;
       };
     };
+
+    programs.ags.enable = true;
 
 
 

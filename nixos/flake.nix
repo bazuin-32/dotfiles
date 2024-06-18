@@ -14,6 +14,11 @@
       url = "github:AtaraxiaSjel/cassowary";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    ags = {
+      url = "github:Aylur/ags";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { nixpkgs, home-manager, hyprland, ... } @ inputs:
