@@ -364,8 +364,8 @@
         splash_offset = 5;
         splash_color = "rgb(ebdbb8)";
 
-        preload = [ "$HOME/.local/share/wallpapers/acura-cl-silhouette.jpg" ];
-        wallpaper = [ ", $HOME/.local/share/wallpapers/acura-cl-silhouette.jpg" ];
+        preload = [ "$HOME/.local/share/wallpapers/gruvbox-forest.jpg" ];
+        wallpaper = [ ", $HOME/.local/share/wallpapers/gruvbox-forest.jpg" ];
       };
     };
     
