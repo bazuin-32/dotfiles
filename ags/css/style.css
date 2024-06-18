@@ -1,0 +1,70 @@
+.bar-window {
+    color: rgba(0, 0, 0, 0);
+}
+
+.bar-window > .horizontal {
+    margin-top: 5px;
+}
+
+.bar-margin {
+    min-width: 25px;
+}
+
+.bar {
+    background: rgba(5, 15, 5, 0.8);
+    border-radius: 20px;
+    min-width: 1870px; /* 1920 - (25 * 2), where 1920 is display width and 25 is min-width of .bar-margin */
+    
+    color: #ebdbb8;
+}
+
+/* ----- left section ----- */
+.left-container {
+    margin-left: 10px;
+}
+
+.workspace {
+    background: rgba(0, 0, 0, 0);
+    border: none;
+    border-radius: 20px;
+    padding: 0px 4px;
+    margin: 2px;
+    color: #ebdbb8;
+}
+.workspace.active {
+    background: rgba(0, 0, 0, 0.9);
+    color: #ffefcc;
+    transition: 350ms ease;
+}
+.workspace:hover {
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.18) 0, rgba(255, 255, 255, 0) 75%);
+}
+/* ----- end left section ----- */
+
+
+/* ----- center section ----- */
+
+/* ----- end center section ----- */
+
+
+/* ----- right section ----- */
+.right-container {
+    margin-right: 10px;
+}
+
+.right-container > * {
+    margin: 0 2px;
+}
+
+.systray-item, .status-icon {
+    background: rgba(0, 0, 0, 0);
+    border: none;
+    border-radius: 20px;
+    margin: 2px;
+}
+
+.systray-item:hover, .status-icon:hover {
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.25) 0, rgba(255, 255, 255, 0) 75%);
+}
+
+/* ----- end right section ----- */
