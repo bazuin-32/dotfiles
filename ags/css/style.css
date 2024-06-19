@@ -62,12 +62,16 @@
     background: rgba(0, 0, 0, 0);
     border: none;
     border-radius: 20px;
-    margin: 2px;
+    margin: 2px 4px;
     color: #ebdbb8;
 }
 
 .systray-item:hover, .status-icon:hover {
     background: radial-gradient(rgba(255, 255, 255, 0.25) 0, rgba(255, 255, 255, 0) 75%);
+}
+
+.clock {
+    margin-left: 15px;
 }
 
 .bar-button {

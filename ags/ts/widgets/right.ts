@@ -1,5 +1,5 @@
 import { SysTray } from "./right/systray"
-import { MenuBtn } from "./right/menu"
+import { MenuBtn } from "./right/menubtn"
 
 const RightBox = () => Widget.Box({
     className: "right-container",
