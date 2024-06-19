@@ -43,7 +43,9 @@
 
 
 /* ----- center section ----- */
-
+.center-container {
+    margin: 0 50px;
+}
 /* ----- end center section ----- */
 
 
@@ -56,15 +58,24 @@
     margin: 0 2px;
 }
 
-.systray-item, .status-icon {
+.systray-item, .status-icon, .bar-button {
     background: rgba(0, 0, 0, 0);
     border: none;
     border-radius: 20px;
     margin: 2px;
+    color: #ebdbb8;
 }
 
 .systray-item:hover, .status-icon:hover {
     background: radial-gradient(circle, rgba(255, 255, 255, 0.25) 0, rgba(255, 255, 255, 0) 75%);
 }
 
+.bar-button {
+    margin: 1px 2px;
+    padding: 0 4px;
+}
+.bar-button:hover {
+    /* background: rgba(255, 255, 255, 0.25); */
+    background: radial-gradient(ellipse, rgba(255, 255, 255, 0.18) 0, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 0) 100%);
+}
 /* ----- end right section ----- */

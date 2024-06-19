@@ -1,14 +1,12 @@
 import { SysTray } from "./right/systray"
-import { Clock } from "./right/clock"
-import { StatusIcons } from "./right/icons"
+import { MenuBtn } from "./right/menu"
 
 const RightBox = () => Widget.Box({
     className: "right-container",
     hpack: "end",
     children: [
         SysTray(),
-        StatusIcons(),
-        Clock()
+        MenuBtn()
     ]
 })
 // const RightBox = () => SysTray()

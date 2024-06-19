@@ -14,29 +14,26 @@ const VolumeIndicator = () => Widget.Button({
         ].find(([threshold]) => +threshold <= vol)?.[1]; // use `+threshold` because ts thinks the type is `string | number` and then complains
 
         self.icon = `audio-volume-${icon}-symbolic`;
-        self.tooltip_text = `Volume ${Math.floor(vol)}%`;
+        self.tooltip_text = `Volume ${Math.floor(vol)}%` + (
+            audio.speaker.is_muted ? " (muted)" : ""
+        );
     }),
 })
 
 const network = await Service.import('network')
 
-const WifiIndicator = () => Widget.Box({
-    children: [
-        Widget.Icon({
-            icon: network.wifi.bind('icon_name'),
-        }),
-        Widget.Label({
-            label: network.wifi.bind('ssid')
-                .as(ssid => ssid || 'Unknown'),
-        }),
-    ],
+const WifiIndicator = () => Widget.Icon({
+    icon: network.wifi.bind('icon_name'),
+    tooltipText: network.wifi.bind("ssid").as(ssid => ssid || "Unknown")
 })
 
 const WiredIndicator = () => Widget.Icon({
     icon: network.wired.bind('icon_name'),
+    tooltipText: network.wired.bind("internet")
 })
 
 const NetworkIndicator = () => Widget.Stack({
+    className: "status-icon",
     children: {
         wifi: WifiIndicator(),
         wired: WiredIndicator(),
@@ -46,8 +43,8 @@ const NetworkIndicator = () => Widget.Stack({
 
 const StatusIcons = () => Widget.Box({
     children: [
+        NetworkIndicator(),
         VolumeIndicator(),
-        NetworkIndicator()
     ]
 })
 
