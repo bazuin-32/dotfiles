@@ -222,7 +222,7 @@
           "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
           "systemctl --user start hypridle.service hyprpaper.service" # they are enabled, but don't start because they try to start before WAYLAND_DISPLAY is set
           "gammastep -v -l 39.59:-104.68"
-          "~/.config/eww/start.sh"
+          "ags"
 
           # start terminal in special workspace, then store it
           # away for later
