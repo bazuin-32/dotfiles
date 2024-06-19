@@ -102,9 +102,9 @@
           sensitivity = 2;
 
           gaps_in = 5;
-          gaps_out = 10;
+          gaps_out = 8;
           border_size = 2;
-          "col.active_border" = "rgba(d79921cc)";
+          "col.active_border" = "rgba(056f05cc)";
           "col.inactive_border" = "rgba(ebdbb888)";
         };
         

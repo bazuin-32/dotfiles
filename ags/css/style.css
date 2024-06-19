@@ -11,7 +11,7 @@
 }
 
 .bar {
-    background: rgba(5, 15, 5, 0.8);
+    background: rgba(5, 20, 5, 0.8);
     border-radius: 20px;
     min-width: 1870px; /* 1920 - (25 * 2), where 1920 is display width and 25 is min-width of .bar-margin */
     
@@ -32,12 +32,12 @@
     color: #ebdbb8;
 }
 .workspace.active {
-    background: rgba(0, 0, 0, 0.9);
+    background: radial-gradient(rgba(0, 0, 0, 0.9) 0, rgba(0, 0, 0, 0) 100%);
     color: #ffefcc;
     transition: 350ms ease;
 }
 .workspace:hover {
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.18) 0, rgba(255, 255, 255, 0) 75%);
+    background: radial-gradient(rgba(255, 255, 255, 0.18) 0, rgba(255, 255, 255, 0) 75%);
 }
 /* ----- end left section ----- */
 
@@ -67,15 +67,15 @@
 }
 
 .systray-item:hover, .status-icon:hover {
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.25) 0, rgba(255, 255, 255, 0) 75%);
+    background: radial-gradient(rgba(255, 255, 255, 0.25) 0, rgba(255, 255, 255, 0) 75%);
 }
 
 .bar-button {
     margin: 1px 2px;
-    padding: 0 4px;
+    padding: 0 10px;
 }
 .bar-button:hover {
     /* background: rgba(255, 255, 255, 0.25); */
-    background: radial-gradient(ellipse, rgba(255, 255, 255, 0.18) 0, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 0) 100%);
+    background: radial-gradient(rgba(255, 255, 255, 0.18) 0, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 0) 100%);
 }
 /* ----- end right section ----- */
