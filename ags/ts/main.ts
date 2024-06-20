@@ -1,43 +1,22 @@
-import * as widgets from "./widgets"
-
-const BarWidget = () => Widget.CenterBox({
-	className: "bar",
-	hpack: "fill",
-	startWidget: widgets.LeftBox(),
-	centerWidget: widgets.CenterBox(),
-	endWidget: widgets.RightBox()
-})
-
-const BarMargin = () => Widget.Box({
-	className: "bar-margin",
-	hexpand: false,
-	hpack: "start"
-})
-
-const Bar = (monitor: number) => Widget.Window({
-	monitor: monitor,
-    name: `bar${monitor}`,
-    anchor: ["top", "left", "right"],
-	exclusivity: "exclusive",
-	hexpand: true,
-	className: "bar-window",
-    child: Widget.CenterBox({
-		hpack: "fill",
-		startWidget: BarMargin(),
-		centerWidget: BarWidget(),
-		endWidget: BarMargin()
-	})
-})
-
+import { Window } from "resource:///com/github/Aylur/ags/widgets/window.js"
+import { Bar } from "./bar/bar"
+import { Menu } from "./menu/menu"
 
 const hyprland = await Service.import("hyprland")
 
-App.config({
-	// one bar for each monitor
-	windows: Array.from(
+function forAllMonitors(fn: (i: number) => Window<any, any>) {
+	return Array.from(
 		{ length: hyprland.monitors.length },
 		(_, i) => i
-	).map(i => Bar(i)),
+	).map(i => fn(i))
+}
+
+App.config({
+	// one bar for each monitor
+	windows: [
+		...forAllMonitors(i => Bar(i)),
+		...forAllMonitors(i => Menu(i))	
+	],
 
 	style: "./css/style.css"
 })

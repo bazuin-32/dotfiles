@@ -1,12 +1,12 @@
 import { SysTray } from "./right/systray"
 import { MenuBtn } from "./right/menubtn"
 
-const RightBox = () => Widget.Box({
+const RightBox = (monitor: number) => Widget.Box({
     className: "right-container",
     hpack: "end",
     children: [
         SysTray(),
-        MenuBtn()
+        MenuBtn(monitor)
     ]
 })
 // const RightBox = () => SysTray()
