@@ -22,7 +22,6 @@
 .left-container {
     margin-left: 10px;
 }
-
 .workspace {
     background: rgba(0, 0, 0, 0);
     border: none;
@@ -53,11 +52,9 @@
 .right-container {
     margin-right: 10px;
 }
-
 .right-container > * {
     margin: 0 2px;
 }
-
 .systray-item, .status-icon, .bar-button {
     background: rgba(0, 0, 0, 0);
     border: none;
@@ -65,15 +62,12 @@
     margin: 2px 4px;
     color: #ebdbb8;
 }
-
 .systray-item:hover, .status-icon:hover {
     background: radial-gradient(rgba(255, 255, 255, 0.25) 0, rgba(255, 255, 255, 0) 75%);
 }
-
 .clock {
     margin-left: 15px;
 }
-
 .bar-button {
     margin: 1px 2px;
     padding: 0 10px;
@@ -83,3 +77,21 @@
     background: radial-gradient(rgba(255, 255, 255, 0.18) 0, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 0) 100%);
 }
 /* ----- end right section ----- */
+
+
+/* ----- menu stuff ----- */
+.menu {
+    background: rgba(5, 20, 5, 0.8);
+    border-radius: 20px;
+    color: #ebdbb8;
+}
+
+.menu > * {
+    border-radius: 20px;
+    margin: 5px 10px;
+}
+
+.menu calendar {
+    background: radial-gradient(rgba(0, 0, 0, 0.5) 90%, rgba(0, 0, 0, 0) 100%);
+    color: #ebdbb8;
+}

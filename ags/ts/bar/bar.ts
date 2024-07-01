@@ -1,11 +1,11 @@
-import * as widgets from "./widgets"
+import { LeftBox, CenterBox, RightBox } from "./widgets"
 
 const BarWidget = (monitor: number) => Widget.CenterBox({
 	className: "bar",
 	hpack: "fill",
-	startWidget: widgets.LeftBox(),
-	centerWidget: widgets.CenterBox(),
-	endWidget: widgets.RightBox(monitor)
+	startWidget: LeftBox(),
+	centerWidget: CenterBox(),
+	endWidget: RightBox(monitor)
 })
 
 const BarMargin = () => Widget.Box({
