@@ -10,7 +10,8 @@ const makeButton = (menuItem: MItem, icon: string | Icon<any>, label: string | B
         startWidget: Widget.Box({
             children: [
                 icon instanceof Icon ? icon : Widget.Icon({
-                    icon: icon
+                    icon: icon,
+                    className: "menu-icon"
                 }),
                 Widget.Label({
                     label: label

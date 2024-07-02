@@ -1,7 +1,7 @@
 const audio = await Service.import('audio')
 
 const VolumeIndicator = () => Widget.Icon({
-    className: "status-icon",
+    className: "status-icon menu-icon",
 }).hook(audio.speaker, self => {
     const vol = audio.speaker.volume * 100;
     const icon = audio.speaker.is_muted ? "muted" : [
