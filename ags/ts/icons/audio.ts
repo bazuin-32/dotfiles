@@ -18,4 +18,16 @@ const VolumeIndicator = () => Widget.Icon({
     );
 })
 
-export { VolumeIndicator }
+const MicrophoneIndicator = () => Widget.Icon({
+    className: "menu-icon"
+}).hook(audio.microphone, self => {
+    const vol = audio.microphone.volume * 100
+    const icon = [
+        [50, "high"],
+        [0, "low"]
+    ].find(([threshold]) => +threshold <= vol)?.[1]
+    
+    self.icon = `microphone-sensitivity-${icon}-symbolic`
+})
+
+export { VolumeIndicator, MicrophoneIndicator }

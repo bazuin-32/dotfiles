@@ -128,3 +128,14 @@
     color: #ebdbb8;
     margin: 5px 10px;
 }
+
+.audio-panel .menu-icon {
+    margin: 0px 10px 0px 0px;
+}
+
+.audio-panel scale trough {
+    background: #383838;
+}
+.audio-panel scale trough highlight {
+    background: #157f15;
+}
