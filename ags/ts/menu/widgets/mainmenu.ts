@@ -1,15 +1,26 @@
 import { Binding } from "resource:///com/github/Aylur/ags/service.js"
+import { Widget as GtkWidget } from "types/@girs/gtk-3.0/gtk-3.0.cjs"
+
 import { MItem, activeMenu } from "ts/vars/menustate"
 import { datetime } from "ts/vars/datetime"
 import { VolumeIndicator } from "ts/icons/audio"
-import { Icon } from "resource:///com/github/Aylur/ags/widgets/icon.js"
+import { NetworkIndicator } from "ts/icons/network"
+import { BatteryIndicator } from "ts/icons/battery"
 
-const makeButton = (menuItem: MItem, icon: string | Icon<any>, label: string | Binding<any, any, string>) => Widget.Button({
+const battery = await Service.import("battery")
+
+
+const makeButton = (
+    menuItem: MItem,
+    icon: string | GtkWidget,
+    label: string | Binding<any, any, string>,
+    condition: boolean | Binding<any, any, boolean> = true
+) => Widget.Button({
     className: "menu-button",
     child: Widget.CenterBox({
         startWidget: Widget.Box({
             children: [
-                icon instanceof Icon ? icon : Widget.Icon({
+                icon instanceof GtkWidget ? icon : Widget.Icon({
                     icon: icon,
                     className: "menu-icon"
                 }),
@@ -24,7 +35,8 @@ const makeButton = (menuItem: MItem, icon: string | Icon<any>, label: string | B
             icon: "go-next-symbolic"
         })
     }),
-    onClicked: () => { activeMenu.value = menuItem }
+    onClicked: () => { activeMenu.value = menuItem },
+    visible: condition
 })
 
 const MainMenu = () => Widget.Box({
@@ -39,7 +51,9 @@ const MainMenu = () => Widget.Box({
                 year: "numeric"
             }
         ))),
-        makeButton("audio", VolumeIndicator(), "Audio")
+        makeButton("audio", VolumeIndicator(), "Audio"),
+        makeButton("network", NetworkIndicator(), "Network"),
+        makeButton("battery", BatteryIndicator(), "Battery", battery.bind("available"))
     ]
 })
 

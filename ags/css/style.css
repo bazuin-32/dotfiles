@@ -116,6 +116,12 @@
     color: rgba(235, 219, 184, 0.5);
     transition: 500ms ease;
 }
+.menu-stack .menu-button {
+    margin: 1px 0px;
+}
+.menu-heading .menu-button {
+    margin: 0px 8px 0px 0px;
+}
 
 .menu calendar {
     background: radial-gradient(rgba(0, 0, 0, 0.5) 90%, rgba(0, 0, 0, 0) 100%);

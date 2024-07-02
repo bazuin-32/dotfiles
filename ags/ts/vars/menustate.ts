@@ -5,8 +5,8 @@ const menuVisibility: { [monitor: number]: Variable<boolean> } = {
     1: new Variable(false),
 }
 
-const mTitles = <const>["", "Calendar", "Audio"]
-const mItems = <const>["main", "cal", "audio"]
+const mTitles = <const>["", "Calendar", "Audio", "Network", "Battery"]
+const mItems = <const>["main", "cal", "audio", "network", "battery"]
 type MItem = typeof mItems[number]
 
 function isMItem(s: string): s is MItem {

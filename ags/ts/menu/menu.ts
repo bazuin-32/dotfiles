@@ -1,15 +1,18 @@
 import { menuVisibility, activeMenu } from "ts/vars/menustate"
-import { MainMenu, Calendar, MenuHeading, AudioPanel } from "./widgets"
+import { MainMenu, Calendar, MenuHeading, AudioPanel, NetworkPanel, BatteryPanel } from "./widgets"
 
 
 const MenuStack = () => Widget.Stack({
     children: {
         "main": MainMenu(),
         "cal": Calendar(),
-        "audio": AudioPanel()
+        "audio": AudioPanel(),
+        "network": NetworkPanel(),
+        "battery": BatteryPanel()
     },
     shown: activeMenu.bind(),
-    transition: activeMenu.bind().as((m) => (m == "main" ? "slide_left" : "slide_right"))
+    transition: activeMenu.bind().as((m) => (m == "main" ? "slide_left" : "slide_right")),
+    className: "menu-stack"
 })
 
 const MenuWidget = () => Widget.Box({

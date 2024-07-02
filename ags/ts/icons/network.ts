@@ -11,7 +11,7 @@ const WiredIndicator = () => Widget.Icon({
 })
 
 const NetworkIndicator = () => Widget.Stack({
-    className: "status-icon",
+    className: "status-icon menu-icon",
     children: {
         wifi: WifiIndicator(),
         wired: WiredIndicator(),

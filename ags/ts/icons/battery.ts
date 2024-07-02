@@ -5,7 +5,7 @@ const format_seconds = (s: number) => `${Math.floor(s / 3600)}:${(Math.round(s /
 const BatteryIndicator = () => Widget.Icon({
     icon: battery.bind("icon_name"),
     visible: battery.bind('available'),
-    className: "status-icon",
+    className: "status-icon menu-icon",
     tooltipText: Utils.merge(
         [battery.bind("percent"), battery.bind("time_remaining"), battery.bind("charging")],
         (pct, seconds, charging) => `${pct}% (${format_seconds(seconds)} ${charging ? "until full" : "remaining"})`

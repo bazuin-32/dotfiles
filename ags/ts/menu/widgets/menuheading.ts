@@ -33,7 +33,8 @@ const MenuHeading = () => Widget.Stack({
         })
     },
     shown: activeMenu.bind().as((m) => m == "main" ? "greeting" : "heading"),
-    transition: activeMenu.bind().as((m) => (m == "main" ? "slide_left" : "slide_right"))
+    transition: activeMenu.bind().as((m) => (m == "main" ? "slide_left" : "slide_right")),
+    className: "menu-heading"
 })
 
 export { MenuHeading }
