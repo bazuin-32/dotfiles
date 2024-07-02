@@ -128,6 +128,19 @@
     color: #ebdbb8;
     margin: 5px 10px;
 }
+.menu calendar * {
+    background: radial-gradient(rgba(0, 0, 0, 0.5) 90%, rgba(0, 0, 0, 0) 100%);
+    color: #ebdbb8;
+}
+.menu calendar .highlight, .menu calendar .other-month {
+    color: #9b8b68;
+}
+.menu calendar:selected {
+    background: rgba(255, 255, 255, 0.25);
+}
+.menu calendar .button:hover {
+    background: radial-gradient(rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0) 100%);
+}
 
 .audio-panel .menu-icon {
     margin: 0px 10px 0px 0px;
