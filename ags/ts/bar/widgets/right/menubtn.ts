@@ -1,6 +1,6 @@
 import { Clock } from "./clock"
 import { StatusIcons } from "./icons"
-import { menuVisibility } from "ts/vars/menuvisibitily"
+import { menuVisibility } from "ts/vars/menustate"
 
 const MenuBtn = (monitor: number) => Widget.Button({
     className: "bar-button",
