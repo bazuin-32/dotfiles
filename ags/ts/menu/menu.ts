@@ -1,14 +1,21 @@
-import { menuVisibility, activeMenu } from "ts/vars/menustate"
+import Gtk from "types/@girs/gtk-3.0/gtk-3.0"
+
+import { menuVisibility, activeMenu, MItem } from "ts/vars/menustate"
 import { MainMenu, Calendar, MenuHeading, AudioPanel, NetworkPanel, BatteryPanel } from "./widgets"
+
+const revealify = (widget: Gtk.Widget, menuName: MItem) => Widget.Revealer({
+    child: widget,
+    revealChild: activeMenu.bind().as(m => m == menuName)
+})
 
 
 const MenuStack = () => Widget.Stack({
     children: {
-        "main": MainMenu(),
-        "cal": Calendar(),
-        "audio": AudioPanel(),
-        "network": NetworkPanel(),
-        "battery": BatteryPanel()
+        "main": revealify(MainMenu(), "main"),
+        "cal": revealify(Calendar(), "cal"),
+        "audio": revealify(AudioPanel(), "audio"),
+        "network": revealify(NetworkPanel(), "network"),
+        "battery": revealify(BatteryPanel(), "battery")
     },
     shown: activeMenu.bind(),
     transition: activeMenu.bind().as((m) => (m == "main" ? "slide_left" : "slide_right")),
