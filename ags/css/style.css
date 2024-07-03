@@ -151,6 +151,11 @@
 .audio-panel scale trough highlight {
     background: #157f15;
 }
+.audio-panel .device-control {
+    border: 1px solid #000000;
+    border-radius: 10px;
+    padding: 2px 5px;
+}
 
 .battery-panel > * {
     margin: 5px 0px;
