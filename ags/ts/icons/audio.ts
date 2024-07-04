@@ -23,8 +23,10 @@ const MicrophoneIndicator = () => Widget.Icon({
 }).hook(audio.microphone, self => {
     const vol = audio.microphone.volume * 100
     const icon = [
-        [50, "high"],
-        [0, "low"]
+        [67, "high"],
+        [34, "medium"],
+        [1, "low"],
+        [0, "muted"]
     ].find(([threshold]) => +threshold <= vol)?.[1]
     
     self.icon = `microphone-sensitivity-${icon}-symbolic`
