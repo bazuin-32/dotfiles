@@ -1,6 +1,6 @@
 import { datetime } from "ts/vars/datetime"
 import { username } from "ts/vars/username"
-import { menuTitle, activeMenu } from "ts/vars/menustate"
+import { menuTitle, activeMenu, exitMenu, menuTransition } from "ts/vars/menustate"
 
 const MenuHeading = () => Widget.Stack({
     children: {
@@ -24,7 +24,9 @@ const MenuHeading = () => Widget.Stack({
                 Widget.Button({
                     child: Widget.Icon("go-previous-symbolic"),
                     className: "menu-button",
-                    onClicked: () => { activeMenu.value = "main" }
+                    onClicked: () => {
+                        exitMenu()
+                    }
                 }),
                 Widget.Label({
                     label: menuTitle.bind()
@@ -33,7 +35,7 @@ const MenuHeading = () => Widget.Stack({
         })
     },
     shown: activeMenu.bind().as((m) => m == "main" ? "greeting" : "heading"),
-    transition: activeMenu.bind().as((m) => (m == "main" ? "slide_left" : "slide_right")),
+    transition: menuTransition.bind(),
     className: "menu-heading"
 })
 

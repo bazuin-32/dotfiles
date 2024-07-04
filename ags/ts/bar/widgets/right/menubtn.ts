@@ -1,12 +1,12 @@
 import { Clock } from "./clock"
 import { StatusIcons } from "./icons"
-import { menuVisibility, activeMenu } from "ts/vars/menustate"
+import { menuVisibility, resetMenu } from "ts/vars/menustate"
 
 const MenuBtn = (monitor: number) => Widget.Button({
     className: "bar-button",
     onClicked: () => {
         if (!menuVisibility[monitor].value) {
-            activeMenu.value = "main"
+            resetMenu()
         }
         menuVisibility[monitor].value = !menuVisibility[monitor].value
     },

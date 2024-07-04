@@ -1,7 +1,7 @@
 import Gtk from "types/@girs/gtk-3.0/gtk-3.0"
 
-import { menuVisibility, activeMenu, MItem } from "ts/vars/menustate"
-import { MainMenu, Calendar, MenuHeading, AudioPanel, NetworkPanel, BatteryPanel } from "./widgets"
+import { menuVisibility, activeMenu, MItem, menuTransition } from "ts/vars/menustate"
+import { MainMenu, Calendar, MenuHeading, AudioPanel, NetworkPanel, BatteryPanel, SpeakerDeviceControl } from "./widgets"
 
 const revealify = (widget: Gtk.Widget, menuName: MItem) => Widget.Revealer({
     child: widget,
@@ -15,10 +15,11 @@ const MenuStack = () => Widget.Stack({
         "cal": revealify(Calendar(), "cal"),
         "audio": revealify(AudioPanel(), "audio"),
         "network": revealify(NetworkPanel(), "network"),
-        "battery": revealify(BatteryPanel(), "battery")
+        "battery": revealify(BatteryPanel(), "battery"),
+        "audiodev": revealify(SpeakerDeviceControl(), "audiodev")
     },
     shown: activeMenu.bind(),
-    transition: activeMenu.bind().as((m) => (m == "main" ? "slide_left" : "slide_right")),
+    transition: menuTransition.bind(),
     className: "menu-stack"
 })
 

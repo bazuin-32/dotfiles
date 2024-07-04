@@ -2,8 +2,10 @@ import Gdk from "types/@girs/gdk-3.0/gdk-3.0"
 import MenuItem from "types/widgets/menuitem"
 import { Box } from "resource:///com/github/Aylur/ags/widgets/box.js"
 import { Stream } from "resource:///com/github/Aylur/ags/service/audio.js"
+import { Object } from "types/@girs/gobject-2.0/gobject-2.0.cjs"
 
 import { VolumeIndicator, MicrophoneIndicator } from "ts/icons/audio"
+import { makeButton } from "./mainmenu"
 
 const audio = await Service.import("audio")
 
@@ -42,7 +44,11 @@ const SpeakerPortControl = (stream: Stream) => {
                         label: or_default(port.human_port, "err"),
                         hpack: "start"
                     }),
-                    onActivate: () => { port.port ? stream.stream?.change_port(port.port) : null }
+                    onActivate: () => {
+                        if (port.port) {
+                            s?.change_port(port.port)
+                        }
+                    }
                 }))
             }
             
@@ -65,6 +71,9 @@ const SpeakerPortControl = (stream: Stream) => {
         onPrimaryClick: (self, event) => {
             // menu.popup_at_pointer(event)
             menu.popup_at_widget(self, Gdk.Gravity.CENTER, Gdk.Gravity.CENTER, event)
+        },
+        setup: (self) => {
+            stream.stream?.bind_property("port", self.child.start_widget ? self.child.start_widget : new Object(), "label", 0)
         }
     })
 }
@@ -100,9 +109,9 @@ const AudioPanel = () => Widget.Box({
     children: [
         VolumeControl("speaker"),
         VolumeControl("microphone"),
-        SpeakerDeviceControl()
+        makeButton("audiodev", "audio-speakers-symbolic", "Devices")
     ]
 })
 
 
-export { AudioPanel }
+export { AudioPanel, SpeakerDeviceControl }

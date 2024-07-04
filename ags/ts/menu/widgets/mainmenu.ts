@@ -1,7 +1,7 @@
 import { Binding } from "resource:///com/github/Aylur/ags/service.js"
 import { Widget as GtkWidget } from "types/@girs/gtk-3.0/gtk-3.0.cjs"
 
-import { MItem, activeMenu } from "ts/vars/menustate"
+import { MItem, enterMenu } from "ts/vars/menustate"
 import { datetime } from "ts/vars/datetime"
 import { VolumeIndicator } from "ts/icons/audio"
 import { NetworkIndicator } from "ts/icons/network"
@@ -35,7 +35,9 @@ const makeButton = (
             icon: "go-next-symbolic"
         })
     }),
-    onClicked: () => { activeMenu.value = menuItem },
+    onClicked: () => {
+        enterMenu(menuItem)
+    },
     visible: condition
 })
 
@@ -57,4 +59,4 @@ const MainMenu = () => Widget.Box({
     ]
 })
 
-export { MainMenu }
+export { MainMenu, makeButton }
