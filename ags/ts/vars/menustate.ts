@@ -66,4 +66,4 @@ mItems.forEach((val, i) => menuTitles[val] = mTitles[i])
 const menuTitle: Variable<string> = Utils.derive([activeMenu], (active: MItem) => menuTitles[active])
 
 
-export { MItem, menuVisibility, activeMenu, menuTransition, menuTitle, enterMenu, exitMenu, resetMenu }
+export { MItem, menuVisibility, activeMenu, menuTransition, menuTitle, enterMenu, exitMenu, resetMenu, toMItem }

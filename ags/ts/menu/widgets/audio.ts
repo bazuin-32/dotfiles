@@ -102,6 +102,7 @@ const SpeakerDeviceControl = () => Widget.Box({
     })
 })
 
+
 const AudioPanel = () => Widget.Box({
     vertical: true,
     hpack: "fill",
@@ -109,7 +110,7 @@ const AudioPanel = () => Widget.Box({
     children: [
         VolumeControl("speaker"),
         VolumeControl("microphone"),
-        makeButton("audiodev", "audio-speakers-symbolic", "Devices")
+        makeButton("audiodev", "audio-speakers-symbolic", "Devices"),
     ]
 })
 

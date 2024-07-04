@@ -1,6 +1,6 @@
 import Gtk from "types/@girs/gtk-3.0/gtk-3.0"
 
-import { menuVisibility, activeMenu, MItem, menuTransition } from "ts/vars/menustate"
+import { menuVisibility, activeMenu, MItem, menuTransition, toMItem } from "ts/vars/menustate"
 import { MainMenu, Calendar, MenuHeading, AudioPanel, NetworkPanel, BatteryPanel, SpeakerDeviceControl } from "./widgets"
 
 const revealify = (widget: Gtk.Widget, menuName: MItem) => Widget.Revealer({
@@ -8,16 +8,27 @@ const revealify = (widget: Gtk.Widget, menuName: MItem) => Widget.Revealer({
     revealChild: activeMenu.bind().as(m => m == menuName)
 })
 
+const revealifyStackChildren = (children: { [name in MItem]: Gtk.Widget }) => {
+    let result = children
+    
+    for (const childname in children) {
+        const name = toMItem(childname)
+        result[name] = revealify(children[name], name)
+    }
+
+    return result
+}
+
 
 const MenuStack = () => Widget.Stack({
-    children: {
-        "main": revealify(MainMenu(), "main"),
-        "cal": revealify(Calendar(), "cal"),
-        "audio": revealify(AudioPanel(), "audio"),
-        "network": revealify(NetworkPanel(), "network"),
-        "battery": revealify(BatteryPanel(), "battery"),
-        "audiodev": revealify(SpeakerDeviceControl(), "audiodev")
-    },
+    children: revealifyStackChildren({
+        "main": MainMenu(),
+        "cal": Calendar(),
+        "audio": AudioPanel(),
+        "network": NetworkPanel(),
+        "battery": BatteryPanel(),
+        "audiodev": SpeakerDeviceControl(),
+    }),
     shown: activeMenu.bind(),
     transition: menuTransition.bind(),
     className: "menu-stack"
