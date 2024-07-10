@@ -59,7 +59,7 @@
     background: rgba(0, 0, 0, 0);
     border: none;
     border-radius: 20px;
-    margin: 2px 4px;
+    margin: 0px 4px;
     color: #ebdbb8;
 }
 .systray-item:hover, .status-icon:hover {
