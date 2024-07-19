@@ -1,7 +1,7 @@
 { ... }: {
   # get nvidia drivers
   services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
 
   # wayland nvidia
   hardware.nvidia.modesetting.enable = true;
