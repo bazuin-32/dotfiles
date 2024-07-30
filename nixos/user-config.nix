@@ -109,7 +109,9 @@
         };
         
         input = {
-          kb_options = "compose:ralt";
+          kb_layout = "us,ir";
+          kb_variant = ",pes_keypad";
+          kb_options = "compose:ralt,grp:alt_space_toggle";
           follow_mouse = 1;
           numlock_by_default = 1;
         };
