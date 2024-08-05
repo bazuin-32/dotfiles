@@ -7,8 +7,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-    hyprland.inputs.nixpkgs.follows = "nixpkgs";
+    hyprland = {
+      url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hyprcursor-phinger = {
+      url = "github:jappie3/hyprcursor-phinger";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     cassowary = {
       url = "github:AtaraxiaSjel/cassowary";

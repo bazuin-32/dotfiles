@@ -81,11 +81,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1722462338,
-        "narHash": "sha256-ss0G8t8RJVDewA3MyqgAlV951cWRK6EtVhVKEZ7J5LU=",
+        "lastModified": 1722630065,
+        "narHash": "sha256-QfM/9BMRkCmgWzrPDK+KbgJOUlSJnfX4OvsUupEUZvA=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "6e090576c4824b16e8759ebca3958c5b09659ee8",
+        "rev": "afc892db74d65042031a093adb6010c4c3378422",
         "type": "github"
       },
       "original": {
@@ -123,6 +123,26 @@
         "type": "github"
       }
     },
+    "hyprcursor-phinger": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1718302048,
+        "narHash": "sha256-SERBoc+Wu3MwEwKzELZaoajV4OZk+QAKv8KZOL/QmlQ=",
+        "owner": "jappie3",
+        "repo": "hyprcursor-phinger",
+        "rev": "9f5de99e1bc0e8f79aed49dd52853fdb5084d087",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jappie3",
+        "repo": "hyprcursor-phinger",
+        "type": "github"
+      }
+    },
     "hyprland": {
       "inputs": {
         "aquamarine": "aquamarine",
@@ -137,11 +157,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1722551504,
-        "narHash": "sha256-/N8voFoU8ALTK8C1esM6MM+lj9zZGCG4lbvH0mNBQUE=",
+        "lastModified": 1722800434,
+        "narHash": "sha256-0lvzOT3dQWlQ+zyOAhKTxFd9BWZw380ILDNpoGdtekA=",
         "ref": "refs/heads/main",
-        "rev": "09bb5658b7fa6c0dc4e2744797e51ad4dd25af42",
-        "revCount": 5041,
+        "rev": "2b520571e897be2a0e88c8692da607b062000038",
+        "revCount": 5051,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/hyprwm/Hyprland"
@@ -260,11 +280,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1722421184,
-        "narHash": "sha256-/DJBI6trCeVnasdjUo9pbnodCLZcFqnVZiLUfqLH4jA=",
+        "lastModified": 1722630782,
+        "narHash": "sha256-hMyG9/WlUi0Ho9VkRrrez7SeNlDzLxalm9FwY7n/Noo=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "9f918d616c5321ad374ae6cb5ea89c9e04bf3e58",
+        "rev": "d04953086551086b44b6f3c6b7eeb26294f207da",
         "type": "github"
       },
       "original": {
@@ -279,6 +299,7 @@
         "ags": "ags",
         "cassowary": "cassowary",
         "home-manager": "home-manager",
+        "hyprcursor-phinger": "hyprcursor-phinger",
         "hyprland": "hyprland",
         "nixpkgs": "nixpkgs"
       }

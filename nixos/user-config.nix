@@ -22,7 +22,10 @@
     home.stateVersion = "23.05";
     nixpkgs.config.allowUnfree = true;
     programs.home-manager.enable = true;
-    imports = [ inputs.ags.homeManagerModules.default ];
+    imports = [
+      inputs.ags.homeManagerModules.default
+      inputs.hyprcursor-phinger.homeManagerModules.hyprcursor-phinger
+    ];
 
     home.packages = with pkgs; [
       onlyoffice-bin
@@ -233,6 +236,11 @@
           "sleep 1 && hyprctl dispatch workspace 1 && thunderbird & disown"
         ];
 
+        env = [
+          "HYPRCURSOR_THEME, phinger-cursors-dark"
+          "HYPRCURSOR_SIZE, 24"
+        ];
+
         misc = {
           vfr = true;
 
@@ -264,6 +272,15 @@
         bind = , escape, submap, reset
         submap = reset
       '';
+    };
+
+    programs.hyprcursor-phinger.enable = true;
+    home.pointerCursor = {
+      name = "phinger-cursors-dark";
+      package = pkgs.phinger-cursors;
+      size = 24;
+      gtk.enable = true;
+      x11.enable = true;
     };
 
     programs.hyprlock = {
