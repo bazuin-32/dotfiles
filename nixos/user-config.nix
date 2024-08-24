@@ -102,8 +102,6 @@
         ];
 
         general = {
-          sensitivity = 2;
-
           gaps_in = 5;
           gaps_out = 8;
           border_size = 2;
@@ -112,6 +110,8 @@
         };
         
         input = {
+          sensitivity = 0.5;
+
           kb_layout = "us,ir";
           kb_variant = ",pes_keypad";
           kb_options = "compose:ralt,grp:alt_space_toggle";
