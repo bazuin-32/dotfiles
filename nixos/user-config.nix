@@ -39,7 +39,6 @@
       wl-clipboard
       cantarell-fonts
       meslo-lgs-nf
-      nerdfonts
       jdk # required for sonarlint vscode extension
       socat
       pipe-rename # required for batch rename in xplr
@@ -76,7 +75,7 @@
 
       corefonts
       vistafonts
-    ];
+    ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
     fonts.fontconfig.enable = true;
 
