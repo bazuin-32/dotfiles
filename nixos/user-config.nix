@@ -37,7 +37,6 @@
       imagemagick
       rofi-wayland
       wl-clipboard
-      cantarell-fonts
       meslo-lgs-nf
       jdk # required for sonarlint vscode extension
       socat
@@ -74,11 +73,30 @@
       units
       obsidian
 
+      cantarell-fonts
       corefonts
       vistafonts
+      vazir-fonts
     ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
-    fonts.fontconfig.enable = true;
+    fonts = {
+      # enableDefaultPackages = true;
+      # packages = with pkgs; [
+      #   cantarell-fonts
+      #   corefonts
+      #   vistafonts
+      #   vazir-fonts
+      # ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+
+      fontconfig = {
+        enable = true;
+        defaultFonts = {
+          serif = [ "DejaVu Serif" "Vazirmatn" ];
+          sansSerif = [ "DejaVu Sans" "Vazirmatn" ];
+          monospace = [ "DejaVu Sans Mono" "Vazirmatn" ];
+        };
+      };
+    };
 
     wayland.windowManager.hyprland = {
       enable = true;  
