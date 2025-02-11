@@ -72,6 +72,7 @@
       googleearth-pro
       telegram-desktop
       units
+      obsidian
 
       corefonts
       vistafonts
