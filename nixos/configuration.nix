@@ -13,7 +13,7 @@
   nixpkgs.config = {
     allowUnfree = true;
     permittedInsecurePackages = [
-      "googleearth-pro-7.3.6.9796"
+      "googleearth-pro-7.3.6.10201"
     ];
   };
 
