@@ -206,7 +206,10 @@
 
 
 
-
+/* make farsi fonts more readable */
+.tabbrowser-tab[labeldirection="rtl"], .tabbrowser-tab *[labeldirection="rtl"] {
+  font-family: Vazirmatn !important;
+}
 
 /* grey out ccons inside the toolbar to make it
  * more aligned with the Black & White colour look */
