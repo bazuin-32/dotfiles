@@ -105,6 +105,7 @@
       xorg.libXtst
       xorg.libXScrnSaver
       xorg.libXrandr
+      xorg.libxcb
       glib
       nss
       nspr
@@ -114,6 +115,13 @@
       pango
       at-spi2-core
       vulkan-loader
+      fontconfig
+      freetype
+      cups
+      libdrm
+      libgbm
+      libxkbcommon
+      cairo
     ]);
   };
 
