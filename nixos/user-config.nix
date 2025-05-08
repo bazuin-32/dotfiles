@@ -224,11 +224,9 @@
         ];
 
         windowrule = [
-          "float, Rofi"
-
-          "noblur,      BeamNG.*"
-          "opaque,      BeamNG.*"
-          "fullscreen,  BeamNG.*"
+          "noblur,      title:.*BeamNG.*"
+          "opaque,      title:.*BeamNG.*"
+          "fullscreen,  title:.*BeamNG.*"
 
           "float,         title:Open Folder"
           "size 60% 80%,  title:Open Folder"
@@ -237,7 +235,7 @@
           "size 60% 80%,  title:Open File"
           "center,        title:Open File"
 
-          "tile, DesktopEditors"
+          "tile, class:DesktopEditors"
         ];
 
         exec-once = [
@@ -424,7 +422,7 @@
         size = 50000;
       };
 
-      initExtra = ''
+      initContent = ''
         setopt extendedglob
         setopt globstarshort
         setopt autopushd # make cd keep a dir stack
@@ -639,7 +637,7 @@
         name = "dev-edition-default";
         isDefault = true;
         
-        search.default = "Google";
+        search.default = "google";
         search.force = true;
         search.engines = {
           "Nix Packages" = {
@@ -651,7 +649,7 @@
 
           "NixOS Wiki" = {
             urls = [{ template = "https://nixos.wiki/index.php?search={searchTerms}"; }];
-            iconUpdateURL = "https://nixos.wiki/favicon.png";
+            icon = "https://nixos.wiki/favicon.png";
             updateInterval = 24 * 60 * 60 * 1000; # every day
             definedAliases = [ "@nw" ];
           };
@@ -663,8 +661,8 @@
             definedAliases = [ "@no" ];
           };
 
-          "Bing".metaData.hidden = true;
-          "Google".metaData.alias = "@g";
+          "bing".metaData.hidden = true;
+          "google".metaData.alias = "@g";
         };
 
         settings = {
@@ -678,41 +676,43 @@
 
     programs.vscode = {
       enable = true;
-      extensions = with pkgs.vscode-extensions; [
-        llvm-vs-code-extensions.vscode-clangd
-        vadimcn.vscode-lldb
-        ms-vscode.cmake-tools
-        twxs.cmake
+      profiles.default = {
+        extensions = with pkgs.vscode-extensions; [
+          llvm-vs-code-extensions.vscode-clangd
+          vadimcn.vscode-lldb
+          ms-vscode.cmake-tools
+          twxs.cmake
 
-        ms-python.python
-        ms-python.vscode-pylance
+          ms-python.python
+          ms-python.vscode-pylance
 
-        yzhang.markdown-all-in-one
+          yzhang.markdown-all-in-one
 
-        usernamehw.errorlens
-        eamodio.gitlens
-        sonarsource.sonarlint-vscode
-        asvetliakov.vscode-neovim
-      ];
+          usernamehw.errorlens
+          eamodio.gitlens
+          sonarsource.sonarlint-vscode
+          asvetliakov.vscode-neovim
+        ];
 
-      userSettings = {
-        "editor.fontFamily" = "MesloLGS NF";
-        "editor.rulers" = [ 120 ];
-        "editor.guides.bracketPairs" = true;
-        "editor.stickyScroll.enabled" = true;
-        "editor.stickyTabStops" = true;
-        "[nix]"."editor.tabSize" = 2;
+        userSettings = {
+          "editor.fontFamily" = "MesloLGS NF";
+          "editor.rulers" = [ 120 ];
+          "editor.guides.bracketPairs" = true;
+          "editor.stickyScroll.enabled" = true;
+          "editor.stickyTabStops" = true;
+          "[nix]"."editor.tabSize" = 2;
 
-        "workbench.colorTheme" = "Gruvbox Material Dark";
+          "workbench.colorTheme" = "Gruvbox Material Dark";
 
-        "git.autofetch" = true;
+          "git.autofetch" = true;
 
-        "cmake.configureOnOpen" = true;
+          "cmake.configureOnOpen" = true;
 
-        "sonarlint.ls.javaHome" = "${pkgs.jdk}";
+          "sonarlint.ls.javaHome" = "${pkgs.jdk}";
 
-        # for vscode-neovim
-        "extensions.experimental.affinity" = { "asvetliakov.vscode-neovim" = 1; };
+          # for vscode-neovim
+          "extensions.experimental.affinity" = { "asvetliakov.vscode-neovim" = 1; };
+        };
       };
     };
 
@@ -724,48 +724,72 @@
 
     services.mako = {
       enable = true;
-      anchor = "top-right";
 
-      textColor = "#ebdbb8ff";
-      backgroundColor = "#282828bb";
+      settings = {
+        anchor = "top-right";
 
-      borderColor = "#d79921cc";
-      borderRadius = 6;
-      borderSize = 1;
+        text-color = "#ebdbb8ff";
+        background-color = "#282828bb";
 
-      defaultTimeout = 10000;
+        border-color = "#d79921cc";
+        border-radius = 6;
+        border-size = 1;
 
-      font = "Cantarell 12";
-      format = "<sup>%a</sup>\\n<b>%s</b>\\n%b";
-      groupBy = "app-name";
-      icons = true;
+        default-timeout = 10000;
 
-      margin = "5";
-      padding = "8";
+        font = "Cantarell 12";
+        format = "<sup>%a</sup>\\n<b>%s</b>\\n%b";
+        group-by = "app-name";
+        icons = true;
 
-      progressColor = "source #383838ff";
+        margin = "5";
+        padding = "8";
 
-      extraConfig = ''
-        on-notify=exec mpv ${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/message.oga --volume=150
-        on-button-middle=dismiss-group
+        progress-color = "source #383838ff";
+        on-notify = "exec mpv ${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/message.oga --volume=150";
+        on-button-middle = "dismiss-group";
+      };
 
-        # criteria-based settings
-        [grouped]
-        format=<sup>(%g) %a</sup>\n<b>%s</b>\n%b
-        
-        [urgency=critical]
-        on-notify=exec mpv ${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/dialog-warning.oga --volume=200
-        border-size=2
-        border-color=#cc2222cc
-        
-        [urgency=low]
-        on-notify=none
-        text-color=#bbab88
-        
-        [mode=away]
-        default-timeout=0
-        ignore-timeout=1
-      '';
+      criteria = {
+        "grouped" = {
+          format = "<sup>(%g) %a</sup>\n<b>%s</b>\n%b";
+        };
+        "urgency=critical" = {
+          on-notify = "exec mpv ${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/dialog-warning.oga --volume=200";
+          border-size = 2;
+          border-color = "#cc2222cc";
+        };
+        "urgency=low" = {
+          on-notify = "none";
+          text-color = "#bbab88";
+        };
+        "mode=away" = {
+          default-timeout = 0;
+          ignore-timeout = 1;
+        };
+      };
+
+      # extraConfig = ''
+      #   on-notify=exec mpv ${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/message.oga --volume=150
+      #   on-button-middle=dismiss-group
+      #
+      #   # criteria-based settings
+      #   [grouped]
+      #   format=<sup>(%g) %a</sup>\n<b>%s</b>\n%b
+      #   
+      #   [urgency=critical]
+      #   on-notify=exec mpv ${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/dialog-warning.oga --volume=200
+      #   border-size=2
+      #   border-color=#cc2222cc
+      #   
+      #   [urgency=low]
+      #   on-notify=none
+      #   text-color=#bbab88
+      #   
+      #   [mode=away]
+      #   default-timeout=0
+      #   ignore-timeout=1
+      # '';
     };
 
     services.syncthing.enable = true;
