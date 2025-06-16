@@ -12,7 +12,7 @@
 
   users.users.ameen = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "cdrom" ]; # Enable ‘sudo’ for the user.
     shell = pkgs.zsh;
   };
 
@@ -715,6 +715,7 @@
         };
       };
     };
+
 
     services.gpg-agent = {
       enable = true;

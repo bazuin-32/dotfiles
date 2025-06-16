@@ -87,6 +87,11 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+  
+  # for burning cds
+  services.udisks2.enable = true;
+  programs.k3b.enable = true;
+
 
   programs.nix-ld.enable = true;
   environment.variables = {
