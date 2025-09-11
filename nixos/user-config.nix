@@ -72,6 +72,7 @@
       telegram-desktop
       units
       obsidian
+      slack
 
       cantarell-fonts
       corefonts
