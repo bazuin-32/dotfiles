@@ -140,8 +140,8 @@
   environment.systemPackages = with pkgs; [
     wget
     gcc
-    clang_16
-    clang-tools_16
+    clang_17
+    clang-tools_17
     cmake
     gnumake
     ninja

@@ -683,6 +683,7 @@
           vadimcn.vscode-lldb
           ms-vscode.cmake-tools
           twxs.cmake
+          xaver.clang-format
 
           ms-python.python
           ms-python.vscode-pylance
@@ -713,6 +714,15 @@
 
           # for vscode-neovim
           "extensions.experimental.affinity" = { "asvetliakov.vscode-neovim" = 1; };
+
+          # for clang-format
+          "editor.defaultFormatter" = "xaver.clang-format";
+          "editor.formatOnSave" = true;
+          "clang-format.executable" = "${pkgs.clang-tools_17}/bin/clang-format";
+          "C_Cpp.codeAnalysis.clangTidy.enabled" = true;
+          "C_Cpp.codeAnalysis.clangTidy.path" = "${pkgs.clang-tools_17}/bin/clang-tidy";
+          "C_Cpp.errorSquiggles" = "Enabled";
+          "C_Cpp.codeAnalysis.runAutomatically" = true;
         };
       };
     };
