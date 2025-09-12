@@ -684,6 +684,7 @@
           ms-vscode.cmake-tools
           twxs.cmake
           xaver.clang-format
+          ms-vscode.makefile-tools
 
           ms-python.python
           ms-python.vscode-pylance
