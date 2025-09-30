@@ -206,9 +206,9 @@
 
           "${mod}, t, togglefloating"
 
-          ", xf86audioraisevolume, exec, pactl set-sink-volume $(cat ~/.sounddev) +5%"
-          ", xf86audiolowervolume, exec, pactl set-sink-volume $(cat ~/.sounddev) -5%"
-          ", xf86audiomute,        exec, pactl set-sink-mute $(cat ~/.sounddev) toggle"
+          ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+          ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+          ", XF86AudioMute,        exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
 
           ", Print, exec, ~/.config/bin/screenshot.sh"
 
@@ -237,6 +237,11 @@
           "center,        title:Open File"
 
           "tile, class:DesktopEditors"
+
+          "float,  title:Picture-in-Picture"
+          "pin,    title:Picture-in-Picture"
+          "noblur, title:Picture-in-Picture"
+          "opaque, title:Picture-in-Picture"
         ];
 
         exec-once = [
@@ -274,20 +279,8 @@
       };
 
       extraConfig = ''
-        bind = SUPER, R, submap, resize
-        submap = resize
-
-        binde = ,			 H, resizeactive, -40 0
-        binde = ,			 J, resizeactive, 0 40
-        binde = ,			 K, resizeactive, 0 -40
-        binde = ,			 L, resizeactive, 40 0
-        binde = SHIFT, H, moveactive, -40 0
-        binde = SHIFT, J, moveactive, 0 40
-        binde = SHIFT, K, moveactive, 0 -40
-        binde = SHIFT, L, moveactive, 40 0
-
-        bind = , escape, submap, reset
-        submap = reset
+        bindm = SUPER, mouse:272, movewindow
+        bindm = SUPER, mouse:273, resizewindow
       '';
     };
 
