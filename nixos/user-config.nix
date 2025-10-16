@@ -12,7 +12,7 @@
 
   users.users.ameen = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "cdrom" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "cdrom" "dialout" ]; # Enable ‘sudo’ for the user.
     shell = pkgs.zsh;
   };
 
@@ -73,6 +73,17 @@
       units
       obsidian
       slack
+      platformio
+      teensy-loader-cli
+      teensy-udev-rules
+      (pkgs.runCommand "teensy-loader-cli" {} ''
+        mkdir -p $out/bin
+        ln -s ${lib.getBin pkgs.teensy-loader-cli}/bin/teensy-loader-cli $out/bin/teensy_loader_cli
+      '')
+      poetry
+      qt6.full
+      qt6.qtbase
+      qt6.qtwayland
 
       cantarell-fonts
       corefonts
@@ -435,6 +446,7 @@
         plugins = [
           "git"
           "sudo"
+          "poetry"
         ];
         extraConfig = ''
           # cache completions for better speed
@@ -679,6 +691,8 @@
           xaver.clang-format
           ms-vscode.makefile-tools
 
+          platformio.platformio-vscode-ide
+
           ms-python.python
           ms-python.vscode-pylance
 
@@ -711,12 +725,16 @@
 
           # for clang-format
           "editor.defaultFormatter" = "xaver.clang-format";
-          "editor.formatOnSave" = true;
+          # "editor.formatOnSave" = true;
           "clang-format.executable" = "${pkgs.clang-tools_17}/bin/clang-format";
           "C_Cpp.codeAnalysis.clangTidy.enabled" = true;
           "C_Cpp.codeAnalysis.clangTidy.path" = "${pkgs.clang-tools_17}/bin/clang-tidy";
           "C_Cpp.errorSquiggles" = "Enabled";
           "C_Cpp.codeAnalysis.runAutomatically" = true;
+          "C_Cpp.intelliSenseEngine" = "disabled";
+          "C_Cpp.default.includePath" = [
+            "\${workspaceFolder}/lib/MFCommon"
+          ];
         };
       };
     };
