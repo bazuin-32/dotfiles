@@ -55,3 +55,8 @@
     width: 100% !important;
   }
 }
+
+/* make farsi text more readable */
+:dir(rtl) {
+  font-family: Vazirmatn;
+}

@@ -13,7 +13,7 @@
   nixpkgs.config = {
     allowUnfree = true;
     permittedInsecurePackages = [
-      "googleearth-pro-7.3.4.8248"
+      "googleearth-pro-7.3.6.10201"
     ];
   };
 
@@ -87,6 +87,11 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+  
+  # for burning cds
+  services.udisks2.enable = true;
+  programs.k3b.enable = true;
+
 
   programs.nix-ld.enable = true;
   environment.variables = {
@@ -105,6 +110,7 @@
       xorg.libXtst
       xorg.libXScrnSaver
       xorg.libXrandr
+      xorg.libxcb
       glib
       nss
       nspr
@@ -114,6 +120,13 @@
       pango
       at-spi2-core
       vulkan-loader
+      fontconfig
+      freetype
+      cups
+      libdrm
+      libgbm
+      libxkbcommon
+      cairo
     ]);
   };
 
@@ -127,8 +140,8 @@
   environment.systemPackages = with pkgs; [
     wget
     gcc
-    clang_16
-    clang-tools_16
+    clang_17
+    clang-tools_17
     cmake
     gnumake
     ninja

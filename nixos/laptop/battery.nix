@@ -5,6 +5,15 @@
     "vm.dirty_writeback_centisecs" = 1500;
   };
 
+  boot.blacklistedKernelModules = [
+    "btusb"
+    "btrtl"
+    "btmtk"
+    "btintel"
+    "btbcm"
+    "bluetooth"
+  ];
+
   systemd.services.setSysfsVars = {
     wantedBy = [ "multi-user.target" ];
     description = "Sets sysfs vars for power saving";
@@ -23,6 +32,11 @@
       echo 'auto'     > /sys/bus/pci/devices/0000:00:1f.0/power/control
       echo 'auto'     > /sys/bus/pci/devices/0000:00:00.0/power/control
       echo 'disabled' > /sys/class/net/enp0s31f6/device/power/wakeup
+      echo 0          > /proc/sys/kernel/nmi_watchdog
     '';
+  };
+
+  services.pipewire.wireplumber.extraConfig.disable_camera = {
+    "wireplumber.profiles".main."monitor.libcamera" = "disabled";
   };
 }

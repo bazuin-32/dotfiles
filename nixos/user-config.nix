@@ -12,7 +12,7 @@
 
   users.users.ameen = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "cdrom" ]; # Enable ‘sudo’ for the user.
     shell = pkgs.zsh;
   };
 
@@ -22,19 +22,22 @@
     home.stateVersion = "23.05";
     nixpkgs.config.allowUnfree = true;
     programs.home-manager.enable = true;
+    imports = [
+      inputs.ags.homeManagerModules.default
+      inputs.hyprcursor-phinger.homeManagerModules.hyprcursor-phinger
+    ];
 
     home.packages = with pkgs; [
       onlyoffice-bin
       neofetch
       eww
+      bun # for using typescript with ags
       grim
       slurp
       imagemagick
       rofi-wayland
       wl-clipboard
-      cantarell-fonts
       meslo-lgs-nf
-      nerdfonts
       jdk # required for sonarlint vscode extension
       socat
       pipe-rename # required for batch rename in xplr
@@ -68,12 +71,33 @@
       googleearth-pro
       telegram-desktop
       units
+      obsidian
+      slack
 
+      cantarell-fonts
       corefonts
       vistafonts
-    ];
+      vazir-fonts
+    ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
-    fonts.fontconfig.enable = true;
+    fonts = {
+      # enableDefaultPackages = true;
+      # packages = with pkgs; [
+      #   cantarell-fonts
+      #   corefonts
+      #   vistafonts
+      #   vazir-fonts
+      # ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+
+      fontconfig = {
+        enable = true;
+        defaultFonts = {
+          serif = [ "DejaVu Serif" "Vazirmatn" ];
+          sansSerif = [ "DejaVu Sans" "Vazirmatn" ];
+          monospace = [ "DejaVu Sans Mono" "Vazirmatn" ];
+        };
+      };
+    };
 
     wayland.windowManager.hyprland = {
       enable = true;  
@@ -97,17 +121,19 @@
         ];
 
         general = {
-          sensitivity = 2;
-
           gaps_in = 5;
-          gaps_out = 10;
+          gaps_out = 8;
           border_size = 2;
-          "col.active_border" = "rgba(d79921cc)";
+          "col.active_border" = "rgba(056f05cc)";
           "col.inactive_border" = "rgba(ebdbb888)";
         };
         
         input = {
-          kb_options = "compose:ralt";
+          sensitivity = 0.5;
+
+          kb_layout = "us,ir";
+          kb_variant = ",pes_keypad";
+          kb_options = "compose:ralt,grp:alt_space_toggle";
           follow_mouse = 1;
           numlock_by_default = 1;
         };
@@ -180,9 +206,9 @@
 
           "${mod}, t, togglefloating"
 
-          ", xf86audioraisevolume, exec, pactl set-sink-volume $(cat ~/.sounddev) +5%"
-          ", xf86audiolowervolume, exec, pactl set-sink-volume $(cat ~/.sounddev) -5%"
-          ", xf86audiomute,        exec, pactl set-sink-mute $(cat ~/.sounddev) toggle"
+          ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+          ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+          ", XF86AudioMute,        exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
 
           ", Print, exec, ~/.config/bin/screenshot.sh"
 
@@ -199,11 +225,9 @@
         ];
 
         windowrule = [
-          "float, Rofi"
-
-          "noblur,      BeamNG.*"
-          "opaque,      BeamNG.*"
-          "fullscreen,  BeamNG.*"
+          "noblur,      title:.*BeamNG.*"
+          "opaque,      title:.*BeamNG.*"
+          "fullscreen,  title:.*BeamNG.*"
 
           "float,         title:Open Folder"
           "size 60% 80%,  title:Open Folder"
@@ -212,7 +236,12 @@
           "size 60% 80%,  title:Open File"
           "center,        title:Open File"
 
-          "tile, DesktopEditors"
+          "tile, class:DesktopEditors"
+
+          "float,  title:Picture-in-Picture"
+          "pin,    title:Picture-in-Picture"
+          "noblur, title:Picture-in-Picture"
+          "opaque, title:Picture-in-Picture"
         ];
 
         exec-once = [
@@ -220,13 +249,18 @@
           "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
           "systemctl --user start hypridle.service hyprpaper.service" # they are enabled, but don't start because they try to start before WAYLAND_DISPLAY is set
           "gammastep -v -l 39.59:-104.68"
-          "~/.config/eww/start.sh"
+          "ags"
 
           # start terminal in special workspace, then store it
           # away for later
           "hyprctl keyword windowrule 'workspace special silent,foot' && hyprctl dispatch exec ${term} && sleep 0.1 && hyprctl dispatch togglespecialworkspace x && sleep 1 && hyprctl dispatch togglespecialworkspace x && hyprctl keyword windowrule 'workspace unset,foot'"
 
           "sleep 1 && hyprctl dispatch workspace 1 && thunderbird & disown"
+        ];
+
+        env = [
+          "HYPRCURSOR_THEME, phinger-cursors-dark"
+          "HYPRCURSOR_SIZE, 24"
         ];
 
         misc = {
@@ -245,21 +279,18 @@
       };
 
       extraConfig = ''
-        bind = SUPER, R, submap, resize
-        submap = resize
-
-        binde = ,			 H, resizeactive, -40 0
-        binde = ,			 J, resizeactive, 0 40
-        binde = ,			 K, resizeactive, 0 -40
-        binde = ,			 L, resizeactive, 40 0
-        binde = SHIFT, H, moveactive, -40 0
-        binde = SHIFT, J, moveactive, 0 40
-        binde = SHIFT, K, moveactive, 0 -40
-        binde = SHIFT, L, moveactive, 40 0
-
-        bind = , escape, submap, reset
-        submap = reset
+        bindm = SUPER, mouse:272, movewindow
+        bindm = SUPER, mouse:273, resizewindow
       '';
+    };
+
+    programs.hyprcursor-phinger.enable = true;
+    home.pointerCursor = {
+      name = "phinger-cursors-dark";
+      package = pkgs.phinger-cursors;
+      size = 24;
+      gtk.enable = true;
+      x11.enable = true;
     };
 
     programs.hyprlock = {
@@ -362,8 +393,8 @@
         splash_offset = 5;
         splash_color = "rgb(ebdbb8)";
 
-        preload = [ "$HOME/.local/share/wallpapers/acura-cl-silhouette.jpg" ];
-        wallpaper = [ ", $HOME/.local/share/wallpapers/acura-cl-silhouette.jpg" ];
+        preload = [ "$HOME/.local/share/wallpapers/gruvbox-forest.jpg" ];
+        wallpaper = [ ", $HOME/.local/share/wallpapers/gruvbox-forest.jpg" ];
       };
     };
     
@@ -385,7 +416,7 @@
         size = 50000;
       };
 
-      initExtra = ''
+      initContent = ''
         setopt extendedglob
         setopt globstarshort
         setopt autopushd # make cd keep a dir stack
@@ -572,6 +603,8 @@
       };
     };
 
+    programs.ags.enable = true;
+
 
 
     gtk = {
@@ -598,7 +631,7 @@
         name = "dev-edition-default";
         isDefault = true;
         
-        search.default = "Google";
+        search.default = "google";
         search.force = true;
         search.engines = {
           "Nix Packages" = {
@@ -610,7 +643,7 @@
 
           "NixOS Wiki" = {
             urls = [{ template = "https://nixos.wiki/index.php?search={searchTerms}"; }];
-            iconUpdateURL = "https://nixos.wiki/favicon.png";
+            icon = "https://nixos.wiki/favicon.png";
             updateInterval = 24 * 60 * 60 * 1000; # every day
             definedAliases = [ "@nw" ];
           };
@@ -622,8 +655,8 @@
             definedAliases = [ "@no" ];
           };
 
-          "Bing".metaData.hidden = true;
-          "Google".metaData.alias = "@g";
+          "bing".metaData.hidden = true;
+          "google".metaData.alias = "@g";
         };
 
         settings = {
@@ -637,43 +670,57 @@
 
     programs.vscode = {
       enable = true;
-      extensions = with pkgs.vscode-extensions; [
-        llvm-vs-code-extensions.vscode-clangd
-        vadimcn.vscode-lldb
-        ms-vscode.cmake-tools
-        twxs.cmake
+      profiles.default = {
+        extensions = with pkgs.vscode-extensions; [
+          llvm-vs-code-extensions.vscode-clangd
+          vadimcn.vscode-lldb
+          ms-vscode.cmake-tools
+          twxs.cmake
+          xaver.clang-format
+          ms-vscode.makefile-tools
 
-        ms-python.python
-        ms-python.vscode-pylance
+          ms-python.python
+          ms-python.vscode-pylance
 
-        yzhang.markdown-all-in-one
+          yzhang.markdown-all-in-one
 
-        usernamehw.errorlens
-        eamodio.gitlens
-        sonarsource.sonarlint-vscode
-        asvetliakov.vscode-neovim
-      ];
+          usernamehw.errorlens
+          eamodio.gitlens
+          sonarsource.sonarlint-vscode
+          asvetliakov.vscode-neovim
+        ];
 
-      userSettings = {
-        "editor.fontFamily" = "MesloLGS NF";
-        "editor.rulers" = [ 120 ];
-        "editor.guides.bracketPairs" = true;
-        "editor.stickyScroll.enabled" = true;
-        "editor.stickyTabStops" = true;
-        "[nix]"."editor.tabSize" = 2;
+        userSettings = {
+          "editor.fontFamily" = "MesloLGS NF";
+          "editor.rulers" = [ 120 ];
+          "editor.guides.bracketPairs" = true;
+          "editor.stickyScroll.enabled" = true;
+          "editor.stickyTabStops" = true;
+          "[nix]"."editor.tabSize" = 2;
 
-        "workbench.colorTheme" = "Gruvbox Material Dark";
+          "workbench.colorTheme" = "Gruvbox Material Dark";
 
-        "git.autofetch" = true;
+          "git.autofetch" = true;
 
-        "cmake.configureOnOpen" = true;
+          "cmake.configureOnOpen" = true;
 
-        "sonarlint.ls.javaHome" = "${pkgs.jdk}";
+          "sonarlint.ls.javaHome" = "${pkgs.jdk}";
 
-        # for vscode-neovim
-        "extensions.experimental.affinity" = { "asvetliakov.vscode-neovim" = 1; };
+          # for vscode-neovim
+          "extensions.experimental.affinity" = { "asvetliakov.vscode-neovim" = 1; };
+
+          # for clang-format
+          "editor.defaultFormatter" = "xaver.clang-format";
+          "editor.formatOnSave" = true;
+          "clang-format.executable" = "${pkgs.clang-tools_17}/bin/clang-format";
+          "C_Cpp.codeAnalysis.clangTidy.enabled" = true;
+          "C_Cpp.codeAnalysis.clangTidy.path" = "${pkgs.clang-tools_17}/bin/clang-tidy";
+          "C_Cpp.errorSquiggles" = "Enabled";
+          "C_Cpp.codeAnalysis.runAutomatically" = true;
+        };
       };
     };
+
 
     services.gpg-agent = {
       enable = true;
@@ -683,48 +730,72 @@
 
     services.mako = {
       enable = true;
-      anchor = "top-right";
 
-      textColor = "#ebdbb8ff";
-      backgroundColor = "#282828bb";
+      settings = {
+        anchor = "top-right";
 
-      borderColor = "#d79921cc";
-      borderRadius = 6;
-      borderSize = 1;
+        text-color = "#ebdbb8ff";
+        background-color = "#282828bb";
 
-      defaultTimeout = 10000;
+        border-color = "#d79921cc";
+        border-radius = 6;
+        border-size = 1;
 
-      font = "Cantarell 12";
-      format = "<sup>%a</sup>\\n<b>%s</b>\\n%b";
-      groupBy = "app-name";
-      icons = true;
+        default-timeout = 10000;
 
-      margin = "5";
-      padding = "8";
+        font = "Cantarell 12";
+        format = "<sup>%a</sup>\\n<b>%s</b>\\n%b";
+        group-by = "app-name";
+        icons = true;
 
-      progressColor = "source #383838ff";
+        margin = "5";
+        padding = "8";
 
-      extraConfig = ''
-        on-notify=exec mpv ${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/message.oga --volume=150
-        on-button-middle=dismiss-group
+        progress-color = "source #383838ff";
+        on-notify = "exec mpv ${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/message.oga --volume=150";
+        on-button-middle = "dismiss-group";
+      };
 
-        # criteria-based settings
-        [grouped]
-        format=<sup>(%g) %a</sup>\n<b>%s</b>\n%b
-        
-        [urgency=critical]
-        on-notify=exec mpv ${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/dialog-warning.oga --volume=200
-        border-size=2
-        border-color=#cc2222cc
-        
-        [urgency=low]
-        on-notify=none
-        text-color=#bbab88
-        
-        [mode=away]
-        default-timeout=0
-        ignore-timeout=1
-      '';
+      criteria = {
+        "grouped" = {
+          format = "<sup>(%g) %a</sup>\n<b>%s</b>\n%b";
+        };
+        "urgency=critical" = {
+          on-notify = "exec mpv ${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/dialog-warning.oga --volume=200";
+          border-size = 2;
+          border-color = "#cc2222cc";
+        };
+        "urgency=low" = {
+          on-notify = "none";
+          text-color = "#bbab88";
+        };
+        "mode=away" = {
+          default-timeout = 0;
+          ignore-timeout = 1;
+        };
+      };
+
+      # extraConfig = ''
+      #   on-notify=exec mpv ${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/message.oga --volume=150
+      #   on-button-middle=dismiss-group
+      #
+      #   # criteria-based settings
+      #   [grouped]
+      #   format=<sup>(%g) %a</sup>\n<b>%s</b>\n%b
+      #   
+      #   [urgency=critical]
+      #   on-notify=exec mpv ${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/dialog-warning.oga --volume=200
+      #   border-size=2
+      #   border-color=#cc2222cc
+      #   
+      #   [urgency=low]
+      #   on-notify=none
+      #   text-color=#bbab88
+      #   
+      #   [mode=away]
+      #   default-timeout=0
+      #   ignore-timeout=1
+      # '';
     };
 
     services.syncthing.enable = true;

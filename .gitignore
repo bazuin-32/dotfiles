@@ -7,6 +7,9 @@ nvim/lazy-lock.json
 # don't commit device-specific hyprland configs
 hypr/vfr.conf
 
+# cassowary, the config file has secrets in it
+casualrdh/
+
 # managed by home-manager or just random things I don't want to track
 bat/
 btop/

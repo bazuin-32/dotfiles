@@ -1,0 +1,169 @@
+.bar-window {
+    color: rgba(0, 0, 0, 0);
+}
+
+.bar-window > .horizontal {
+    margin-top: 5px;
+}
+
+.bar-margin {
+    min-width: 25px;
+}
+
+.bar {
+    background: rgba(5, 20, 5, 0.8);
+    border-radius: 20px;
+    min-width: 1870px; /* 1920 - (25 * 2), where 1920 is display width and 25 is min-width of .bar-margin */
+    
+    color: #ebdbb8;
+}
+
+/* ----- left section ----- */
+.left-container {
+    margin-left: 10px;
+}
+.workspace {
+    background: rgba(0, 0, 0, 0);
+    border: none;
+    border-radius: 20px;
+    padding: 0px 4px;
+    margin: 2px;
+    color: #ebdbb8;
+}
+.workspace.active {
+    background: radial-gradient(rgba(0, 0, 0, 0.9) 0, rgba(0, 0, 0, 0) 100%);
+    color: #ffefcc;
+    transition: 350ms ease;
+}
+.workspace:hover {
+    background: radial-gradient(rgba(255, 255, 255, 0.18) 0, rgba(255, 255, 255, 0) 75%);
+}
+/* ----- end left section ----- */
+
+
+/* ----- center section ----- */
+.center-container {
+    margin: 0 50px;
+}
+/* ----- end center section ----- */
+
+
+/* ----- right section ----- */
+.right-container {
+    margin-right: 10px;
+}
+.right-container > * {
+    margin: 0 2px;
+}
+.systray-item, .status-icon, .bar-button {
+    background: rgba(0, 0, 0, 0);
+    border: none;
+    border-radius: 20px;
+    margin: 0px 4px;
+    color: #ebdbb8;
+}
+.systray-item:hover, .status-icon:hover {
+    background: radial-gradient(rgba(255, 255, 255, 0.25) 0, rgba(255, 255, 255, 0) 75%);
+}
+.clock {
+    margin-left: 15px;
+}
+.bar-button {
+    margin: 1px 2px;
+    padding: 0 10px;
+}
+.bar-button:hover {
+    /* background: rgba(255, 255, 255, 0.25); */
+    background: radial-gradient(rgba(255, 255, 255, 0.18) 0, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 0) 100%);
+}
+/* ----- end right section ----- */
+
+
+/* ----- menu stuff ----- */
+.menu {
+    background: rgba(5, 20, 5, 0.8);
+    border-radius: 20px;
+    color: #ebdbb8;
+}
+
+.menu > * {
+    border-radius: 20px;
+    margin: 5px 10px;
+}
+
+.menu-button {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.9);
+    box-shadow: inset 0 0 2px 2px rgba(5, 20, 5, 1);
+    color: #ebdbb8;
+    transition: 500ms ease;
+}
+.menu-button:hover {
+    background: rgba(255, 255, 255, 0.18);
+    box-shadow: inset 0 0 3px 3px rgba(5, 20, 5, 1);
+    transition: 500ms ease;
+}
+.menu-button .menu-icon, .menu-button label {
+    margin: 2px 6px;
+}
+.menu-button .menu-item-arrow {
+    margin: 0;
+    padding: 0;
+    color: transparent;
+    transition: 500ms ease;
+}
+.menu-button:hover .menu-item-arrow {
+    color: rgba(235, 219, 184, 0.5);
+    transition: 500ms ease;
+}
+.menu-stack .menu-button {
+    margin: 1px 0px;
+}
+.menu-heading .menu-button {
+    margin: 0px 8px 0px 0px;
+}
+
+.menu calendar {
+    background: radial-gradient(rgba(0, 0, 0, 0.5) 90%, rgba(0, 0, 0, 0) 100%);
+    color: #ebdbb8;
+    margin: 5px 10px;
+}
+.menu calendar * {
+    background: radial-gradient(rgba(0, 0, 0, 0.5) 90%, rgba(0, 0, 0, 0) 100%);
+    color: #ebdbb8;
+}
+.menu calendar .highlight, .menu calendar .other-month {
+    color: #9b8b68;
+}
+.menu calendar:selected {
+    background: rgba(255, 255, 255, 0.25);
+}
+.menu calendar .button:hover {
+    background: radial-gradient(rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0) 100%);
+}
+
+.audio-panel .menu-icon {
+    margin: 0px 10px 0px 0px;
+}
+.audio-panel scale trough {
+    background: #383838;
+}
+.audio-panel scale trough highlight {
+    background: #157f15;
+}
+.audio-panel .device-control {
+    border: 1px solid #000000;
+    border-radius: 10px;
+    padding: 2px 5px;
+}
+
+.battery-panel > * {
+    margin: 5px 0px;
+}
+.battery-panel levelbar trough {
+    background: #383838;
+}
+.battery-panel levelbar trough .filled {
+    background: #157f15;
+    border: none;
+}
