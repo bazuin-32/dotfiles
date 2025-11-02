@@ -80,6 +80,7 @@
         mkdir -p $out/bin
         ln -s ${lib.getBin pkgs.teensy-loader-cli}/bin/teensy-loader-cli $out/bin/teensy_loader_cli
       '')
+      picotool
       poetry
       qt6.full
       qt6.qtbase
