@@ -73,6 +73,7 @@
       units
       obsidian
       slack
+      freerdp
 
       cantarell-fonts
       corefonts
