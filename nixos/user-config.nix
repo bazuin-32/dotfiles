@@ -365,11 +365,6 @@
 
         listener = [
           {
-            timeout = 60; # 1 min
-            on-timeout = "makoctl set -s away";
-            on-resume = "makoctl set -r away";
-          }
-          {
             timeout = 300; # 5 min
             on-timeout = "loginctl lock-session";
           }
@@ -712,10 +707,10 @@
 
           # for clang-format
           "editor.defaultFormatter" = "xaver.clang-format";
-          "editor.formatOnSave" = true;
-          "clang-format.executable" = "${pkgs.clang-tools_17}/bin/clang-format";
+          # "editor.formatOnSave" = true;
+          "clang-format.executable" = "${pkgs.clang-tools}/bin/clang-format";
           "C_Cpp.codeAnalysis.clangTidy.enabled" = true;
-          "C_Cpp.codeAnalysis.clangTidy.path" = "${pkgs.clang-tools_17}/bin/clang-tidy";
+          "C_Cpp.codeAnalysis.clangTidy.path" = "${pkgs.clang-tools}/bin/clang-tidy";
           "C_Cpp.errorSquiggles" = "Enabled";
           "C_Cpp.codeAnalysis.runAutomatically" = true;
         };
@@ -727,76 +722,6 @@
       enable = true;
       enableSshSupport = true;
       enableScDaemon = false;
-    };
-
-    services.mako = {
-      enable = true;
-
-      settings = {
-        anchor = "top-right";
-
-        text-color = "#ebdbb8ff";
-        background-color = "#282828bb";
-
-        border-color = "#d79921cc";
-        border-radius = 6;
-        border-size = 1;
-
-        default-timeout = 10000;
-
-        font = "Cantarell 12";
-        format = "<sup>%a</sup>\\n<b>%s</b>\\n%b";
-        group-by = "app-name";
-        icons = true;
-
-        margin = "5";
-        padding = "8";
-
-        progress-color = "source #383838ff";
-        on-notify = "exec mpv ${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/message.oga --volume=150";
-        on-button-middle = "dismiss-group";
-      };
-
-      criteria = {
-        "grouped" = {
-          format = "<sup>(%g) %a</sup>\n<b>%s</b>\n%b";
-        };
-        "urgency=critical" = {
-          on-notify = "exec mpv ${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/dialog-warning.oga --volume=200";
-          border-size = 2;
-          border-color = "#cc2222cc";
-        };
-        "urgency=low" = {
-          on-notify = "none";
-          text-color = "#bbab88";
-        };
-        "mode=away" = {
-          default-timeout = 0;
-          ignore-timeout = 1;
-        };
-      };
-
-      # extraConfig = ''
-      #   on-notify=exec mpv ${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/message.oga --volume=150
-      #   on-button-middle=dismiss-group
-      #
-      #   # criteria-based settings
-      #   [grouped]
-      #   format=<sup>(%g) %a</sup>\n<b>%s</b>\n%b
-      #   
-      #   [urgency=critical]
-      #   on-notify=exec mpv ${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/dialog-warning.oga --volume=200
-      #   border-size=2
-      #   border-color=#cc2222cc
-      #   
-      #   [urgency=low]
-      #   on-notify=none
-      #   text-color=#bbab88
-      #   
-      #   [mode=away]
-      #   default-timeout=0
-      #   ignore-timeout=1
-      # '';
     };
 
     services.syncthing.enable = true;
