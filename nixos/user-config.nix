@@ -73,6 +73,7 @@
       units
       obsidian
       slack
+      freerdp
       platformio
       teensy-loader-cli
       teensy-udev-rules
