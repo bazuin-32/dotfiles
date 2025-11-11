@@ -74,6 +74,7 @@
       obsidian
       slack
       freerdp
+      man-pages
 
       cantarell-fonts
       corefonts
@@ -759,6 +760,7 @@
     SUDO_EDITOR = "nvim";
     VISUAL = "nvim";
     MANPAGER = "sh -c 'col -bx | bat -l man -p'";
+    MANROFFOPT="-c";
     MOZ_ENABLE_WAYLAND = "1";
     XPLR_BOOKMARKS_FILE = "$HOME/.local/share/xplr/bookmarks";
     _JAVA_AWT_WM_NONREPARENTING = "1";
