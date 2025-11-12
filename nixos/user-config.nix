@@ -74,6 +74,7 @@
       obsidian
       slack
       freerdp
+      man-pages
       platformio
       teensy-loader-cli
       teensy-udev-rules
