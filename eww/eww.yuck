@@ -1,3 +1,0 @@
-(include "windows/bar.yuck")
-(include "windows/calendar.yuck")
-(include "windows/menu.yuck")

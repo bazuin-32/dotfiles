@@ -28,14 +28,14 @@
     ];
 
     home.packages = with pkgs; [
-      onlyoffice-bin
+      onlyoffice-desktopeditors
       neofetch
       eww
       bun # for using typescript with ags
       grim
       slurp
       imagemagick
-      rofi-wayland
+      rofi
       wl-clipboard
       meslo-lgs-nf
       jdk # required for sonarlint vscode extension
@@ -90,7 +90,7 @@
 
       cantarell-fonts
       corefonts
-      vistafonts
+      vista-fonts
       vazir-fonts
     ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
@@ -239,23 +239,23 @@
         ];
 
         windowrule = [
-          "noblur,      title:.*BeamNG.*"
-          "opaque,      title:.*BeamNG.*"
-          "fullscreen,  title:.*BeamNG.*"
+          "match:title .*BeamNG.*, no_blur on"
+          "match:title .*BeamNG.*, opaque on"
+          "match:title .*BeamNG.*, fullscreen on"
 
-          "float,         title:Open Folder"
-          "size 60% 80%,  title:Open Folder"
-          "center,        title:Open Folder"
-          "float,         title:Open File"
-          "size 60% 80%,  title:Open File"
-          "center,        title:Open File"
+          "match:title Open Folder, float on"
+          "match:title Open Folder, size 60% 80%"
+          "match:title Open Folder, center on"
+          "match:title Open File, float on"
+          "match:title Open File, size 60% 80%"
+          "match:title Open File, center on"
 
-          "tile, class:DesktopEditors"
+          "match:class DesktopEditors, tile on"
 
-          "float,  title:Picture-in-Picture"
-          "pin,    title:Picture-in-Picture"
-          "noblur, title:Picture-in-Picture"
-          "opaque, title:Picture-in-Picture"
+          "match:title Picture-in-Picture, float on"
+          "match:title Picture-in-Picture, pin on"
+          "match:title Picture-in-Picture, no_blur on"
+          "match:title Picture-in-Picture, opaque on"
         ];
 
         exec-once = [
@@ -263,7 +263,7 @@
           "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
           "systemctl --user start hypridle.service hyprpaper.service" # they are enabled, but don't start because they try to start before WAYLAND_DISPLAY is set
           "gammastep -v -l 39.59:-104.68"
-          "ags"
+          "ags run"
 
           # start terminal in special workspace, then store it
           # away for later
@@ -402,8 +402,12 @@
         splash_offset = 5;
         splash_color = "rgb(ebdbb8)";
 
-        preload = [ "$HOME/.local/share/wallpapers/gruvbox-forest.jpg" ];
-        wallpaper = [ ", $HOME/.local/share/wallpapers/gruvbox-forest.jpg" ];
+        wallpaper = [
+          {
+            monitor = "";
+            path = "~/.local/share/wallpapers/gruvbox-forest.jpg";
+          }
+        ];
       };
     };
     
@@ -593,9 +597,11 @@
 
     programs.git = {
       enable = true;
-      userName = "bazuin-32";
-      userEmail = "ameenpiano@gmail.com";
-      extraConfig.push.autoSetupRemote = true;
+      settings = {
+        user.name = "bazuin-32";
+        user.email = "ameenpiano@gmail.com";
+        push.autoSetupRemote = true;
+      };
     };
     programs.neovim = {
       enable = true;
@@ -613,7 +619,16 @@
       };
     };
 
-    programs.ags.enable = true;
+    programs.ags = {
+      enable = true;
+      extraPackages = with pkgs; [
+        inputs.astal.packages.${pkgs.system}.hyprland
+        inputs.astal.packages.${pkgs.system}.tray
+        inputs.astal.packages.${pkgs.system}.battery
+        inputs.astal.packages.${pkgs.system}.network
+        inputs.astal.packages.${pkgs.system}.wireplumber
+      ];
+    };
 
 
 
@@ -624,7 +639,10 @@
         size = 12;
       };
       theme.name = "Adwaita-dark";
-      iconTheme.name = "Adwaita-dark";
+      iconTheme = {
+        name = "Adwaita";
+        package = pkgs.adwaita-icon-theme;
+      };
     };
 
     programs.thunderbird = {
