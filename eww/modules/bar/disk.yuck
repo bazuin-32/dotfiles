@@ -1,4 +1,0 @@
-(defwidget disk []
-  (box :tooltip "${ round(EWW_DISK['/'].used / 1024 / 1024 / 1024, 1) } GiB of ${ round(EWW_DISK['/'].total / 1024 / 1024 / 1024, 1) } GiB used on /"
-    (label :class "icon" :text "")
-    (label :text "${ round(EWW_DISK['/'].used_perc, 0) }%")))
