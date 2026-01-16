@@ -137,7 +137,6 @@
       libgbm
       libxkbcommon
       cairo
-      qt6.full
       qt6.qtbase
       qt6.qtwayland
       gtk2
