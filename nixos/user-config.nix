@@ -29,7 +29,7 @@
 
     home.packages = with pkgs; [
       onlyoffice-desktopeditors
-      neofetch
+      fastfetch
       eww
       bun # for using typescript with ags
       grim
@@ -50,7 +50,7 @@
       file
       fd
       nomacs
-      wineWowPackages.wayland
+      wineWow64Packages.wayland
       yt-dlp
       bc
       calc
@@ -65,7 +65,7 @@
       ncdu
       sysstat
       python3
-      python311Packages.ipython
+      python314Packages.ipython
       ffmpeg
       obs-studio
       googleearth-pro
@@ -435,7 +435,7 @@
 
         . ~/.config/zsh/functions.zsh
 
-        neofetch
+        fastfetch
       '';
       envExtra = ''
         # set colors for exa, see https://github.com/ogham/exa/blob/master/man/exa_colors.5.md
@@ -555,7 +555,7 @@
           style = "beam";
           blink = true;
         };
-        colors = {
+        colors-dark = {
           background = "282828";
           foreground = "ebdbb8";
 
@@ -638,6 +638,7 @@
         size = 12;
       };
       theme.name = "Adwaita-dark";
+      gtk4.theme = config.gtk.theme;
       iconTheme = {
         name = "Adwaita";
         package = pkgs.adwaita-icon-theme;
