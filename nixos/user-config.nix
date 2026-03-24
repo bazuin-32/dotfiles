@@ -86,6 +86,10 @@
       poetry
       qt6.qtbase
       qt6.qtwayland
+      openconnect
+      gp-saml-gui
+      rerun
+      zenity # for rerun file picker
 
       cantarell-fonts
       corefonts
