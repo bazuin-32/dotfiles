@@ -21,7 +21,7 @@ export default function NotificationSpace(monitor: Gdk.Monitor) {
         if (replaced && notifications.peek().some((n) => n.id === id)) {
             setNotifications((ns) => ns.map((n) => (n.id === id ? notification : n)))
         } else {
-            setNotifications((ns) => [...ns, notification])
+            setNotifications((ns) => [notification, ...ns])
         }
     })
 

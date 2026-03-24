@@ -86,9 +86,35 @@ window.Bar {
 window.NotificationSpace {
   .notification {
     background: $bg-color;
-    border-radius: 20px;
+    border-radius: 10px;
     margin: 4px;
     padding: 8px;
     color: $fg-color;
+
+    button {
+      background: rgba(0, 0, 0, 0.15);
+      border: rgba($fg-color, 0.25) solid 1px;
+      color: $fg-color;
+      margin: 5px;
+    }
+    button:hover {
+      background: rgba(255, 255, 255, 0.20);
+      box-shadow: 0 0 5px 2px rgba(255, 255, 255, 0.25);
+    }
+    
+    separator {
+      background: rgba($fg-color, 0.25);
+    }
+    
+    .content {
+      margin: 5px 0;
+    }
+  }
+  .notification.urgency-low {
+    background: rgba(5, 20, 5, 0.6);
+  }
+  .notification.urgency-critical {
+    background: rgba(5, 20, 5, 0.9);
+    box-shadow: 0 0 10px 2px rgba(255, 0, 0, 0.7);
   }
 }

@@ -18,7 +18,7 @@ function fileExists(path: string) {
   return GLib.file_test(path, GLib.FileTest.EXISTS)
 }
 
-function time(time: number, format = "%H:%M") {
+function time(time: number, format = "%l:%M %p") {
   return GLib.DateTime.new_from_unix_local(time).format(format)!
 }
 
@@ -44,7 +44,7 @@ export default function Notification({ notification: n }: NotificationProps) {
     // <Adw.Clamp maximumSize={400}>
       <box
         widthRequest={400}
-        class={`notification ${urgency(n)}`}
+        class={`notification urgency-${urgency(n)}`}
         orientation={Gtk.Orientation.VERTICAL}
       >
         <box class="header">
@@ -67,7 +67,7 @@ export default function Notification({ notification: n }: NotificationProps) {
             halign={Gtk.Align.END}
             label={time(n.time)}
           />
-          <button onClicked={() => n.dismiss()}>
+          <button class="dismiss-button" onClicked={() => n.dismiss()}>
             <image iconName="window-close-symbolic" />
           </button>
         </box>
@@ -109,7 +109,7 @@ export default function Notification({ notification: n }: NotificationProps) {
         {n.actions.length > 0 && (
           <box class="actions">
             {n.actions.map(({ label, id }) => (
-              <button hexpand onClicked={() => n.invoke(id)}>
+              <button class="action-button" hexpand onClicked={() => n.invoke(id)}>
                 <label label={label} halign={Gtk.Align.CENTER} hexpand />
               </button>
             ))}
