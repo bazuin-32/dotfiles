@@ -1,0 +1,94 @@
+$fg-color: #ebdbb8;
+$bg-color: rgba(5, 20, 5, 0.8);
+
+window.Bar {
+  background: transparent;
+  color: $fg-color;
+  margin: 0;
+  padding: 0;
+
+  > centerbox {
+    background: $bg-color;
+    border-radius: 20px;
+    margin: 8px 8px 0px 8px;
+  }
+
+  .left-container {
+    margin-left: 10px;
+  }
+  .center-container {
+    margin: 0 50px;
+  }
+  .right-container {
+    margin-right: 10px;
+  }
+  
+  .popover {
+    background: initial;
+    border: initial;
+  }
+  
+  /* ----- left section ----- */
+  .workspace {
+    background: transparent;
+    border: none;
+    border-radius: 20px;
+    padding: 0 4px;
+    margin: 2px;
+  }
+  .workspace.active {
+    background: radial-gradient(rgba(0, 0, 0, 0.9) 0, rgba(0, 0, 0, 0) 100%);
+    color: #ffefcc;
+    font-weight: bold;
+  }
+  .workspace:hover {
+    background: radial-gradient(rgba(255, 255, 255, 0.18) 0, rgba(255, 255, 255, 0) 75%);
+  }
+  /* ----- end left section ----- */
+  
+  
+  .bar-icon, .systray-item {
+    background: transparent;
+    border: none;
+    margin: 0px 4px;
+    border-radius: 20px;
+  }
+  .bar-icon:hover, .systray-item:hover {
+    background: radial-gradient(rgba(255, 255, 255, 0.25) 0, rgba(255, 255, 255, 0) 75%);
+  }
+  
+  .systray-item .popover {
+    > contents {
+      padding: 2px;
+      border-radius: 10px
+    }
+    > contents, > arrow {
+      background: $bg-color;
+    }
+    
+    > contents modelbutton {
+      margin: 2px;
+    }
+    
+    > contents modelbutton:hover {
+      background: rgba(255, 255, 255, 0.25);
+      box-shadow: 0 0 5px 2px rgba(255, 255, 255, 0.25);
+    }
+  }
+  
+  .menubutton {
+    background: transparent;
+    border: none;
+  }
+}
+
+
+window.NotificationSpace {
+  .notification {
+    background: $bg-color;
+    border-radius: 20px;
+    margin: 4px;
+    padding: 8px;
+    color: $fg-color;
+  }
+}

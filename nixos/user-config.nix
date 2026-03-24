@@ -615,6 +615,7 @@
         inputs.astal.packages.${pkgs.system}.battery
         inputs.astal.packages.${pkgs.system}.network
         inputs.astal.packages.${pkgs.system}.wireplumber
+        inputs.astal.packages.${pkgs.system}.notifd
       ];
     };
 
