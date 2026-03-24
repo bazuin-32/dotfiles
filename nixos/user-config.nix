@@ -589,6 +589,7 @@
         user.email = "ameenpiano@gmail.com";
         push.autoSetupRemote = true;
       };
+      signing.format = null;
     };
     programs.neovim = {
       enable = true;
