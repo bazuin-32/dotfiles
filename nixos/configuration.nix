@@ -103,23 +103,23 @@
     NIX_LD_LIBRARY_PATH = with pkgs; lib.mkForce (lib.makeLibraryPath [
       "/run/current-system/sw/share/nix-ld" # keep the default libs, so we only need to add extras here
       util-linux
-      xorg.libX11
-      xorg.libXft
-      xorg.libXcomposite
-      xorg.libXcursor
-      xorg.libXdamage
-      xorg.libXext
-      xorg.libXfixes
-      xorg.libXi
-      xorg.libXrender
-      xorg.libXtst
-      xorg.libXScrnSaver
-      xorg.libXrandr
-      xorg.libxcb
-      xorg.xcbutilwm
-      xorg.xcbutilimage
-      xorg.xcbutilkeysyms
-      xorg.xcbutilrenderutil
+      libx11
+      libxft
+      libxcomposite
+      libxcursor
+      libxdamage
+      libxext
+      libxfixes
+      libxi
+      libxrender
+      libxtst
+      libxscrnsaver
+      libxrandr
+      libxcb
+      xcbutilwm
+      xcbutilimage
+      xcbutilkeysyms
+      xcbutilrenderutil
       xcb-util-cursor
       glib
       nss
