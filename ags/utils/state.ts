@@ -6,7 +6,7 @@ import Wireplumber from "gi://AstalWp"
 import Battery from "gi://AstalBattery"
 import Network from "gi://AstalNetwork"
 
-import { createState, createMemo } from "ags"
+import { createState, createMemo, Accessor, Setter } from "ags"
 import { createPoll } from "ags/time"
 
 const hyprland = Hyprland.get_default()
@@ -92,6 +92,11 @@ wireplumber.connect("ready", () => {
 
 
 const battery = Battery.get_default()
+const [battery_present, set_battery_present] = createState(battery.is_present)
+battery.connect("notify::is-present", () => {
+  set_battery_present(battery.is_present)
+})
+
 const [battery_percentage, set_battery_percentage] = createState(Math.floor(battery.percentage * 100))
 battery.connect("notify::percentage", () => {
   set_battery_percentage(Math.floor(battery.percentage * 100))
@@ -136,15 +141,24 @@ network.wired.connect("notify::internet", () => {
   set_network_wired_internet(network.wired.internet)
 })
 
-const [network_wifi_icon, set_network_wifi_icon] = createState(network.wifi.icon_name)
-network.wifi.connect("notify::icon-name", () => {
-  set_network_wifi_icon(network.wifi.icon_name)
-})
+let network_wifi_icon: string | Accessor<string>
+let network_wifi_ssid: string | Accessor<string>
+if (network.wifi) {
+  let set_network_wifi_icon: Setter<string>
+  [network_wifi_icon, set_network_wifi_icon] = createState(network.wifi.icon_name)
+  network.wifi.connect("notify::icon-name", () => {
+    set_network_wifi_icon(network.wifi.icon_name)
+  })
 
-const [network_wifi_ssid, set_network_wifi_ssid] = createState(network.wifi.ssid)
-network.wifi.connect("notify::ssid", () => {
-  set_network_wifi_ssid(network.wifi.ssid)
-})
+  let set_network_wifi_ssid: Setter<string>
+  [network_wifi_ssid, set_network_wifi_ssid] = createState(network.wifi.ssid)
+  network.wifi.connect("notify::ssid", () => {
+    set_network_wifi_ssid(network.wifi.ssid)
+  })
+} else {
+  network_wifi_icon = "";
+  network_wifi_ssid = "";
+}
 
 
 
@@ -161,6 +175,7 @@ export {
   audio_icon,
   audio_volume,
 
+  battery_present,
   battery_percentage,
   battery_icon,
   battery_charging,
