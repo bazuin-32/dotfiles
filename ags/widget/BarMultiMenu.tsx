@@ -7,6 +7,7 @@ import {
 	audio_icon,
 	audio_volume,
 	time,
+	battery_present,
 	battery_percentage,
 	battery_charging,
 	battery_time_remaining,
@@ -36,6 +37,7 @@ function BatteryIcon() {
 			cssClasses={["bar-icon"]}
 			iconName={battery_icon}
 			tooltipText={tooltip}
+			visible={battery_present}
 		/>
 	)
 }
@@ -49,18 +51,23 @@ internetLookup[Network.Internet.DISCONNECTED] = "Disconnected"
 function NetworkIcon() {
 	return (
 		<box>
+		{ network_type((type) => type === "wired") &&
 			<image
 				cssClasses={["bar-icon"]}
 				visible={network_type((type) => type == "wired")}
 				iconName={network_wired_icon}
 				tooltipText={network_wired_internet((int) => internetLookup[int])}
 			/>
+			
+		}
+		{ network_type((type) => type === "wifi") &&
 			<image 
 				cssClasses={["bar-icon"]}
 				visible={network_type((type) => type == "wifi")}
 				iconName={network_wifi_icon}
 				tooltipText={network_wifi_ssid}
 			/>
+		}
 		</box>
 	)
 }
