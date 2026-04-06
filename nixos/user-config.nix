@@ -75,6 +75,7 @@
       slack
       freerdp
       man-pages
+      firefoxpwa
 
       cantarell-fonts
       corefonts
@@ -645,6 +646,7 @@
     programs.firefox = {
       enable = true;
       package = pkgs.firefox-devedition;
+      nativeMessagingHosts = [ pkgs.firefoxpwa ];
       profiles.default = {
         name = "dev-edition-default";
         isDefault = true;
