@@ -13,7 +13,7 @@
   nixpkgs.config = {
     allowUnfree = true;
     permittedInsecurePackages = [
-      "googleearth-pro-7.3.6.10201"
+      "googleearth-pro-7.3.7.1155"
     ];
   };
 
@@ -154,6 +154,7 @@
   environment.systemPackages = with pkgs; [
     wget
     gcc
+    gcc13
     clang
     clang-tools
     cmake

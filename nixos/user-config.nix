@@ -12,9 +12,11 @@
 
   users.users.ameen = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "cdrom" "dialout" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "cdrom" "docker" "dialout" ]; # Enable ‘sudo’ for the user.
     shell = pkgs.zsh;
   };
+
+  virtualisation.docker.enable = true;
 
   environment.pathsToLink = [ "/share/zsh" ]; # for zsh completions, see https://rycee.gitlab.io/home-manager/options.html#opt-programs.zsh.enableCompletion
   home-manager.useUserPackages = true;
@@ -30,7 +32,6 @@
     home.packages = with pkgs; [
       onlyoffice-desktopeditors
       fastfetch
-      eww
       bun # for using typescript with ags
       grim
       slurp
@@ -156,7 +157,7 @@
           numlock_by_default = 1;
         };
 
-        dwindle.pseudotile = false;
+        #dwindle.pseudotile = false;
 
         decoration = {
           rounding = 6; # corner radius
@@ -294,10 +295,10 @@
         #debug.overlay = true;
       };
 
-      extraConfig = ''
-        bindm = SUPER, mouse:272, movewindow
-        bindm = SUPER, mouse:273, resizewindow
-      '';
+      #extraConfig = ''
+	#bindm = SUPER, mouse:272, movewindow
+        #bindm = SUPER, mouse:273, resizewindow
+      #'';
     };
 
     programs.hyprcursor-phinger.enable = true;
@@ -603,12 +604,19 @@
         user.name = "bazuin-32";
         user.email = "ameenpiano@gmail.com";
         push.autoSetupRemote = true;
+	#url = {
+	#	"ssh://git@github.com/" = {
+	#        insteadOf = "https://github.com/";
+	#    };
+	#};
       };
       signing.format = null;
     };
     programs.neovim = {
       enable = true;
       defaultEditor = true;
+      withRuby = false;
+      withPython3 = true;
     };
 
     programs.tealdeer = {
@@ -660,6 +668,7 @@
     programs.firefox = {
       enable = true;
       package = pkgs.firefox-devedition;
+      configPath = "${config.xdg.configHome}/mozilla/firefox";
       nativeMessagingHosts = [ pkgs.firefoxpwa ];
       profiles.default = {
         name = "dev-edition-default";
@@ -724,6 +733,8 @@
           eamodio.gitlens
           sonarsource.sonarlint-vscode
           asvetliakov.vscode-neovim
+
+	  ms-vscode-remote.remote-ssh
         ];
 
         userSettings = {
