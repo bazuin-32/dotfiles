@@ -1,28 +1,69 @@
 { ... }: {
   home-manager.users.ameen.wayland.windowManager.hyprland.settings = {
     monitor = [
-      "HDMI-A-2, 1920x1080@60, 0x0, 1"
-      "HDMI-A-1, 1920x1080@60, 1920x0, 1"
-      "VGA-1, disable"
-      "Unknown-1, disable"
-    ];
+      {
+        output = "HDMI-A-2";
+        mode = "1920x1080@60";
+        position = "0x0";
+        scale = 1;
+      }
+      {
+        output = "HDMI-A-1";
+        mode = "1920x1080@60";
+        position = "1920x0";
+        scale = 1;
+      }
+      {
+        output = "VGA-1";
+        disable = true;
+      }
+      {
+        output = "Unknown-1";
+        disable = true;
+      }
+    ]
 
-    workspace = [
-      # starting workspaces
-      "HDMI-A-2, 1"
-      "HDMI-A-1, 6"
-
-      # force workspaces to always be on specific monitors
-      "1, monitor:HDMI-A-2"
-      "2, monitor:HDMI-A-2"
-      "3, monitor:HDMI-A-2"
-      "4, monitor:HDMI-A-2"
-      "5, monitor:HDMI-A-2"
-      "6, monitor:HDMI-A-1"
-      "7, monitor:HDMI-A-1"
-      "8, monitor:HDMI-A-1"
-      "9, monitor:HDMI-A-1"
-      "10, monitor:HDMI-A-1"
+    workspace_rule = [
+      {
+        workspace = "1";
+        monitor = "HDMI-A-2";
+      }
+      {
+        workspace = "2";
+        monitor = "HDMI-A-2";
+      }
+      {
+        workspace = "3";
+        monitor = "HDMI-A-2";
+      }
+      {
+        workspace = "4";
+        monitor = "HDMI-A-2";
+      }
+      {
+        workspace = "5";
+        monitor = "HDMI-A-2";
+      }
+      {
+        workspace = "6";
+        monitor = "HDMI-A-1";
+      }
+      {
+        workspace = "7";
+        monitor = "HDMI-A-1";
+      }
+      {
+        workspace = "8";
+        monitor = "HDMI-A-1";
+      }
+      {
+        workspace = "9";
+        monitor = "HDMI-A-1";
+      }
+      {
+        workspace = "10";
+        monitor = "HDMI-A-1";
+      }
     ];
   };
 }
