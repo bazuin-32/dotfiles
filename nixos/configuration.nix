@@ -92,6 +92,11 @@
   services.udisks2.enable = true;
   programs.k3b.enable = true;
 
+  # for teensy dev
+  services.udev.packages = with pkgs; [
+    teensy-udev-rules
+  ];
+
 
   programs.nix-ld.enable = true;
   environment.variables = {
@@ -111,6 +116,11 @@
       libxscrnsaver
       libxrandr
       libxcb
+      xcbutilwm
+      xcbutilimage
+      xcbutilkeysyms
+      xcbutilrenderutil
+      xcb-util-cursor
       glib
       nss
       nspr
@@ -127,6 +137,10 @@
       libgbm
       libxkbcommon
       cairo
+      qt6.qtbase
+      qt6.qtwayland
+      gtk2
+      swt
     ]);
   };
 
@@ -159,6 +173,8 @@
 
     # for windwatcher development. TODO: use dedicated windwatcher nix setup
     opencv
+
+    arduino
   ];
 
   fileSystems."/net/ameen" = {

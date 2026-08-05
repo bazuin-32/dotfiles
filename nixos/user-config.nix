@@ -12,7 +12,7 @@
 
   users.users.ameen = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "cdrom" "docker" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "cdrom" "docker" "dialout" ]; # Enable ‘sudo’ for the user.
     shell = pkgs.zsh;
   };
 
@@ -76,6 +76,21 @@
       slack
       freerdp
       man-pages
+      platformio
+      teensy-loader-cli
+      teensy-udev-rules
+      (pkgs.runCommand "teensy-loader-cli" {} ''
+        mkdir -p $out/bin
+        ln -s ${lib.getBin pkgs.teensy-loader-cli}/bin/teensy-loader-cli $out/bin/teensy_loader_cli
+      '')
+      picotool
+      poetry
+      qt6.qtbase
+      qt6.qtwayland
+      openconnect
+      gp-saml-gui
+      rerun
+      zenity # for rerun file picker
       firefoxpwa
 
       cantarell-fonts
@@ -679,6 +694,7 @@
         plugins = [
           "git"
           "sudo"
+          "poetry"
         ];
         extraConfig = ''
           # cache completions for better speed
@@ -949,6 +965,8 @@
           xaver.clang-format
           ms-vscode.makefile-tools
 
+          platformio.platformio-vscode-ide
+
           ms-python.python
           ms-python.vscode-pylance
 
@@ -989,6 +1007,10 @@
           "C_Cpp.codeAnalysis.clangTidy.path" = "${pkgs.clang-tools}/bin/clang-tidy";
           "C_Cpp.errorSquiggles" = "Enabled";
           "C_Cpp.codeAnalysis.runAutomatically" = true;
+          "C_Cpp.intelliSenseEngine" = "disabled";
+          "C_Cpp.default.includePath" = [
+            "\${workspaceFolder}/lib/MFCommon"
+          ];
         };
       };
     };
