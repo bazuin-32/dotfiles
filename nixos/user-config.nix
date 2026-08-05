@@ -1,4 +1,4 @@
-{ config, inputs, pkgs, ... }:
+{ lib, config, inputs, pkgs, ... }:
 
 {
   programs.dconf.enable = true; # requred for gtk themes
@@ -96,7 +96,7 @@
       cantarell-fonts
       corefonts
       vista-fonts
-      vazir-fonts
+      vazirmatn
     ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
     fonts = {
@@ -105,7 +105,7 @@
       #   cantarell-fonts
       #   corefonts
       #   vistafonts
-      #   vazir-fonts
+      #   vazirmatn
       # ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
       fontconfig = {
@@ -118,191 +118,434 @@
       };
     };
 
-    wayland.windowManager.hyprland = {
-      enable = true;  
+    wayland.windowManager.hyprland = let
+      lua = lib.generators.mkLuaInline;
+
+      mod = "SUPER";
+      term = "foot";
+      launcher = "~/.config/rofi/bin/launcher_text";
+      lockCmd = "${pkgs.hyprlock}/bin/hyprlock";
+      powermenu = "~/.config/rofi/bin/powermenu";
+
+      /*
+        Produce an hl.bind(key, dispatcher) call.
+
+        `dispatcher` must be an inline Lua expression such as:
+
+          lua ''hl.dsp.exec_cmd("foot")''
+      */
+      mkBind = key: dispatcher: {
+        _args = [
+          key
+          dispatcher
+        ];
+      };
+
+      execBind = key: command:
+        mkBind key (lua ''hl.dsp.exec_cmd(${builtins.toJSON command})'');
+
+      workspaceBind = workspace: key:
+        mkBind "${mod} + ${key}" (
+          lua "hl.dsp.focus({ workspace = ${toString workspace} })"
+        );
+
+      moveToWorkspaceBind = workspace: key:
+        mkBind "ALT + ${key}" (
+          lua "hl.dsp.window.move({ workspace = ${toString workspace} })"
+        );
+
+      /*
+        Convert workspace 10 to key 0:
+
+          workspace 1  -> key 1
+          ...
+          workspace 9  -> key 9
+          workspace 10 -> key 0
+      */
+      workspaceKey = workspace:
+        toString (lib.mod workspace 10);
+
+      workspaceBindings =
+        builtins.genList (
+          index:
+          let
+            workspace = index + 1;
+          in
+          workspaceBind workspace (workspaceKey workspace)
+        ) 10;
+
+      moveToWorkspaceBindings =
+        builtins.genList (
+          index:
+          let
+            workspace = index + 1;
+          in
+          moveToWorkspaceBind workspace (workspaceKey workspace)
+        ) 10;
+    in {
+      enable = true;
       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
 
-      settings = let
-        mod = "SUPER";
-        term = "foot";
-        launcher = "~/.config/rofi/bin/launcher_text";
-        lock_cmd = "${pkgs.hyprlock}/bin/hyprlock";
-        powermenu = "~/.config/rofi/bin/powermenu";
-      in {
-        # monitors handled in device specific configs
-        workspace = [
-          # monitor assignments handled in device specific configs
+      configType = "lua";
 
-          # special workspace
-          # NOTE: the below rule causes problems and doesn't work right, I'm leaving it disabled for now
-          # "s[true], on-created-empty:hyprctl dispatch exec '[workspace special; noanim] ${term}'" # when this runs, the special workspace needs to be closed and re-opened to see the window
-          "s[true], gapsout:100"
-        ];
+      settings = {
+        /*
+          This produces:
 
-        general = {
-          gaps_in = 5;
-          gaps_out = 8;
-          border_size = 2;
-          "col.active_border" = "rgba(056f05cc)";
-          "col.inactive_border" = "rgba(ebdbb888)";
-        };
-        
-        input = {
-          sensitivity = 0.5;
+            hl.config({
+              general = { ... },
+              input = { ... },
+              ...
+            })
+        */
+        config = {
+          general = {
+            gaps_in = 5;
+            gaps_out = 8;
+            border_size = 2;
 
-          kb_layout = "us,ir";
-          kb_variant = ",pes_keypad";
-          kb_options = "compose:ralt,grp:alt_space_toggle";
-          follow_mouse = 1;
-          numlock_by_default = 1;
-        };
-
-        #dwindle.pseudotile = false;
-
-        decoration = {
-          rounding = 6; # corner radius
-
-          active_opacity = 0.90;
-          inactive_opacity = 0.80;
-
-          blur = {
-            enabled = true;
-            size = 4;
-            passes = 1;
-            new_optimizations = true;
+            col = {
+              active_border = "rgba(056f05cc)";
+              inactive_border = "rgba(ebdbb888)";
+            };
           };
 
-          dim_inactive = true;
-          dim_strength = 0.2;
+          input = {
+            sensitivity = 0.5;
+
+            kb_layout = "us,ir";
+            kb_variant = ",pes_keypad";
+            kb_options = "compose:ralt,grp:alt_space_toggle";
+
+            follow_mouse = 1;
+            numlock_by_default = true;
+          };
+
+          dwindle = {
+            smart_split = true;
+            precise_mouse_move = true;
+          };
+
+          decoration = {
+            rounding = 6;
+
+            active_opacity = 0.90;
+            inactive_opacity = 0.80;
+
+            blur = {
+              enabled = true;
+              size = 4;
+              passes = 1;
+            };
+
+            dim_inactive = true;
+            dim_strength = 0.2;
+          };
+
+          animations = {
+            enabled = true;
+          };
+
+          misc = {
+            mouse_move_enables_dpms = true;
+            key_press_enables_dpms = true;
+
+            # Reduce unnecessary rendering and automatic work.
+            disable_hyprland_logo = true;
+            disable_splash_rendering = true;
+            disable_autoreload = true;
+          };
         };
 
-        bezier = [
-          "mybez,           0.6, 0.5, 0.1, 1"
-          "inactive_dimmer, 0.3, 0.4, 0.6, 0.7"
+        workspace_rule = [
+          {
+            workspace = "special:special";
+            gaps_out = 100;
+            on_created_empty = "${term}";
+          }
         ];
 
-        animations = {
-          enabled = true;
+        curve = [
+          {
+            _args = [
+              "mybez"
+              {
+                type = "bezier";
+                points = [
+                  [ 0.6 0.5 ]
+                  [ 0.1 1.0 ]
+                ];
+              }
+            ];
+          }
 
-          animation = [
-            "windows,     1, 6, mybez, popin 70%"
-            "border,      1, 7, mybez"
-            "fade,        1, 7, mybez"
-            "fadeDim,     1, 5, inactive_dimmer"
-            "workspaces,  1, 4, mybez"
+          {
+            _args = [
+              "inactive_dimmer"
+              {
+                type = "bezier";
+                points = [
+                  [ 0.3 0.4 ]
+                  [ 0.6 0.7 ]
+                ];
+              }
+            ];
+          }
+        ];
+
+        animation = [
+          {
+            leaf = "windows";
+            enabled = true;
+            speed = 6;
+            bezier = "mybez";
+            style = "popin 70%";
+          }
+
+          {
+            leaf = "border";
+            enabled = true;
+            speed = 7;
+            bezier = "mybez";
+          }
+
+          {
+            leaf = "fade";
+            enabled = true;
+            speed = 7;
+            bezier = "mybez";
+          }
+
+          {
+            leaf = "fadeDim";
+            enabled = true;
+            speed = 5;
+            bezier = "inactive_dimmer";
+          }
+
+          {
+            leaf = "workspaces";
+            enabled = true;
+            speed = 4;
+            bezier = "mybez";
+          }
+        ];
+
+        bind =
+          [
+            (execBind "${mod} + RETURN" term)
+
+            (mkBind "${mod} + TAB" (
+              lua "hl.dsp.window.cycle_next({ next = true })"
+            ))
+
+            (mkBind "${mod} + Q" (
+              lua "hl.dsp.window.close()"
+            ))
+
+            (execBind "${mod} + SPACE" launcher)
+            (execBind "${mod} + CTRL + L" lockCmd)
+            (execBind "${mod} + P" powermenu)
+
+            /*
+              Your old `togglespecialworkspace` had no workspace name, so this
+              targets the unnamed special workspace.
+            */
+            (mkBind "${mod} + S" (
+              lua ''hl.dsp.workspace.toggle_special("")''
+            ))
+
+            (mkBind "${mod} + H" (
+              lua ''hl.dsp.window.move({ direction = "l" })''
+            ))
+
+            (mkBind "${mod} + J" (
+              lua ''hl.dsp.window.move({ direction = "d" })''
+            ))
+
+            (mkBind "${mod} + K" (
+              lua ''hl.dsp.window.move({ direction = "u" })''
+            ))
+
+            (mkBind "${mod} + L" (
+              lua ''hl.dsp.window.move({ direction = "r" })''
+            ))
+          ]
+          ++ workspaceBindings
+          ++ moveToWorkspaceBindings
+          ++ [
+            (mkBind "ALT + S" (
+              lua ''hl.dsp.window.move({ workspace = "special" })''
+            ))
+
+            (mkBind "${mod} + T" (
+              lua ''hl.dsp.window.float({ action = "toggle" })''
+            ))
+
+            (execBind
+              "XF86AudioRaiseVolume"
+              "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+            )
+
+            (execBind
+              "XF86AudioLowerVolume"
+              "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+            )
+
+            (execBind
+              "XF86AudioMute"
+              "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+            )
+
+            (execBind
+              "Print"
+              "~/.config/bin/screenshot.sh"
+            )
+
+            (mkBind "${mod} + F" (
+              lua ''
+                hl.dsp.window.fullscreen({
+                  mode = "fullscreen",
+                  action = "toggle",
+                })
+              ''
+            ))
+
+            # Laptop display brightness.
+            (execBind
+              "XF86MonBrightnessUp"
+              "brightnessctl set 5%+"
+            )
+
+            (execBind
+              "XF86MonBrightnessDown"
+              "brightnessctl set 5%-"
+            )
+
+            # Desktop keyboard RGB profiles.
+            (execBind
+              "CTRL + SHIFT + ALT + 1"
+              "rgb_keyboard -a 1"
+            )
+
+            (execBind
+              "CTRL + SHIFT + ALT + 2"
+              "rgb_keyboard -a 2"
+            )
+
+            (execBind
+              "CTRL + SHIFT + ALT + 3"
+              "rgb_keyboard -a 3"
+            )
+
+            (mkBind "${mod} + mouse:272"
+              (lua "hl.dsp.window.drag()"))
+
+            (mkBind "${mod} + mouse:273"
+              (lua "hl.dsp.window.resize()"))
           ];
-        };
 
-        bind = [
-          "${mod},			Return,  exec,       ${term}"
-          "${mod},			Tab,     cyclenext"
-          "${mod},			Q,       killactive,"
-          "${mod},			SPACE,   exec,       ${launcher}"
-          "${mod} CTRL, L,       exec,       ${lock_cmd}"
-          "${mod},      P,       exec,       ${powermenu}"
-          "${mod},      S,       togglespecialworkspace"
+        /*
+          Several rules targeting the same window have been combined into one
+          structured rule. This is equivalent to the separate old windowrule
+          entries.
+        */
+        window_rule = [
+          {
+            match = {
+              title = ".*BeamNG.*";
+            };
 
-          "${mod}, H, movewindow, l"
-          "${mod}, J, movewindow, d"
-          "${mod}, K, movewindow, u"
-          "${mod}, L, movewindow, r"
-        ] ++ (builtins.genList ( # switch to worskpace
-          x: let
-            ws = let
-              c = (x + 1) / 10;
-            in
-              builtins.toString (x + 1 - (c * 10));
-          in "${mod}, ${ws}, workspace, ${toString (x + 1)}"
-        ) 10) ++ (builtins.genList ( # move current window to workspace
-          x: let
-            ws = let
-              c = (x + 1) / 10;
-            in
-              builtins.toString (x + 1 - (c * 10));
-          in "ALT, ${ws}, movetoworkspace, ${toString (x + 1)}"
-        ) 10) ++ [
-          "ALT, s, movetoworkspace, special"
+            no_blur = true;
+            opaque = true;
+            fullscreen = true;
+          }
 
-          "${mod}, t, togglefloating"
+          {
+            match = {
+              title = "Open Folder";
+            };
 
-          ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
-          ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-          ", XF86AudioMute,        exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+            float = true;
+            size = "60% 80%";
+            center = true;
+          }
 
-          ", Print, exec, ~/.config/bin/screenshot.sh"
+          {
+            match = {
+              title = "Open File";
+            };
 
-          "${mod}, F, fullscreen, 0"
+            float = true;
+            size = "60% 80%";
+            center = true;
+          }
 
-          # laptop display brightness
-          ", xf86monbrightnessup,   exec, brightnessctl set 5%+"
-          ", xf86monbrightnessdown, exec, brightnessctl set 5%-"
+          {
+            match = {
+              class = "DesktopEditors";
+            };
 
-          # desktop keyboard rgb profiles
-          "CTRLSHIFTALT, 1, exec, rgb_keyboard -a 1"
-          "CTRLSHIFTALT, 2, exec, rgb_keyboard -a 2"
-          "CTRLSHIFTALT, 3, exec, rgb_keyboard -a 3"
-        ];
+            tile = true;
+          }
 
-        windowrule = [
-          "match:title .*BeamNG.*, no_blur on"
-          "match:title .*BeamNG.*, opaque on"
-          "match:title .*BeamNG.*, fullscreen on"
+          {
+            match = {
+              title = "Picture-in-Picture";
+            };
 
-          "match:title Open Folder, float on"
-          "match:title Open Folder, size 60% 80%"
-          "match:title Open Folder, center on"
-          "match:title Open File, float on"
-          "match:title Open File, size 60% 80%"
-          "match:title Open File, center on"
-
-          "match:class DesktopEditors, tile on"
-
-          "match:title Picture-in-Picture, float on"
-          "match:title Picture-in-Picture, pin on"
-          "match:title Picture-in-Picture, no_blur on"
-          "match:title Picture-in-Picture, opaque on"
-        ];
-
-        exec-once = [
-          # prevent delay of gtk app startup
-          "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-          "systemctl --user start hypridle.service hyprpaper.service" # they are enabled, but don't start because they try to start before WAYLAND_DISPLAY is set
-          "gammastep -v -l 39.59:-104.68"
-          "ags run"
-
-          # start terminal in special workspace, then store it
-          # away for later
-          "hyprctl keyword windowrule 'workspace special silent,foot' && hyprctl dispatch exec ${term} && sleep 0.1 && hyprctl dispatch togglespecialworkspace x && sleep 1 && hyprctl dispatch togglespecialworkspace x && hyprctl keyword windowrule 'workspace unset,foot'"
-
-          "sleep 1 && hyprctl dispatch workspace 1 && thunderbird & disown"
+            float = true;
+            pin = true;
+            no_blur = true;
+            opaque = true;
+          }
         ];
 
         env = [
-          "HYPRCURSOR_THEME, phinger-cursors-dark"
-          "HYPRCURSOR_SIZE, 24"
+          {
+            _args = [
+              "HYPRCURSOR_THEME"
+              "phinger-cursors-dark"
+            ];
+          }
+
+          {
+            _args = [
+              "HYPRCURSOR_SIZE"
+              "24"
+            ];
+          }
         ];
 
-        misc = {
-          mouse_move_enables_dpms = true;
-          key_press_enables_dpms = true;
+        on = {
+          _args = [
+            "hyprland.start"
 
-          # an attempt to reduce memory and cpu usage (and therefore battery usage), even if only a little bit
-          disable_hyprland_logo = true;
-          disable_splash_rendering = true;
-          disable_autoreload = true;
+            (lua ''
+              function()
+                hl.exec_cmd(
+                  "systemctl --user import-environment " ..
+                  "WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+                )
+
+                hl.exec_cmd(
+                  "systemctl --user start " ..
+                  "hypridle.service hyprpaper.service"
+                )
+
+                hl.exec_cmd("gammastep -v -l 39.59:-104.68")
+                hl.exec_cmd("ags run")
+                hl.exec_cmd("thunderbird")
+              end
+            '')
+          ];
         };
-
-        #debug.overlay = true;
       };
-
-      #extraConfig = ''
-	#bindm = SUPER, mouse:272, movewindow
-        #bindm = SUPER, mouse:273, resizewindow
-      #'';
     };
 
     programs.hyprcursor-phinger.enable = true;
     home.pointerCursor = {
+      enable = true;
       name = "phinger-cursors-dark";
       package = pkgs.phinger-cursors;
       size = 24;
