@@ -15,13 +15,13 @@
       }
       {
         output = "VGA-1";
-        disable = true;
+        disabled = true;
       }
       {
         output = "Unknown-1";
-        disable = true;
+        disabled = true;
       }
-    ]
+    ];
 
     workspace_rule = [
       {
