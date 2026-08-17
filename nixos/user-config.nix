@@ -970,6 +970,8 @@
           ms-python.python
           ms-python.vscode-pylance
 
+	  drblury.protobuf-vsc
+
           yzhang.markdown-all-in-one
 
           usernamehw.errorlens
@@ -978,6 +980,8 @@
           asvetliakov.vscode-neovim
 
 	  ms-vscode-remote.remote-ssh
+
+	  jdinhlife.gruvbox
         ];
 
         userSettings = {
@@ -988,7 +992,7 @@
           "editor.stickyTabStops" = true;
           "[nix]"."editor.tabSize" = 2;
 
-          "workbench.colorTheme" = "Gruvbox Material Dark";
+          "workbench.colorTheme" = "Gruvbox Dark Hard";
 
           "git.autofetch" = true;
 
