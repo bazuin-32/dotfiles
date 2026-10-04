@@ -18,6 +18,8 @@
 
   virtualisation.docker.enable = true;
 
+  programs.steam.enable = true;
+
   environment.pathsToLink = [ "/share/zsh" ]; # for zsh completions, see https://rycee.gitlab.io/home-manager/options.html#opt-programs.zsh.enableCompletion
   home-manager.useUserPackages = true;
   home-manager.users.ameen = { config, pkgs, ... }: {
