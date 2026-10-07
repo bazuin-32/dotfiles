@@ -94,6 +94,7 @@
       rerun
       zenity # for rerun file picker
       firefoxpwa
+      gdb
 
       cantarell-fonts
       corefonts
