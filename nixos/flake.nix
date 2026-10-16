@@ -31,6 +31,16 @@
       url = "github:Aylur/ags";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    globalprotect-openconnect = {
+      url = "github:yuezk/GlobalProtect-openconnect/3c49eab0c885d546b0001fa7c85b1daf0f4d4ac2";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    globalprotect-tray-src = {
+      url = "github:brycewalkerdev/globalprotect-tray-app";
+      flake = false;
+    };
   };
 
   outputs = { nixpkgs, home-manager, hyprland, ... } @ inputs:
@@ -49,6 +59,35 @@
           {
             home-manager.useGlobalPkgs = true;
           }
+
+	  ({ config, lib, options, pkgs, ... }:
+          let
+            gpoc =
+              inputs.globalprotect-openconnect.packages.${pkgs.system}.default;
+
+            tray = pkgs.callPackage ./packages/globalprotect-tray.nix {
+              src = inputs.globalprotect-tray-src;
+              inherit gpoc;
+            };
+          in
+          {
+            environment.systemPackages = [
+              gpoc
+              tray
+            ];
+
+            security.polkit = {
+              enable = true;
+            } // lib.optionalAttrs (options.security.polkit ? enablePkexecWrapper) {
+              enablePkexecWrapper = true;
+            };
+
+            services.ayatana-indicators.enable = lib.mkDefault true;
+
+            environment.etc."polkit-1/actions/io.github.brycewalkerdev.globalprotect-tray-app.policy".source =
+              "${tray}/share/polkit-1/actions/io.github.brycewalkerdev.globalprotect-tray-app.policy";
+          })
+
         ];
       };
 
