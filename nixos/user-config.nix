@@ -16,6 +16,13 @@
     shell = pkgs.zsh;
   };
 
+  nixpkgs.config = {
+    allowUnfree = true;
+    permittedInsecurePackages = [
+      "googleearth-pro-7.3.7.1155"
+    ];
+  };
+
   virtualisation.docker.enable = true;
 
   programs.steam.enable = true;
@@ -24,7 +31,12 @@
   home-manager.useUserPackages = true;
   home-manager.users.ameen = { config, pkgs, ... }: {
     home.stateVersion = "23.05";
-    nixpkgs.config.allowUnfree = true;
+    nixpkgs.config = {
+      allowUnfree = true;
+      permittedInsecurePackages = [
+        "googleearth-pro-7.3.7.1155"
+      ];
+    };
     programs.home-manager.enable = true;
     imports = [
       inputs.ags.homeManagerModules.default
@@ -952,8 +964,8 @@
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true; # required for custom CSS
           "browser.toolbars.bookmarks.visibility" = "always"; # show bookmarks bar
         };
-        userChrome = (builtins.readFile ../firefox/userChrome.css);
-        userContent = (builtins.readFile ../firefox/userContent.css);
+        #userChrome = (builtins.readFile ../firefox/userChrome.css);
+        #userContent = (builtins.readFile ../firefox/userContent.css);
       };
     };
 

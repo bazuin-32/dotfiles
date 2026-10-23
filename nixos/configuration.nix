@@ -10,12 +10,6 @@
     ./user-config.nix
   ];
 
-  nixpkgs.config = {
-    allowUnfree = true;
-    permittedInsecurePackages = [
-      "googleearth-pro-7.3.7.1155"
-    ];
-  };
 
   nix = {
     package = pkgs.nixVersions.latest;
