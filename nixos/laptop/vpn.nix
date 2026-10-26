@@ -8,6 +8,7 @@
       down-pre
     '';
     autoStart = false;
+    authUserPass = "/etc/openvpn-home.auth";
   };
 
 # make sure that dns gets updated when connecting to vpn
